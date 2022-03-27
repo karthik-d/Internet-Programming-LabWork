@@ -32,9 +32,15 @@ html, body{
     text-align: center;
 }
 
+.Main__navactive{
+    background-color: #000;
+    color: #bdc9d7;
+    font-weight: bold;
+}
+
 .Main__navlink{
     text-decoration: none; 
-    color: #000
+    color: inherit;
 }
 
 
@@ -63,4 +69,81 @@ html, body{
 .Qualif__tableCell{
     padding-top: 10px; 
     padding-bottom: 10px;
+}
+
+
+
+.Contact__form{
+    width: 30%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 40px;
+}
+
+.Contact__textIn, .Contact__selectIn{
+    width: 200px;
+    margin-left: 40px;
+    padding: 6px;
+    font-size: 12px;
+    border: 0px;
+    border-bottom: 1px solid;
+}
+
+.Contact__areaIn{
+    height: 200px;
+    width: 400px;
+    padding: 10px;
+}
+
+.Contact__submit{
+    margin-right: 40px; 
+    border-style: none; 
+    background-color: #747c89; 
+    color: #ffffff; 
+    font-size: 16px; 
+    padding:10px; 
+    border-radius: 5px;
+}
+
+
+#Events__content{
+    width:80%; 
+    text-align: center; 
+    margin: auto; 
+    margin-top: 60px;
+}
+
+.Events__wrapper{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Events__unitWrapper{
+    display: flex;
+    justify-content:stretch;
+}   
+
+.Events__logo{
+    width: 60%;
+    height: auto;
+}
+
+.Events__descWrapper{
+    width: 50%;
+}
+
+.Events__title{
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.Events__date{
+    font-weight: normal;
+    font-size: 16px;
+}
+
+.Events__location{
+    font-weight: normal;
+    font-size: 14px;
 }
