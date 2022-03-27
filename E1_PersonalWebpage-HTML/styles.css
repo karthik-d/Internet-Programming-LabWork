@@ -1,0 +1,66 @@
+html, body{
+    width: 100%;
+    height: 100%;
+}
+
+#Main__headerFrame{
+    width: 100%; 
+    display:block; 
+    border-style: none;
+}
+
+#Main__navbar{
+    background-color: #bdc9d7;
+    margin-top: 2px; 
+    padding-top: 0.5px; 
+    padding-bottom: 0.5px; 
+    font-size: 15px;
+}
+
+.Main__navlist{
+    width: 80%; 
+    margin-left: auto; 
+    margin-right: auto; 
+    text-align: center;
+}
+
+.Main__navitem{
+    display: inline; 
+    padding: 5px; 
+    width: 20%; 
+    margin: auto; 
+    text-align: center;
+}
+
+.Main__navlink{
+    text-decoration: none; 
+    color: #000
+}
+
+
+
+#Qualif__content{
+    width:80%; 
+    text-align: center; 
+    margin: auto; 
+    margin-top: 60px;
+}
+
+.Qualif__table{
+    border: 4px solid #747c89; 
+    text-align: center; 
+    padding: 1px; 
+    margin:auto;
+    font-size: 16px;
+}
+
+.Qualif__tableHead{
+    width: 60px; 
+    background-color:#747c89; 
+    color: #ffffff;
+}
+
+.Qualif__tableCell{
+    padding-top: 10px; 
+    padding-bottom: 10px;
+}
