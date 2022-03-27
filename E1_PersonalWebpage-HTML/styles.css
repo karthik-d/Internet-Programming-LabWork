@@ -261,3 +261,33 @@ html, body{
 .Home__affil{
     font-size: 16px;
 }
+
+
+#Tossn__content{
+    width:50%; 
+    text-align: center; 
+    margin: auto; 
+    margin-top: 100px;
+    line-height: 26px;
+}
+
+#Tossn__contentWrapper{
+    background-color: #00000099;
+    color: #ffffff;
+    padding: 20px;
+    margin-top: 40px;
+    border-style: solid;
+    border-color: #ffffff;
+    border-width: 4px;
+    font-family: sans-serif
+}
+
+.Tossn__namecontent{
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.Tossn__para{
+    font-size: 16px;
+}
