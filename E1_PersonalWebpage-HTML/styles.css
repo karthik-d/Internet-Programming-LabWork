@@ -1,6 +1,12 @@
 html, body{
     width: 100%;
-    height: 100%;
+    height: 100%; 
+}
+
+body{
+    background-image: url("images/background.jpg");
+    background-position: center;
+    background-size: cover;
 }
 
 #Main__headerFrame{
@@ -54,7 +60,8 @@ html, body{
 
 .Header__welcometext > p{
     width: max-content;
-    color: #000000;
+    color: #111111;
+    font-weight: bold;
     overflow: hidden;
     border-right: .15em solid #747c89; /* The typwriter cursor */
     white-space: nowrap; 
@@ -86,6 +93,7 @@ html, body{
 }
 
 .Qualif__table{
+    background-color: #b6bdcc;
     border: 4px solid #747c89; 
     text-align: center; 
     padding: 1px; 
@@ -155,6 +163,8 @@ html, body{
 .Events__unitWrapper{
     display: flex;
     justify-content:stretch;
+    margin-top: 60px;
+    margin-bottom: 60px;
 }   
 
 .Events__logo{
@@ -290,4 +300,35 @@ html, body{
 
 .Tossn__para{
     font-size: 16px;
+}
+
+
+#Interests__content{
+    width:20%; 
+    text-align: left; 
+    margin: auto; 
+    margin-top: 100px;
+    line-height: 26px;
+}
+
+#Interests__contentWrapper{
+    background-color: #00000099;
+    color: #ffffff;
+    padding: 20px;
+    margin-top: 40px;
+    border-style: solid;
+    border-color: #ffffff;
+    border-width: 4px;
+    font-family: sans-serif
+}
+
+.Interests__namecontent{
+    font-size: 20px;
+    font-weight: bold;
+    padding: 6px;
+}
+
+.Interests__para{
+    font-size: 16px;
+    list-style-type: square;
 }
