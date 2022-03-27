@@ -180,3 +180,84 @@ html, body{
     font-weight: normal;
     font-size: 14px;
 }
+
+
+#Home__content{
+    width:30%; 
+    text-align: center; 
+    margin: auto; 
+    margin-top: 120px;
+}
+
+#Home__nameWrapper{
+    background-color: #000000;
+    color: #ffffff;
+    padding: 30px;
+    margin-top: 40px;
+    border-style: solid;
+    border-color: #ffffff;
+    border-width: 4px;
+    border-radius: 10px;
+    font-family: sans-serif
+}
+
+#Home__nameWrapper:hover{
+    animation-name: swing;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+
+@keyframes swing
+{
+    15%
+    {
+        -webkit-transform: translateX(5px);
+        transform: translateX(5px);
+    }
+    30%
+    {
+        -webkit-transform: translateX(-5px);
+        transform: translateX(-5px);
+    }
+    50%
+    {
+        -webkit-transform: translateX(3px);
+        transform: translateX(3px);
+    }
+    65%
+    {
+        -webkit-transform: translateX(-3px);
+        transform: translateX(-3px);
+    }
+    80%
+    {
+        -webkit-transform: translateX(2px);
+        transform: translateX(2px);
+    }
+    100%
+    {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+
+#Home__content > a{
+    font-size: inherit;
+    color: inherit;
+    text-decoration: none;
+}
+
+.Home__namecontent{
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.Home__contact{
+    font-size: 12px;
+    font-style: italic;
+}
+
+.Home__affil{
+    font-size: 16px;
+}
