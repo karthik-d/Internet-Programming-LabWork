@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <title>Drag-Drop</title>
+
+    <style>
+        .drop-region {
+            width: 100px;
+            height: 100px;
+            border: 2px solid red;
+        }
+
+        #draggable-image {
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+
+
+    <script>
+        function rem_default(event) {
+            event.preventDefault();
+        }
+
+        function add_element(event) {
+            event.preventDefault();
+            var elem_id = event.dataTransfer.getData("text/plain");
+            event.target.appendChild(document.getElementById(elem_id));
+        }
+
+        function store_element(event) {
+            event.dataTransfer.setData("text/plain", event.target.id);
+        }
+    </script>
+</head>
+
+<body>
+    <div class="drop-region" ondragover="rem_default(event);" ondrop="add_element(event);">
+        Drop Here
+    </div>
+    <div class="drop-region" ondragover="rem_default(event);" ondrop="add_element(event);">
+        <img src="../images/test-tubes.jpg" draggable="true" id="draggable-image" ondragstart="store_element(event);">
+    </div>
+</body>
+
+</html>
