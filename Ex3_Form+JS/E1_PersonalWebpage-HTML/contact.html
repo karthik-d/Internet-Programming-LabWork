@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Karthik's Page</title>
+    <link rel="stylesheet" href="styles.css" type="text/css">
+</head>
+
+<body>
+
+    <iframe src="header.html" id="Main__headerFrame" scrolling="no"></iframe>
+
+    <div id="Main__navbar">
+        <ul class="Main__navlist">
+            | <li class="Main__navitem"><a class="Main__navlink" href="index.html">Home</a></li>
+            | <li class="Main__navitem"><a href="to_ssn.html" class="Main__navlink">Journey to SSN</a></li>
+            | <li class="Main__navitem"><a href="qualifications.html" class="Main__navlink">Qualifications</a></li>
+            | <li class="Main__navitem"><a href="interests.html" class="Main__navlink">Interests</a></li>
+            | <li class="Main__navitem"><a href="events.html" class="Main__navlink">Events Organized</a></li>
+            | <li class="Main__navitem Main__navactive"><a href="contact.html" class="Main__navlink">Contact</a></li>
+            |
+        </ul>
+    </div>
+
+    <div id="content" style="font-family: sans-serif; font-size: 16px; margin: 10px">
+        <form class="Contact__form">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="firstname" placeholder="Your first name..."
+                class="Contact__textIn"><br /><br />
+
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lastname" placeholder="Your last name..."
+                class="Contact__textIn"><br /><br />
+
+            <label for="status">You are a(n)</label>
+            <select id="status" name="status" class="Contact__selectIn">
+                <option value="student">Student</option>
+                <option value="teacher">Professor</option>
+                <option value="working">Industry Expert</option>
+            </select><br /><br />
+
+            <label for="feedback">Feedback</label><br /><br />
+            <textarea id="feedback" name="feedback" placeholder="Write me something..."
+                class="Contact__areaIn"></textarea><br /><br />
+
+            <div style="width: 100%; text-align: center;">
+                <input type="submit" value="Submit" class="Contact__submit">
+            </div>
+
+        </form>
+    </div>
+    </div>
+</body>
+
+</html>

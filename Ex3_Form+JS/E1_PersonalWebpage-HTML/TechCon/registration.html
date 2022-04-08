@@ -1,0 +1,81 @@
+<html>
+
+<head>
+    <title>TechCon - Register</title>
+    <link rel="stylesheet" href="../styles.css">
+    <script src="C:\Users\01047\Documents\Karthik-D\Webpage\scripts\registration.js"></script>
+</head>
+
+<body>
+
+    <iframe src="../header.html" id="Main__headerFrame" scrolling="no"></iframe>
+
+    <div id="Main__navbar">
+        <ul class="Main__navlist">
+            | <li class="Main__navitem"><a class="Main__navlink" href="about.html">About</a></li>
+            | <li class="Main__navitem"><a href="registration.html" class="Main__navlink">Register</a></li>
+            |
+        </ul>
+    </div>
+
+    <div id="content" style="font-family: sans-serif; font-size: 16px; margin: 10px">
+        <form class="TechConRegister__form">
+
+            <div class="TechConRegister__fieldWrapper">
+                <label class="TechConRegister__label" for="fname_in">Full Name</label>
+                <div class="TechConRegister__inputWrapper">
+                    <input type="text" id="fname_in" name="fullname" placeholder="Your full name..."
+                        class="TechConRegister__textIn" onblur="validateFullName(event);" oninvalid="alertFormError();" required>
+                    <p class="TechConRegister__fieldError" id="TechConRegister__nameError"></p>
+                </div>
+            </div>
+
+            <div class="TechConRegister__fieldWrapper">
+                <label class="TechConRegister__label" for="fname_in">College Name</label>
+                <div class="TechConRegister__inputWrapper">
+                    <input type="text" id="colgname_in" name="colgname" placeholder="Your college is..."
+                        class="TechConRegister__textIn" onblur="validateCollegeName(event);" oninvalid="alertFormError();" required>
+                    <p class="TechConRegister__fieldError" id="TechConRegister__nameError"></p>
+                </div>
+            </div>
+
+            <div class="TechConRegister__fieldWrapper">
+                <label class="TechConRegister__label" for="TechConRegister__skillSelected">Programming Skills</label>
+                <div class="TechConRegister__inputWrapper">
+                    <div id="TechConRegister__skillWrapper">
+                        <div id="TechConRegister__skillSelected" ondragover="allowDrop(event);" ondrop="addDraggedElement(event);">
+                            <p class="TechConRegister__skillsTitle">Your Skills</p>
+                            <option id="TechConRegister__cppLabel" class="TechConRegister__skillLabel" value="cpp" draggable="true" ondragstart="storeDragElement(event);">C++</option>
+                            <option id="TechConRegister__pythonLabel" class="TechConRegister__skillLabel" value="python" draggable="true" ondragstart="storeDragElement(event);">Python</option>
+                        </div>
+                        <div id="TechConRegister__skillAvailable" ondragover="allowDrop(event);" ondrop="addDraggedElement(event);">
+                            <p class="TechConRegister__skillsTitle">Choose from here</p>
+                            <option id="TechConRegister__javaLabel" class="TechConRegister__skillLabel" value="java" draggable="true" ondragstart="storeDragElement(event);">Java</option>
+                            <option id="TechConRegister__rubyLabel" class="TechConRegister__skillLabel" value="ruby" draggable="true" ondragstart="storeDragElement(event);">Ruby</option>
+                        </div>
+                    </div>
+                    <p class="TechConRegister__fieldError" id="TechConRegister__nameError"></p>
+                </div>
+            </div>
+
+            <label for="status">You are a(n)</label>
+            <select id="status" name="status" class="TechConRegister__selectIn">
+                <option value="student">Student</option>
+                <option value="teacher">Professor</option>
+                <option value="working">Industry Expert</option>
+            </select><br /><br />
+
+            <label for="feedback">Feedback</label><br /><br />
+            <textarea id="feedback" name="feedback" placeholder="Write me something..."
+                class="TechConRegister__areaIn"></textarea><br /><br />
+
+            <div style="width: 100%; text-align: center;">
+                <input type="submit" value="Submit" class="TechConRegister__submit">
+            </div>
+
+        </form>
+    </div>
+    </div>
+</body>
+
+</html>
