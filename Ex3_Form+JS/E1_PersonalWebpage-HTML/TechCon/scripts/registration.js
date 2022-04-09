@@ -297,6 +297,11 @@ function appendSkillIn() {
     element.value = skill_values.join("|");
 }
 
+
+function resetForm(form_id) {
+    document.getElementById(form_id).reset();
+}
+
 //--- SUBMISSION DISPLAY
 
 // ?fullname=Karthik&colgname=SSN&colgPin=603110&age=12&dob=2014-03-03&gender=Female&status=CSE&letter=&feedback=
@@ -337,6 +342,7 @@ function constructResponsePage() {
     let form_fields = {
         "fullname": "Full Name",
         "colgname": "College Name",
+        "colgaddr": "College Address",
         "colgPin": "PIN Code",
         "age": "Age",
         "dob": "Date of Birth",

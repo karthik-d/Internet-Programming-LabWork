@@ -123,7 +123,7 @@ body{
 }
 
 .Contact__textIn, .Contact__selectIn{
-    width: 200px;
+    width: 240px;
     margin-left: 40px;
     padding: 6px;
     font-size: 12px;
@@ -132,7 +132,7 @@ body{
 }
 
 .Contact__areaIn{
-    height: 200px;
+    height: 240px;
     width: 400px;
     padding: 10px;
 }
@@ -351,25 +351,28 @@ body{
 }
 
 .TechConRegister__fieldWrapper{
-    width: 40%;
+    width: 60%;
     display: flex;
     align-content: space-between;
-    margin: 10px auto 10px;
+    margin: 30px auto 10px;
 }
 
 .TechConRegister__label{
     width: 400px;
+    height: max-content;
+    margin: auto;
+    text-align: right;
 }
 
 .TechConRegister__inputWrapper{
     width: max-content;
-    margin-left: 20px;
+    margin-left: 60px;
     display: block;
     align-content:space-around;
 }
 
-.TechConRegister__textIn, .TechConRegister__selectIn, .TechConRegister__radioIn, .TechConRegister__fileIn{
-    width: 200px;
+.TechConRegister__textIn, .TechConRegister__selectIn, .TechConRegister__radioIn, .TechConRegister__checkboxIn, .TechConRegister__fileIn{
+    width: 240px;
     padding: 6px;
     font-size: 12px;
     border: 0px;
@@ -423,13 +426,28 @@ body{
 
 #TechConRegister__skillSelected, #TechConRegister__skillAvailable{
     background-color: #bdc9d7;
-    padding: 10px;
+    padding: 10px 0px;
     height: max-content;
-    width: 200px;
-    margin: 10px;   
+    width: 240px;
+    margin: 10px 0px;   
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
+}
+
+#TechConRegister__skillsInWrapper{
+    width: 240px;
+}
+
+#TechConRegister__hobbiesIn{
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 0px;
+}
+
+#TechConRegister__hobbiesIn div{
+    width: 50%;
+    text-align: left;
 }
 
 .TechConRegister__skillsTitle{
@@ -479,4 +497,21 @@ body{
 
 .TechConResponse__tableList{
     list-style: none;
+}
+
+#TechConRegister__buttonWrapper{
+    display: flex;
+    align-content: space-between;
+    justify-content: center;
+}
+
+#TechConRegister__submit, #TechConRegister__reset{
+    width: 140px;
+    height: 40px;
+    font-size: 16px;
+    background-color:#464444;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    margin: 10px;
 }

@@ -20,7 +20,7 @@
     </div>
 
     <div id="TechConRegister__content" style="font-size: 16px; margin: 10px">
-        <form class="TechConRegister__form" method="GET">
+        <form class="TechConRegister__form" id="TechConRegister__form" method="GET">
 
             <div class="TechConRegister__fieldWrapper">
                 <label class="TechConRegister__label" for="fname_in">Full Name</label>
@@ -137,17 +137,18 @@
             <div class="TechConRegister__fieldWrapper">
                 <label class="TechConRegister__label" for="TechConRegister__skillSelected">Programming Skills</label>
                 <input id="TechConRegister__skillIn" type="text" name="skills" value="" hidden>
-                <div class="TechConRegister__inputWrapper">
+                <div class="TechConRegister__inputWrapper" id="TechConRegister__skillsInWrapper">
                     <div id="TechConRegister__skillWrapper">
                         <div id="TechConRegister__skillSelected" ondragover="allowDrop(event);"
                             ondragenter="allowDrop(event);" ondrop="addDraggedElement(event);">
                             <p class="TechConRegister__skillsTitle">Your Skills</p>
+                            <option id="TechConRegister__javaLabel" class="TechConRegister__skillLabel" value="Java"
+                                draggable="true" ondragstart="storeDragElement(event);">Java</option>
                         </div>
                         <div id="TechConRegister__skillAvailable" ondragover="allowDrop(event);"
                             ondragenter="allowDrop(event);" ondrop="addDraggedElement(event);">
                             <p class="TechConRegister__skillsTitle">Choose from here</p>
-                            <option id="TechConRegister__javaLabel" class="TechConRegister__skillLabel" value="Java"
-                                draggable="true" ondragstart="storeDragElement(event);">Java</option>
+
                             <option id="TechConRegister__rubyLabel" class="TechConRegister__skillLabel" value="Ruby"
                                 draggable="true" ondragstart="storeDragElement(event);">Ruby</option>
                             <option id="TechConRegister__cppLabel" class="TechConRegister__skillLabel" value="C++"
@@ -163,15 +164,23 @@
             <div class="TechConRegister__fieldWrapper">
                 <label class="TechConRegister__label" for="hobbies_in">Hobbies</label>
                 <div class="TechConRegister__inputWrapper">
-                    <div id="hobbies_in" name="dob" class="TechConRegister__checkboxIn">
-                        <input type="checkbox" name="hobby-1" value="Cycling">
-                        <label for="Cycling">Cycling</label><br>
-                        <input type="checkbox" name="hobby-2" value="Reading">
-                        <label for="Reading">Reading</label><br>
-                        <input type="checkbox" name="hobby-3" value="Singing">
-                        <label for="Singing">Singing</label><br>
-                        <input type="checkbox" name="hobby-4" value="Dancing">
-                        <label for="Dancing">Dancing</label><br>
+                    <div id="TechConRegister__hobbiesIn" class="TechConRegister__checkboxIn">
+                        <div>
+                            <input type="checkbox" name="hobby-1" value="Cycling">
+                            <label for="Cycling">Cycling</label><br>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="hobby-2" value="Reading">
+                            <label for="Reading">Reading</label><br>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="hobby-3" value="Singing">
+                            <label for="Singing">Singing</label><br>
+                        </div>
+                        <div>
+                            <input type="checkbox" name="hobby-4" value="Dancing">
+                            <label for="Dancing">Dancing</label><br>
+                        </div>
                     </div>
                     <p class="TechConRegister__fieldError" id="TechConRegister__dobError">
                     </p>
@@ -187,11 +196,13 @@
                 </div>
             </div>
 
-            <div style="width: 100%; text-align: center;">
-                <input type="submit" value="Submit" class="TechConRegister__submit" onclick="appendSkillIn();">
-            </div>
-
         </form>
+
+        <div class="TechConRegister__fieldWrapper" id="TechConRegister__buttonWrapper">
+            <button form="TechConRegister__form" id="TechConRegister__submit" onclick="appendSkillIn();">Submit</button>
+            <button id="TechConRegister__reset" onclick="resetForm('TechConRegister__form');">Reset</button>
+        </div>
+
     </div>
     </div>
 </body>
