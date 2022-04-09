@@ -429,6 +429,7 @@ body{
     margin: 10px;   
     display: flex;
     flex-wrap: wrap;
+    align-items: stretch;
 }
 
 .TechConRegister__skillsTitle{

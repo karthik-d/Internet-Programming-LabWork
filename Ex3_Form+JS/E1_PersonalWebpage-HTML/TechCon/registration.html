@@ -3,7 +3,7 @@
 <head>
     <title>TechCon - Register</title>
     <link rel="stylesheet" href="../styles.css">
-    <script src="C:\Users\01047\Documents\Karthik-D\Webpage\scripts\registration.js"></script>
+    <script src="scripts/registration.js"></script>
     <!-- <script src="/home/karthikd/Workspace/Academics/Semester_6/IP_Lab/Ex3_Form+JS/scripts/registration.js"></script> -->
 </head>
 
@@ -110,11 +110,11 @@
                 <div class="TechConRegister__inputWrapper">
                     <div id="TechConRegister__skillWrapper">
                         <div id="TechConRegister__skillSelected" ondragover="allowDrop(event);"
-                            ondrop="addDraggedElement(event);">
+                            ondragenter="allowDrop(event);" ondrop="addDraggedElement(event);">
                             <p class="TechConRegister__skillsTitle">Your Skills</p>
                         </div>
                         <div id="TechConRegister__skillAvailable" ondragover="allowDrop(event);"
-                            ondrop="addDraggedElement(event);">
+                            ondragenter="allowDrop(event);" ondrop="addDraggedElement(event);">
                             <p class="TechConRegister__skillsTitle">Choose from here</p>
                             <option id="TechConRegister__javaLabel" class="TechConRegister__skillLabel" value="Java"
                                 draggable="true" ondragstart="storeDragElement(event);">Java</option>
