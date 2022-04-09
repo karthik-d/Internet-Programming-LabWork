@@ -105,6 +105,26 @@
             </div>
 
             <div class="TechConRegister__fieldWrapper">
+                <label class="TechConRegister__label" for="contact_in">Contact Number</label>
+                <div class="TechConRegister__inputWrapper">
+                    <input type="text" id="contact_in" name="contact" placeholder="Contact is..."
+                        class="TechConRegister__textIn" onblur="validateContact(event);" oninvalid="alertFormError();"
+                        required>
+                    <p class="TechConRegister__fieldError" id="TechConRegister__contactError"></p>
+                </div>
+            </div>
+
+            <div class="TechConRegister__fieldWrapper">
+                <label class="TechConRegister__label" for="age_in">Email ID</label>
+                <div class="TechConRegister__inputWrapper">
+                    <input type="email" id="email_in" name="email" placeholder="Email ID is..."
+                        class="TechConRegister__textIn" onblur="validateEmail(event);" oninvalid="alertFormError();"
+                        required>
+                    <p class="TechConRegister__fieldError" id="TechConRegister__emailError"></p>
+                </div>
+            </div>
+
+            <div class="TechConRegister__fieldWrapper">
                 <label class="TechConRegister__label" for="TechConRegister__skillSelected">Programming Skills</label>
                 <input id="TechConRegister__skillIn" type="text" name="skills" value="" hidden>
                 <div class="TechConRegister__inputWrapper">

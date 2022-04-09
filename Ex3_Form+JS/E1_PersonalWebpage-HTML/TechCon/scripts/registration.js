@@ -88,18 +88,43 @@ function validateAddressPIN(event) {
     }
 }
 
-function validateAge(event) {
+function validateContact(event) {
     var entry = event.target.value;
     var errorBox = event.target.parentElement.children[event.target.parentElement.children.length - 1];
     if (entry.length == 0) {
-        // Don't validate in this case
         errorBox.
-            innerHTML = '';
+            innerHTML = 'Contact Number is required';
+        event.target.setCustomValidity("This is required");
     }
     else if (!isNumeric(entry)) {
         errorBox.
             innerHTML = "Only numbers allowed";
         event.target.setCustomValidity("Only numbers allowed");
+    }
+    else if (entry.length != 10) {
+        errorBox.
+            innerHTML = "Exactly 10 digits";
+        event.target.setCustomValidity("Exactly 10 digits");
+    }
+    else {
+        errorBox.
+            innerHTML = '';
+        event.target.setCustomValidity("");
+    }
+}
+
+function validateEmail(event) {
+    var entry = event.target.value;
+    var errorBox = event.target.parentElement.children[event.target.parentElement.children.length - 1];
+    if (entry.length == 0) {
+        errorBox.
+            innerHTML = 'Email ID is required';
+        event.target.setCustomValidity("This is required");
+    }
+    else if (!(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]+/).test(entry)) {
+        errorBox.
+            innerHTML = "Invalid Email ID";
+        event.target.setCustomValidity("Invalid Email ID");
     }
     else {
         errorBox.
@@ -271,6 +296,8 @@ function constructResponsePage() {
         "dob": "Date of Birth",
         "gender": "Gender",
         "department": "Department",
+        "contact": "Contact Number",
+        "email": "Email ID",
         "skills": "Programming Skills",
         "letter": "Consent Letter"
     }
