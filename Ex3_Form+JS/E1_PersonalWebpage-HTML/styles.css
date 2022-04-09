@@ -375,6 +375,10 @@ body{
     border-bottom: 1px solid;
 }
 
+#TechConRegister__skillIn{
+    display: none;
+}
+
 .TechConRegister__radioIn{
     border-bottom: 0px;
 }
@@ -440,16 +444,20 @@ body{
     text-align: center; 
     padding: 1px; 
     margin:auto;
+    margin-top: 50px;
     font-size: 16px;
+    width: 40%;
 }
 
 .TechConResponse__tableHead{
     width: 60px; 
     background-color:#747c89; 
     color: #ffffff;
+    padding: 10px;
 }
 
 .TechConResponse__tableCell{
     padding-top: 10px; 
     padding-bottom: 10px;
+    border-right: 2px;
 }

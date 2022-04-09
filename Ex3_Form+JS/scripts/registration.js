@@ -216,6 +216,11 @@ function setMaxDateForMinAge(event, min_age) {
     entry.setAttribute("max", max_date.getFullYear() + '-' + '09' + '-' + '03');
 }
 
+function appendSkillIn() {
+    var element = document.getElementById('TechConRegister__skillIn');
+    element.value = "check_value";
+}
+
 //--- SUBMISSION DISPLAY
 
 // ?fullname=Karthik&colgname=SSN&colgPin=603110&age=12&dob=2014-03-03&gender=Female&status=CSE&letter=&feedback=
@@ -274,8 +279,8 @@ function constructResponsePage() {
     var table = `
         <table class="TechConResponse__table">
         <tr>
-            <th class="TechConResponse__tableHead" style="width: 180px">Form Field</th>
-            <th class="TechConResponse__tableHead" style="width: 400px">Response</th>
+            <th class="TechConResponse__tableHead">Form Field</th>
+            <th class="TechConResponse__tableHead"">Response</th>
         </tr>
     `
 
@@ -290,3 +295,4 @@ function constructResponsePage() {
 
     return table + '</table>'
 }
+

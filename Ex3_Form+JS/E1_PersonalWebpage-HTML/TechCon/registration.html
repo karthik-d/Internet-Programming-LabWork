@@ -43,31 +43,6 @@
             </div>
 
             <div class="TechConRegister__fieldWrapper">
-                <label class="TechConRegister__label" for="TechConRegister__skillSelected">Programming Skills</label>
-                <div class="TechConRegister__inputWrapper">
-                    <div id="TechConRegister__skillWrapper">
-                        <div id="TechConRegister__skillSelected" ondragover="allowDrop(event);"
-                            ondrop="addDraggedElement(event);">
-                            <p class="TechConRegister__skillsTitle">Your Skills</p>
-                            <option id="TechConRegister__cppLabel" class="TechConRegister__skillLabel" value="cpp"
-                                draggable="true" ondragstart="storeDragElement(event);">C++</option>
-                            <option id="TechConRegister__pythonLabel" class="TechConRegister__skillLabel" value="python"
-                                draggable="true" ondragstart="storeDragElement(event);">Python</option>
-                        </div>
-                        <div id="TechConRegister__skillAvailable" ondragover="allowDrop(event);"
-                            ondrop="addDraggedElement(event);">
-                            <p class="TechConRegister__skillsTitle">Choose from here</p>
-                            <option id="TechConRegister__javaLabel" class="TechConRegister__skillLabel" value="java"
-                                draggable="true" ondragstart="storeDragElement(event);">Java</option>
-                            <option id="TechConRegister__rubyLabel" class="TechConRegister__skillLabel" value="ruby"
-                                draggable="true" ondragstart="storeDragElement(event);">Ruby</option>
-                        </div>
-                    </div>
-                    <p class="TechConRegister__fieldError" id="TechConRegister__skillLabelError"></p>
-                </div>
-            </div>
-
-            <div class="TechConRegister__fieldWrapper">
                 <label class="TechConRegister__label" for="colgPin_in">PIN</label>
                 <div class="TechConRegister__inputWrapper">
                     <input type="text" id="colgPin_in" name="colgPin" placeholder="PIN Code is..."
@@ -130,6 +105,32 @@
             </div>
 
             <div class="TechConRegister__fieldWrapper">
+                <label class="TechConRegister__label" for="TechConRegister__skillSelected">Programming Skills</label>
+                <input id="TechConRegister__skillIn" type="text" name="skills" value="" hidden>
+                <div class="TechConRegister__inputWrapper">
+                    <div id="TechConRegister__skillWrapper">
+                        <div id="TechConRegister__skillSelected" ondragover="allowDrop(event);"
+                            ondrop="addDraggedElement(event);">
+                            <p class="TechConRegister__skillsTitle">Your Skills</p>
+                            <option id="TechConRegister__cppLabel" class="TechConRegister__skillLabel" value="cpp"
+                                draggable="true" ondragstart="storeDragElement(event);">C++</option>
+                            <option id="TechConRegister__pythonLabel" class="TechConRegister__skillLabel" value="python"
+                                draggable="true" ondragstart="storeDragElement(event);">Python</option>
+                        </div>
+                        <div id="TechConRegister__skillAvailable" ondragover="allowDrop(event);"
+                            ondrop="addDraggedElement(event);">
+                            <p class="TechConRegister__skillsTitle">Choose from here</p>
+                            <option id="TechConRegister__javaLabel" class="TechConRegister__skillLabel" value="java"
+                                draggable="true" ondragstart="storeDragElement(event);">Java</option>
+                            <option id="TechConRegister__rubyLabel" class="TechConRegister__skillLabel" value="ruby"
+                                draggable="true" ondragstart="storeDragElement(event);">Ruby</option>
+                        </div>
+                    </div>
+                    <p class="TechConRegister__fieldError" id="TechConRegister__skillLabelError"></p>
+                </div>
+            </div>
+
+            <div class="TechConRegister__fieldWrapper">
                 <label class="TechConRegister__label" for="letter_in">Consent Letter</label>
                 <div class="TechConRegister__inputWrapper">
                     <input type="file" id="letter_in" name="letter" placeholder="Consent letter"
@@ -143,7 +144,7 @@
                 class="TechConRegister__areaIn"></textarea><br /><br />
 
             <div style="width: 100%; text-align: center;">
-                <input type="submit" value="Submit" class="TechConRegister__submit">
+                <input type="submit" value="Submit" class="TechConRegister__submit" onclick="appendSkillIn();">
             </div>
 
         </form>
