@@ -7,7 +7,7 @@
     <!-- <script src="/home/karthikd/Workspace/Academics/Semester_6/IP_Lab/Ex3_Form+JS/scripts/registration.js"></script> -->
 </head>
 
-<body onload="renderCorrectPage();">
+<body onload="renderCorrectPage();startClock();">
 
     <iframe src="../header.html" id="Main__headerFrame" scrolling="no"></iframe>
 
@@ -17,6 +17,10 @@
             | <li class="Main__navitem"><a href="registration.html" class="Main__navlink">Register</a></li>
             |
         </ul>
+    </div>
+
+    <div id="Main__clockWrapper">
+        <p><span id="Main__clock">Clock</span></p>
     </div>
 
     <div id="TechConRegister__content" style="font-size: 16px; margin: 10px">

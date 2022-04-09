@@ -1,0 +1,5 @@
+- Open `about.html` to launch the Event Page
+- The registration form link will be available through this page on the navigation bar on the top
+- When the deadline passes, the registration link on the navigation bar will disappear
+- The deadline can be set in `about.html` in the `onload` attribute of `body` like so, 
+`onload="renderRegisterIfRegistering('2022-05-11')` —> Deadline is set to 11th May, 2022
