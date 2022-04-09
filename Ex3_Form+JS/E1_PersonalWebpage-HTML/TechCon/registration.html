@@ -43,6 +43,16 @@
             </div>
 
             <div class="TechConRegister__fieldWrapper">
+                <label class="TechConRegister__label" for="colgaddr_in">College Address</label>
+                <div class="TechConRegister__inputWrapper">
+                    <textarea id="colgaddr_in" name="colgaddr" placeholder="Your college is at..."
+                        class="TechConRegister__textIn" onblur="validateCollegeAddress(event);"
+                        oninvalid="alertFormError();"></textarea>
+                    <p class="TechConRegister__fieldError" id="TechConRegister__colgaddrError"></p>
+                </div>
+            </div>
+
+            <div class="TechConRegister__fieldWrapper">
                 <label class="TechConRegister__label" for="colgPin_in">PIN</label>
                 <div class="TechConRegister__inputWrapper">
                     <input type="text" id="colgPin_in" name="colgPin" placeholder="PIN Code is..."
@@ -176,10 +186,6 @@
                     <p class="TechConRegister__fieldError" id="TechConRegister__letterError"></p>
                 </div>
             </div>
-
-            <label for="feedback">Feedback</label><br /><br />
-            <textarea id="feedback" name="feedback" placeholder="Write me something..."
-                class="TechConRegister__areaIn"></textarea><br /><br />
 
             <div style="width: 100%; text-align: center;">
                 <input type="submit" value="Submit" class="TechConRegister__submit" onclick="appendSkillIn();">

@@ -23,6 +23,10 @@ function isNumeric(string) {
     return (/^[0-9]+$/).test(string);
 }
 
+function isAlphaNumericSpace(string) {
+    return (/^[0-9a-zA-Z ]+$/m).test(string);
+}
+
 function validateFullName(event) {
     var entry = event.target.value;
     var errorBox = event.target.parentElement.children[event.target.parentElement.children.length - 1];
@@ -63,6 +67,27 @@ function validateCollegeName(event) {
     }
 }
 
+function validateCollegeAddress(event) {
+    var entry = event.target.value;
+    var errorBox = event.target.parentElement.children[event.target.parentElement.children.length - 1];
+    if (entry.length == 0) {
+        /* no validation in this case */
+        errorBox.
+            innerHTML = '';
+        event.target.setCustomValidity("");
+    }
+    else if (!isAlphaNumericSpace(entry)) {
+        errorBox.
+            innerHTML = "Only Alphabets and Numbers";
+        event.target.setCustomValidity("Only Alphabets and Numbers");
+    }
+    else {
+        errorBox.
+            innerHTML = '';
+        event.target.setCustomValidity("");
+    }
+}
+
 function validateAddressPIN(event) {
     var entry = event.target.value;
     var errorBox = event.target.parentElement.children[event.target.parentElement.children.length - 1];
@@ -80,6 +105,27 @@ function validateAddressPIN(event) {
         errorBox.
             innerHTML = "Need exactly 6 numbers";
         event.target.setCustomValidity("Need exactly 6 numbers");
+    }
+    else {
+        errorBox.
+            innerHTML = '';
+        event.target.setCustomValidity("");
+    }
+}
+
+function validateAge(event) {
+    var entry = event.target.value;
+    var errorBox = event.target.parentElement.children[event.target.parentElement.children.length - 1];
+    if (entry.length == 0) {
+        // Don't validate in this case
+        errorBox.
+            innerHTML = '';
+        event.target.setCustomValidity("");
+    }
+    else if (!isNumeric(entry)) {
+        errorBox.
+            innerHTML = "Only numbers allowed";
+        event.target.setCustomValidity("Only numbers allowed");
     }
     else {
         errorBox.
