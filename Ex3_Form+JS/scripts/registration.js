@@ -104,20 +104,51 @@ function validateAge(event) {
     }
 }
 
+function validateDob(event) {
+    var entry = event.target.value;
+    var errorBox = event.target.parentElement.children[event.target.parentElement.children.length - 1];
+    if (entry.length == 0) {
+        errorBox.
+            innerHTML = 'Date of Birth is required';
+        event.target.setCustomValidity("This is required");
+    }
+    else {
+        errorBox.
+            innerHTML = '';
+    }
+}
+
+function validateDept(event) {
+    var errorBox = event.target.parentElement.children[event.target.parentElement.children.length - 1];
+    if (event.target.options[event.target.selectedIndex].getAttribute("value") == null) {
+        errorBox.
+            innerHTML = 'Department is required';
+        event.target.setCustomValidity("This is required");
+    }
+    else {
+        errorBox.
+            innerHTML = '';
+    }
+}
+
 
 // -------------------
 
 // Dragger 
 
 function storeDragElement(event) {
+    console.log("started");
     event.dataTransfer.setData("text/plain", event.target.id);
 }
 
 function allowDrop(event) {
     event.preventDefault();
+    console.log("here as well");
 }
 
 function addDraggedElement(event) {
+    console.log(event.target);
+    console.log("here");
     event
         .target
         .appendChild(

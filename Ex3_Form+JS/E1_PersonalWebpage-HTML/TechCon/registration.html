@@ -97,12 +97,37 @@
                 </div>
             </div>
 
-            <label for="status">You are a(n)</label>
-            <select id="status" name="status" class="TechConRegister__selectIn">
-                <option value="student">Student</option>
-                <option value="teacher">Professor</option>
-                <option value="working">Industry Expert</option>
-            </select><br /><br />
+            <div class="TechConRegister__fieldWrapper">
+                <label class="TechConRegister__label" for="gender_in">Gender</label>
+                <div class="TechConRegister__inputWrapper">
+                    <div id="gender_in" name="dob" class="TechConRegister__radioIn">
+                        <input type="radio" id="vehicle1" name="gender" value="Male">
+                        <label for="vehicle1">Male</label><br>
+                        <input type="radio" id="vehicle2" name="gender" value="Female">
+                        <label for="vehicle2">Female</label><br>
+                        <input type="radio" id="vehicle3" name="gender" value="Other">
+                        <label for="vehicle3">Other</label><br>
+                    </div>
+                    <p class="TechConRegister__fieldError" id="TechConRegister__dobError">
+                    </p>
+                </div>
+            </div>
+
+            <div class="TechConRegister__fieldWrapper">
+                <label class="TechConRegister__label" for="dept_in">Department</label>
+                <div class="TechConRegister__inputWrapper">
+                    <select id="status" name="status" class="TechConRegister__selectIn" onchange="validateDept(event);"
+                        oninvalid="alertFormError();">
+                        <option valu="none" selected="selected">Select Department...</option>
+                        <option value="CSE">CSE</option>
+                        <option value="IT">IT</option>
+                        <option value="ECE">ECE</option>
+                        <option value="Mechanical">Mechanical</option>
+                    </select><br /><br />
+                    <p class="TechConRegister__fieldError" id="TechConRegister__deptError">
+                    </p>
+                </div>
+            </div>
 
             <label for="feedback">Feedback</label><br /><br />
             <textarea id="feedback" name="feedback" placeholder="Write me something..."

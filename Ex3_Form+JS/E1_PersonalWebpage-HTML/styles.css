@@ -367,7 +367,7 @@ body{
     align-content:space-around;
 }
 
-.TechConRegister__textIn, .TechConRegister__selectIn{
+.TechConRegister__textIn, .TechConRegister__selectIn, .TechConRegister__radioIn{
     width: 200px;
     padding: 6px;
     font-size: 12px;
