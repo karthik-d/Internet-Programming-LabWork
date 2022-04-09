@@ -433,3 +433,23 @@ body{
     font-size: 14px;
     
 }
+
+.TechConResponse__table{
+    background-color: #b6bdcc;
+    border: 4px solid #747c89; 
+    text-align: center; 
+    padding: 1px; 
+    margin:auto;
+    font-size: 16px;
+}
+
+.TechConResponse__tableHead{
+    width: 60px; 
+    background-color:#747c89; 
+    color: #ffffff;
+}
+
+.TechConResponse__tableCell{
+    padding-top: 10px; 
+    padding-bottom: 10px;
+}

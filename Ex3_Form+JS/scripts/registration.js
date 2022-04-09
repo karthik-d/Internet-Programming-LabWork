@@ -221,15 +221,18 @@ function setMaxDateForMinAge(event, min_age) {
 // ?fullname=Karthik&colgname=SSN&colgPin=603110&age=12&dob=2014-03-03&gender=Female&status=CSE&letter=&feedback=
 
 function renderCorrectPage() {
-    if (getResponseData() == null) {
+    var table = getResponseTable();
+    if (table == null) {
         console.log("Normal Page");
     }
     else {
+        console.log(table);
+        document.getElementById('TechConRegister__content').innerHTML = table;
         console.log("Response Page");
     }
 }
 
-function getResponseData() {
+function getResponseTable() {
     var url_string = window.location.href;
     var url = new URL(url_string);
     // Check the first required field
@@ -247,6 +250,17 @@ function getResponseData() {
 function constructResponsePage() {
     var url_string = window.location.href;
     var url = new URL(url_string);
+    let form_fields = {
+        "fullname": "Full Name",
+        "colgname": "College Name",
+        "colgPin": "PIN Code",
+        "age": "Age",
+        "dob": "Date of Birth",
+        "gender": "Gender",
+        "department": "Department",
+        "letter": "Consent Letter"
+    }
+
     // Check the first required field
     var fullName = url.searchParams.get("fullname");
     var colgName = url.searchParams.get("colgname");
@@ -256,5 +270,23 @@ function constructResponsePage() {
     var gender = url.searchParams.get("gender");
     var department = url.searchParams.get("department");
     var letterPath = url.searchParams.get('letter');
-    return '<p>Content</p>'
+
+    var table = `
+        <table class="TechConResponse__table">
+        <tr>
+            <th class="TechConResponse__tableHead" style="width: 180px">Form Field</th>
+            <th class="TechConResponse__tableHead" style="width: 400px">Response</th>
+        </tr>
+    `
+
+    for (const field in form_fields) {
+        table += `
+        <tr>
+            <td class="TechConResponse__tableCell">${form_fields[field]}</td>
+            <td>${url.searchParams.get(field)}</td>
+        </tr>
+        `
+    }
+
+    return table + '</table>'
 }
