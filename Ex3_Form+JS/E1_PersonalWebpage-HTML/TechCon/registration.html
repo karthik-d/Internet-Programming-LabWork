@@ -3,8 +3,8 @@
 <head>
     <title>TechCon - Register</title>
     <link rel="stylesheet" href="../styles.css">
-    <!-- <script src="C:\Users\01047\Documents\Karthik-D\Webpage\scripts\registration.js"></script> -->
-    <script src="/home/karthikd/Workspace/Academics/Semester_6/IP_Lab/Ex3_Form+JS/scripts/registration.js"></script>
+    <script src="C:\Users\01047\Documents\Karthik-D\Webpage\scripts\registration.js"></script>
+    <!-- <script src="/home/karthikd/Workspace/Academics/Semester_6/IP_Lab/Ex3_Form+JS/scripts/registration.js"></script> -->
 </head>
 
 <body onload="renderCorrectPage();">
@@ -19,7 +19,7 @@
         </ul>
     </div>
 
-    <div id="TechConRegister__content" style="font-family: sans-serif; font-size: 16px; margin: 10px">
+    <div id="TechConRegister__content" style="font-size: 16px; margin: 10px">
         <form class="TechConRegister__form" method="GET">
 
             <div class="TechConRegister__fieldWrapper">
@@ -76,11 +76,11 @@
                 <label class="TechConRegister__label" for="gender_in">Gender</label>
                 <div class="TechConRegister__inputWrapper">
                     <div id="gender_in" name="dob" class="TechConRegister__radioIn">
-                        <input type="radio" id="vehicle1" name="gender" value="Male" required>
+                        <input type="radio" name="gender" value="Male" required>
                         <label for="male">Male</label><br>
-                        <input type="radio" id="vehicle2" name="gender" value="Female" required>
+                        <input type="radio" name="gender" value="Female" required>
                         <label for="female">Female</label><br>
-                        <input type="radio" id="vehicle3" name="gender" value="Other" required>
+                        <input type="radio" name="gender" value="Other" required>
                         <label for="other">Other</label><br>
                     </div>
                     <p class="TechConRegister__fieldError" id="TechConRegister__dobError">
@@ -93,7 +93,7 @@
                 <div class="TechConRegister__inputWrapper">
                     <select id="status" name="department" class="TechConRegister__selectIn"
                         onchange="validateDept(event);" oninvalid="alertFormError();" required>
-                        <option valu="none" selected="selected">Select Department...</option>
+                        <option value="none" selected="selected">Select Department...</option>
                         <option value="CSE">CSE</option>
                         <option value="IT">IT</option>
                         <option value="ECE">ECE</option>
@@ -112,21 +112,39 @@
                         <div id="TechConRegister__skillSelected" ondragover="allowDrop(event);"
                             ondrop="addDraggedElement(event);">
                             <p class="TechConRegister__skillsTitle">Your Skills</p>
-                            <option id="TechConRegister__cppLabel" class="TechConRegister__skillLabel" value="cpp"
-                                draggable="true" ondragstart="storeDragElement(event);">C++</option>
-                            <option id="TechConRegister__pythonLabel" class="TechConRegister__skillLabel" value="python"
-                                draggable="true" ondragstart="storeDragElement(event);">Python</option>
                         </div>
                         <div id="TechConRegister__skillAvailable" ondragover="allowDrop(event);"
                             ondrop="addDraggedElement(event);">
                             <p class="TechConRegister__skillsTitle">Choose from here</p>
-                            <option id="TechConRegister__javaLabel" class="TechConRegister__skillLabel" value="java"
+                            <option id="TechConRegister__javaLabel" class="TechConRegister__skillLabel" value="Java"
                                 draggable="true" ondragstart="storeDragElement(event);">Java</option>
-                            <option id="TechConRegister__rubyLabel" class="TechConRegister__skillLabel" value="ruby"
+                            <option id="TechConRegister__rubyLabel" class="TechConRegister__skillLabel" value="Ruby"
                                 draggable="true" ondragstart="storeDragElement(event);">Ruby</option>
+                            <option id="TechConRegister__cppLabel" class="TechConRegister__skillLabel" value="C++"
+                                draggable="true" ondragstart="storeDragElement(event);">C++</option>
+                            <option id="TechConRegister__pythonLabel" class="TechConRegister__skillLabel" value="Python"
+                                draggable="true" ondragstart="storeDragElement(event);">Python</option>
                         </div>
                     </div>
                     <p class="TechConRegister__fieldError" id="TechConRegister__skillLabelError"></p>
+                </div>
+            </div>
+
+            <div class="TechConRegister__fieldWrapper">
+                <label class="TechConRegister__label" for="hobbies_in">Hobbies</label>
+                <div class="TechConRegister__inputWrapper">
+                    <div id="hobbies_in" name="dob" class="TechConRegister__checkboxIn">
+                        <input type="checkbox" name="hobby-1" value="Cycling">
+                        <label for="Cycling">Cycling</label><br>
+                        <input type="checkbox" name="hobby-2" value="Reading">
+                        <label for="Reading">Reading</label><br>
+                        <input type="checkbox" name="hobby-3" value="Singing">
+                        <label for="Singing">Singing</label><br>
+                        <input type="checkbox" name="hobby-4" value="Dancing">
+                        <label for="Dancing">Dancing</label><br>
+                    </div>
+                    <p class="TechConRegister__fieldError" id="TechConRegister__dobError">
+                    </p>
                 </div>
             </div>
 

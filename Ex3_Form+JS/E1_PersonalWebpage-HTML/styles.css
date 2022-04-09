@@ -7,6 +7,7 @@ body{
     background-image: url("images/background.jpg");
     background-position: center;
     background-size: cover;
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
 }
 
 #Main__headerFrame{
@@ -460,4 +461,21 @@ body{
     padding-top: 10px; 
     padding-bottom: 10px;
     border-right: 2px;
+}
+
+
+#Main__clockWrapper{
+    text-align: right;
+    margin: 0px 80px 0px;
+}
+
+#Main__clock{
+    color: #ffffff;
+    background-color:#464444;
+    font-size: 20px;
+    padding: 6px;
+}
+
+.TechConResponse__tableList{
+    list-style: none;
 }

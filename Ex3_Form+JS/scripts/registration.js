@@ -125,7 +125,7 @@ function validateDob(event) {
 
 function validateDept(event) {
     var errorBox = event.target.parentElement.children[event.target.parentElement.children.length - 1];
-    if (event.target.options[event.target.selectedIndex].getAttribute("value") == null) {
+    if (event.target.options[event.target.selectedIndex].getAttribute("value") == "none") {
         errorBox.
             innerHTML = 'Department is required';
         event.target.setCustomValidity("This is required");
@@ -155,18 +155,15 @@ function validateFile(event) {
 // Dragger 
 
 function storeDragElement(event) {
-    console.log("started");
     event.dataTransfer.setData("text/plain", event.target.id);
 }
 
 function allowDrop(event) {
     event.preventDefault();
-    console.log("here as well");
 }
 
 function addDraggedElement(event) {
     console.log(event.target);
-    console.log("here");
     event
         .target
         .appendChild(
@@ -218,7 +215,13 @@ function setMaxDateForMinAge(event, min_age) {
 
 function appendSkillIn() {
     var element = document.getElementById('TechConRegister__skillIn');
-    element.value = "check_value";
+    var skill_elems = document.getElementById('TechConRegister__skillSelected').querySelectorAll("option");
+    var skill_values = Array.from(skill_elems).map(
+        function(elem){
+            return elem.value;
+        }
+    );    
+    element.value = skill_values.join("|");
 }
 
 //--- SUBMISSION DISPLAY
@@ -228,12 +231,9 @@ function appendSkillIn() {
 function renderCorrectPage() {
     var table = getResponseTable();
     if (table == null) {
-        console.log("Normal Page");
     }
     else {
-        console.log(table);
         document.getElementById('TechConRegister__content').innerHTML = table;
-        console.log("Response Page");
     }
 }
 
@@ -242,7 +242,6 @@ function getResponseTable() {
     var url = new URL(url_string);
     // Check the first required field
     var fullName = url.searchParams.get("fullname");
-    console.log(fullName);
     if (fullName == null) {
         return null;
     }
@@ -253,6 +252,13 @@ function getResponseTable() {
 
 
 function constructResponsePage() {
+
+    function constructMultivalue(entry){
+        console.log(entry);
+        var parts = entry.split("|");
+        return parts.join(', ');
+    }
+
     var url_string = window.location.href;
     var url = new URL(url_string);
     let form_fields = {
@@ -263,18 +269,9 @@ function constructResponsePage() {
         "dob": "Date of Birth",
         "gender": "Gender",
         "department": "Department",
+        "skills": "Programming Skills",
         "letter": "Consent Letter"
     }
-
-    // Check the first required field
-    var fullName = url.searchParams.get("fullname");
-    var colgName = url.searchParams.get("colgname");
-    var colgPin = url.searchParams.get("colgPin");
-    var age = url.searchParams.get("age");
-    var dob = url.searchParams.get("dob");
-    var gender = url.searchParams.get("gender");
-    var department = url.searchParams.get("department");
-    var letterPath = url.searchParams.get('letter');
 
     var table = `
         <table class="TechConResponse__table">
@@ -284,15 +281,52 @@ function constructResponsePage() {
         </tr>
     `
 
+    var hobbies = '';
     for (const field in form_fields) {
+        if (['skills'].includes(field)){
+            var value = constructMultivalue(url.searchParams.get(field));
+        }
+        else{
+            var value = url.searchParams.get(field);
+        }
         table += `
-        <tr>
-            <td class="TechConResponse__tableCell">${form_fields[field]}</td>
-            <td>${url.searchParams.get(field)}</td>
-        </tr>
-        `
+            <tr>
+                <td class="TechConResponse__tableCell">${form_fields[field]}</td>
+                <td>${value}</td>
+            </tr>   
+        `;
     }
+
+    
 
     return table + '</table>'
 }
+
+// TIMER -----------
+
+function updateClock(){
+
+    function twoDigitPad(value){
+        value = value.toString();
+        if (value.length==1){
+            return '0' + value;
+        }
+        else{
+            return value;
+        }
+    }
+
+    var element = document.getElementById('Main__clock');
+    var now = new Date();
+    element.innerHTML = `${twoDigitPad(now.getHours())}:${twoDigitPad(now.getMinutes())}:${twoDigitPad(now.getSeconds())}`;
+}
+
+function startClock(){
+    updateClock();
+    setInterval(
+        updateClock,
+        1000);
+}
+
+// -----------------
 

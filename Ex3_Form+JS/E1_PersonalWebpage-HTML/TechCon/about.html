@@ -4,12 +4,12 @@
 <head>
     <title>TechCon - Register</title>
     <link rel="stylesheet" href="../styles.css">
-    <!-- <script src="C:\Users\01047\Documents\Karthik-D\Webpage\scripts\registration.js"></script> -->
-    <script src="/home/karthikd/Workspace/Academics/Semester_6/IP_Lab/Ex3_Form+JS/scripts/registration.js"></script>
+    <script src="C:\Users\01047\Documents\Karthik-D\Webpage\scripts\registration.js"></script>
+    <!-- <script src="/home/karthikd/Workspace/Academics/Semester_6/IP_Lab/Ex3_Form+JS/scripts/registration.js"></script> -->
 
 </head>
 
-<body onload="renderRegisterIfRegistering('2022-05-11');">
+<body onload="renderRegisterIfRegistering('2022-05-11');startClock();">
 
     <iframe src="../header.html" id="Main__headerFrame" scrolling="no"></iframe>
 
@@ -18,6 +18,10 @@
             | <li class="Main__navitem"><a class="Main__navlink" href="about.html">About</a></li>
             |
         </ul>
+    </div>
+
+    <div id="Main__clockWrapper">
+        <p><span id="Main__clock">Clock</span></p>
     </div>
 
     <div id="Events__content">
