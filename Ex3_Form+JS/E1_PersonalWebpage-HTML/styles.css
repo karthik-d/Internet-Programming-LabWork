@@ -367,12 +367,16 @@ body{
     align-content:space-around;
 }
 
-.TechConRegister__textIn, .TechConRegister__selectIn, .TechConRegister__radioIn{
+.TechConRegister__textIn, .TechConRegister__selectIn, .TechConRegister__radioIn, .TechConRegister__fileIn{
     width: 200px;
     padding: 6px;
     font-size: 12px;
     border: 0px;
     border-bottom: 1px solid;
+}
+
+.TechConRegister__radioIn{
+    border-bottom: 0px;
 }
 
 .TechConRegister__areaIn{

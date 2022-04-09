@@ -7,7 +7,7 @@
     <script src="/home/karthikd/Workspace/Academics/Semester_6/IP_Lab/Ex3_Form+JS/scripts/registration.js"></script>
 </head>
 
-<body>
+<body onload="renderCorrectPage();">
 
     <iframe src="../header.html" id="Main__headerFrame" scrolling="no"></iframe>
 
@@ -20,7 +20,7 @@
     </div>
 
     <div id="content" style="font-family: sans-serif; font-size: 16px; margin: 10px">
-        <form class="TechConRegister__form">
+        <form class="TechConRegister__form" method="GET">
 
             <div class="TechConRegister__fieldWrapper">
                 <label class="TechConRegister__label" for="fname_in">Full Name</label>
@@ -101,12 +101,12 @@
                 <label class="TechConRegister__label" for="gender_in">Gender</label>
                 <div class="TechConRegister__inputWrapper">
                     <div id="gender_in" name="dob" class="TechConRegister__radioIn">
-                        <input type="radio" id="vehicle1" name="gender" value="Male">
-                        <label for="vehicle1">Male</label><br>
-                        <input type="radio" id="vehicle2" name="gender" value="Female">
-                        <label for="vehicle2">Female</label><br>
-                        <input type="radio" id="vehicle3" name="gender" value="Other">
-                        <label for="vehicle3">Other</label><br>
+                        <input type="radio" id="vehicle1" name="gender" value="Male" required>
+                        <label for="male">Male</label><br>
+                        <input type="radio" id="vehicle2" name="gender" value="Female" required>
+                        <label for="female">Female</label><br>
+                        <input type="radio" id="vehicle3" name="gender" value="Other" required>
+                        <label for="other">Other</label><br>
                     </div>
                     <p class="TechConRegister__fieldError" id="TechConRegister__dobError">
                     </p>
@@ -116,8 +116,8 @@
             <div class="TechConRegister__fieldWrapper">
                 <label class="TechConRegister__label" for="dept_in">Department</label>
                 <div class="TechConRegister__inputWrapper">
-                    <select id="status" name="status" class="TechConRegister__selectIn" onchange="validateDept(event);"
-                        oninvalid="alertFormError();">
+                    <select id="status" name="department" class="TechConRegister__selectIn"
+                        onchange="validateDept(event);" oninvalid="alertFormError();" required>
                         <option valu="none" selected="selected">Select Department...</option>
                         <option value="CSE">CSE</option>
                         <option value="IT">IT</option>
@@ -126,6 +126,15 @@
                     </select><br /><br />
                     <p class="TechConRegister__fieldError" id="TechConRegister__deptError">
                     </p>
+                </div>
+            </div>
+
+            <div class="TechConRegister__fieldWrapper">
+                <label class="TechConRegister__label" for="letter_in">Consent Letter</label>
+                <div class="TechConRegister__inputWrapper">
+                    <input type="file" id="letter_in" name="letter" placeholder="Consent letter"
+                        class="TechConRegister__fileIn" onblur="validateFile(event);" oninvalid="alertFormError();">
+                    <p class="TechConRegister__fieldError" id="TechConRegister__letterError"></p>
                 </div>
             </div>
 

@@ -39,6 +39,7 @@ function validateFullName(event) {
     else {
         errorBox.
             innerHTML = '';
+        event.target.setCustomValidity("");
     }
 }
 
@@ -58,6 +59,7 @@ function validateCollegeName(event) {
     else {
         errorBox.
             innerHTML = '';
+        event.target.setCustomValidity("");
     }
 }
 
@@ -82,6 +84,7 @@ function validateAddressPIN(event) {
     else {
         errorBox.
             innerHTML = '';
+        event.target.setCustomValidity("");
     }
 }
 
@@ -101,6 +104,7 @@ function validateAge(event) {
     else {
         errorBox.
             innerHTML = '';
+        event.target.setCustomValidity("");
     }
 }
 
@@ -115,6 +119,7 @@ function validateDob(event) {
     else {
         errorBox.
             innerHTML = '';
+        event.target.setCustomValidity("");
     }
 }
 
@@ -128,6 +133,19 @@ function validateDept(event) {
     else {
         errorBox.
             innerHTML = '';
+        event.target.setCustomValidity("");
+    }
+}
+
+function validateFile(event) {
+    var entry = event.target.value;
+    if (entry.length == 0) {
+        ;
+    }
+    else {
+        errorBox.
+            innerHTML = '';
+        event.target.setCustomValidity("");
     }
 }
 
@@ -196,4 +214,47 @@ function setMaxDateForMinAge(event, min_age) {
     max_date.setFullYear(max_year);
     console.log(max_date);
     entry.setAttribute("max", max_date.getFullYear() + '-' + '09' + '-' + '03');
+}
+
+//--- SUBMISSION DISPLAY
+
+// ?fullname=Karthik&colgname=SSN&colgPin=603110&age=12&dob=2014-03-03&gender=Female&status=CSE&letter=&feedback=
+
+function renderCorrectPage() {
+    if (getResponseData() == null) {
+        console.log("Normal Page");
+    }
+    else {
+        console.log("Response Page");
+    }
+}
+
+function getResponseData() {
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+    // Check the first required field
+    var fullName = url.searchParams.get("fullname");
+    console.log(fullName);
+    if (fullName == null) {
+        return null;
+    }
+    else {
+        return constructResponsePage();
+    }
+}
+
+
+function constructResponsePage() {
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+    // Check the first required field
+    var fullName = url.searchParams.get("fullname");
+    var colgName = url.searchParams.get("colgname");
+    var colgPin = url.searchParams.get("colgPin");
+    var age = url.searchParams.get("age");
+    var dob = url.searchParams.get("dob");
+    var gender = url.searchParams.get("gender");
+    var department = url.searchParams.get("department");
+    var letterPath = url.searchParams.get('letter');
+    return '<p>Content</p>'
 }
