@@ -11,7 +11,7 @@
     width: 150px;
 }
 
-.Main__cardImage{
+.Main__cardImage, .Main__cardWord{
     padding: 8%;
     width: 84%;
     height: 84%;
