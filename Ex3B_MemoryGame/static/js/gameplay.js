@@ -26,17 +26,56 @@ function randomSample(array, count) {
     return shuffled.slice(0, count);
 }
 
+function randomSampleIdx(array, count) {
+    // Samples Index Positions
+    // Perform Fischer-Yates
+    var shuffled = [...Array(array.length).keys()];
+    for (i = 0; i < array.length; i++) {
+        idx = Math.floor((i + 1) * Math.random());
+        temp = shuffled[idx];
+        shuffled[idx] = shuffled[i];
+        shuffled[i] = temp;
+    }
+    return shuffled.slice(0, count);
+}
+
 
 // Layout Functions
 
-function createImageCard(id_num, img_path, word) {
+function checkCardMatch() {
+    console.log("card match check...");
+}
+
+function flipCardsIfOverLimit(img_path) {
+    var card_node_ids = getExposedUnmatchedCardIds();
+    // Not over limit
+    if (card_node_ids.length < 2) {
+        return;
+    }
+    // Flip all exposed unmatched cards
+    for (var nid of card_node_ids) {
+        var cardNode = document.getElementById(nid);
+        flipWordCard(nid, cardNode.innerHTML.trim(), img_path);
+    }
+}
+
+function getExposedUnmatchedCardIds() {
+    var exposedWords = [];
+    document.querySelectorAll('.Main__cardWord, :not(.Main__matchedCardWord').forEach(
+        function (node) {
+            exposedWords.push(node.id);
+        }
+    );
+}
+
+function createImageCard(id_num, img_path, words) {
     var img_id = 'Main__cardImage' + id_num;
     var img = document.createElement('img');
     img.setAttribute('id', img_id);
     img.setAttribute('card_id', id_num);
     img.setAttribute('class', 'Main__cardImage');
     img.setAttribute('src', img_path);
-    img.setAttribute('onclick', `flipImageCard("${img_id}", "${word}", "${img_path}")`);
+    img.setAttribute('onclick', `flipImageCard("${img_id}", "${img_path} ")`);
     return img;
 }
 
@@ -60,7 +99,7 @@ function wrapCard(id_num, contentNode) {
     return cardWrapper;
 }
 
-function flipImageCard(img_id, word, img_path) {
+function flipImageCard(img_id, img_path) {
     var imgCard = document.getElementById(img_id);
     imgCard.parentNode.replaceChild(
         createWordCard(
@@ -70,6 +109,8 @@ function flipImageCard(img_id, word, img_path) {
         ),
         imgCard
     );
+    checkCardMatch();
+    flipCardsIfOverLimit(img_path);
 }
 
 function flipWordCard(word_id, img_path, word) {
@@ -94,12 +135,13 @@ function renderGame() {
     num_words = num_cards / 2;
     var card_img_path = 'assets/card_front.png';
     // sample the words
-    var game_words = randomSample(WordBag, num_words);
-    var card_words = randomSample(game_words.concat(game_words), num_cards);
+    var game_words_idx = randomSampleIdx(WordBag, num_words);
+    var card_words_idx = randomSample(game_words_idx.concat(game_words_idx), num_cards);
+    console.log(card_words_idx);
     // create layout
     var cardArea = document.getElementById("Main__cardArea");
     for (var i = 0; i < num_cards; i++) {
-        var card = wrapCard(i, createImageCard(i, card_img_path, card_words[i]));
+        var card = wrapCard(i, createImageCard(i, card_img_path, card_words_idx));
         cardArea.appendChild(card);
     }
 }
