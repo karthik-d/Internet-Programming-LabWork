@@ -1,0 +1,18 @@
+#Main__cardArea{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;  /* horizontal centering */
+    width: 800px;   /* Fit 4 cards */
+    margin: 20px auto;
+}
+
+.Main__cardWrapper{
+    height: 300px;
+    width: 200px;
+}
+
+.Main__cardImage{
+    padding: 8%;
+    width: 84%;
+    height: 84%;
+}
