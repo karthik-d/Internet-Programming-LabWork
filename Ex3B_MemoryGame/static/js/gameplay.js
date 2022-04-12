@@ -88,7 +88,11 @@ function isMatchingPair(card_node_ids, card_words_idx) {
 
 function handleMatchingPair(card_node_ids) {
     for (var nid of card_node_ids) {
-        document.getElementById(nid).classList.add('Main__matchedCard');
+        var cardNode = document.getElementById(nid);
+        // Clone it to remove all event listeners
+        var newCardNode = cardNode.cloneNode(true);
+        newCardNode.classList.add('Main__matchedCard');
+        cardNode.parentNode.replaceChild(newCardNode, cardNode);
     }
 }
 
