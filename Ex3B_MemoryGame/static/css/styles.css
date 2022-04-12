@@ -1,3 +1,7 @@
+body{
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+}
+
 #Main__cardArea{
     display: flex;
     flex-wrap: wrap;
@@ -7,7 +11,7 @@
 }
 
 .Main__cardWrapper{
-    height: 245x;
+    height: 245px;
     width: 170px;
     padding: 10px;
 }
@@ -26,14 +30,49 @@
     }
 }
 
+.Main__cardImage, .Main__cardWord{
+    margin: 8%;
+    width: 84%;
+    height: 84%;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.Main__cardWord{
+    text-align: center;
+    vertical-align: center;
+}
+
+.Main__cardWord > span {
+    display: inline-block;
+    height: max-content;
+    width: max-content;
+    margin: auto;
+    line-height: 100%;
+    vertical-align: center;
+}
+
 .Main__matchedCard{
-    background-color: rgb(12, 128, 12);
+    color: #ffffff;
+    background-image: linear-gradient(to right, rgb(6, 129, 6) 50%, #ffffff 50%);
+    background-size: 200% 100%;
+    animation-name: color_fill;
+    animation-duration: 0.6s;
+}
+
+@keyframes color_fill {
+    from {
+        background-position: right bottom;
+    }
+    to{
+        background-position: left bottom;
+    }
 }
 
 .Main__nonMatchCards{
-    border-color: rgb(179, 87, 87);
-    border-width: 2px;
-    border-style: solid;
+    color: #ffffff;
+    background-color: rgb(179, 87, 87);
     animation-name: wiggle;
     animation-delay: 0.2s;
     animation-duration: 0.15s;
@@ -53,11 +92,4 @@
     to {
         transform: translateX(0px);
     }
-}
-
-.Main__cardImage, .Main__cardWord{
-    padding: 8%;
-    width: 84%;
-    height: 84%;
-    border-radius: 10px;
 }

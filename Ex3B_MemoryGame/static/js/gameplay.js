@@ -98,14 +98,19 @@ function handleNonMatchingPair(card_node_ids, img_path, card_words_idx) {
         var card_nodes = [];
         for (var nid of card_node_ids) {
             var cardNode = document.getElementById(nid);
-            card_nodes.push(cardNode);
-            cardNode.classList.add('Main__nonMatchCards');
+            if (cardNode) {
+                card_nodes.push(cardNode);
+                cardNode.classList.add('Main__nonMatchCards');
+            }
         }
         // Flip all exposed unmatched cards
         if (card_node_ids.length == 2) {
             setTimeout(function () {
                 for (var cardNode of card_nodes) {
-                    flipWordCard(cardNode, img_path, card_words_idx);
+                    if (cardNode.parentNode) {
+                        cardNode.classList.remove('Main__nonMatchCards');
+                        flipWordCard(cardNode, img_path, card_words_idx);
+                    }
                 }
             }, 1400);
         }
@@ -115,7 +120,10 @@ function handleNonMatchingPair(card_node_ids, img_path, card_words_idx) {
 function flipAllCards(card_node_ids, img_path, card_words_idx) {
     for (var nid of card_node_ids) {
         var cardNode = document.getElementById(nid);
-        flipWordCard(cardNode, img_path, card_words_idx);
+        if (cardNode.parentNode) {
+            // two cards would already be flipped
+            flipWordCard(cardNode, img_path, card_words_idx);
+        }
     }
 }
 
@@ -146,12 +154,14 @@ function createImageCard(card_id, img_path, card_words_idx) {
 }
 
 function createWordCard(card_id, img_path, card_words_idx) {
+    var text = document.createElement('span');
+    text.innerHTML = WordBag[card_words_idx[card_id]];
     var word_id = 'Main__cardWord' + card_id;
     var para = document.createElement('p');
     para.setAttribute('id', word_id);
     para.setAttribute('card_id', card_id);
     para.setAttribute('class', 'Main__cardWord');
-    para.innerHTML = WordBag[card_words_idx[card_id]];
+    para.appendChild(text);
     para.addEventListener(
         "click",
         function (event) {
@@ -210,7 +220,6 @@ function renderGame() {
     // sample the words
     var game_words_idx = randomSampleIdx(WordBag, num_words);
     var card_words_idx = randomSample(game_words_idx.concat(game_words_idx), num_cards);
-    console.log(card_words_idx);
     // create layout
     var cardArea = document.getElementById("Main__cardArea");
     for (var i = 0; i < num_cards; i++) {
