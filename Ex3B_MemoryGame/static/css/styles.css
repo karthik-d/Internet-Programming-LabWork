@@ -11,6 +11,20 @@
     width: 150px;
 }
 
+.Main__cardWrapper > *{
+    animation-name: card_flip_entry;
+    animation-duration: 0.4s;
+}
+
+@keyframes card_flip_entry{
+    from {
+        transform: skewY(40deg);
+    }
+    to{
+        transform: skewY(0deg);
+    }
+}
+
 .Main__cardImage, .Main__cardWord{
     padding: 8%;
     width: 84%;
