@@ -14,11 +14,14 @@ body{
     height: 245px;
     width: 170px;
     padding: 10px;
+    display: flex;
+    align-items: center;
 }
 
 .Main__cardWrapper > *{
     animation-name: card_flip_entry;
     animation-duration: 0.5s;
+    display: flex;
 }
 
 @keyframes card_flip_entry{
@@ -57,11 +60,12 @@ body{
     color: #ffffff;
     background-image: linear-gradient(to right, rgb(6, 129, 6) 50%, #ffffff 50%);
     background-size: 200% 100%;
-    animation-name: color_fill;
+    animation-name: match_cards;
     animation-duration: 0.6s;
+    background-position: left bottom;
 }
 
-@keyframes color_fill {
+@keyframes match_cards {
     from {
         background-position: right bottom;
     }
