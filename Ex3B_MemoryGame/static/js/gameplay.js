@@ -46,31 +46,32 @@ function checkCardMatch() {
     console.log("card match check...");
 }
 
-function flipCardsIfOverLimit(img_path) {
+function flipCardsIfOverLimit(img_path, card_words_idx) {
     var card_node_ids = getExposedUnmatchedCardIds();
-    console.log(card_node_ids);
     // Not over limit
-    if (card_node_ids.length < 2) {
+    if (card_node_ids.length < 3) {
         return;
     }
     // Flip all exposed unmatched cards
     for (var nid of card_node_ids) {
         var cardNode = document.getElementById(nid);
-        flipWordCard(nid, cardNode.innerHTML.trim(), img_path);
+        flipWordCard(cardNode, img_path, card_words_idx);
     }
 }
 
 function getExposedUnmatchedCardIds() {
     var exposedWords = [];
-    console.log(document.querySelectorAll('.Main__cardWord'))
-    document.querySelectorAll('.Main__cardWord, :not(.Main__matchedCardWord').forEach(
+    console.log(document.querySelectorAll('.Main__cardWord:not(.Main__matchedCardWord'));
+    document.querySelectorAll('.Main__cardWord:not(.Main__matchedCardWord').forEach(
         function (node) {
+            console.log(node);
             exposedWords.push(node.id);
         }
     );
+    return exposedWords;
 }
 
-function createImageCard(card_id, img_path, game_words_idx) {
+function createImageCard(card_id, img_path, card_words_idx) {
     var img_id = 'Main__cardImage' + card_id;
     var img = document.createElement('img');
     img.setAttribute('id', img_id);
@@ -80,23 +81,23 @@ function createImageCard(card_id, img_path, game_words_idx) {
     img.addEventListener(
         "click",
         function (event) {
-            flipImageCard(event, game_words_idx);
+            flipImageCard(event.target, card_words_idx);
         }
     );
     return img;
 }
 
-function createWordCard(card_id, img_path, game_words_idx) {
+function createWordCard(card_id, img_path, card_words_idx) {
     var word_id = 'Main__cardWord' + card_id;
     var para = document.createElement('p');
     para.setAttribute('id', word_id);
     para.setAttribute('card_id', card_id);
     para.setAttribute('class', 'Main__cardWord');
-    para.innerHTML = WordBag[game_words_idx[card_id]];
+    para.innerHTML = WordBag[card_words_idx[card_id]];
     para.addEventListener(
         "click",
         function (event) {
-            flipWordCard(event, img_path, game_words_idx);
+            flipWordCard(event.target, img_path, card_words_idx);
         }
     )
     return para;
@@ -110,33 +111,31 @@ function wrapCard(card_id, contentNode) {
     return cardWrapper;
 }
 
-function flipImageCard(event, game_words_idx) {
-    var imgCard = event.target;
+function flipImageCard(imgCard, card_words_idx) {
     var wordCard = createWordCard(
         imgCard.getAttribute('card_id'),
         imgCard.getAttribute('src'),
-        game_words_idx
+        card_words_idx
     );
     var card_img_path = imgCard.getAttribute('src');
     imgCard.parentNode.replaceChild(
         createWordCard(
             imgCard.getAttribute('card_id'),
             card_img_path,
-            game_words_idx
+            card_words_idx
         ),
         imgCard
     );
     checkCardMatch();
-    flipCardsIfOverLimit(card_img_path);
+    flipCardsIfOverLimit(card_img_path, card_words_idx);
 }
 
-function flipWordCard(event, img_path, game_words_idx) {
-    var wordCard = event.target;
+function flipWordCard(wordCard, img_path, card_words_idx) {
     wordCard.parentNode.replaceChild(
         createImageCard(
             wordCard.getAttribute('card_id'),
             img_path,
-            game_words_idx
+            card_words_idx
         ),
         wordCard
     );
