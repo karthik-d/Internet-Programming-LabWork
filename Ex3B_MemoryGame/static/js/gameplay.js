@@ -151,7 +151,9 @@ function createImageCard(card_id, img_path, card_words_idx) {
     img.addEventListener(
         "click",
         function (event) {
-            flipImageCard(event.target, card_words_idx);
+            // pass img because even its child can trigger the event
+            // and that would become the target
+            flipImageCard(img, card_words_idx);
         }
     );
     return img;
@@ -169,7 +171,9 @@ function createWordCard(card_id, img_path, card_words_idx) {
     para.addEventListener(
         "click",
         function (event) {
-            flipWordCard(event.target, img_path, card_words_idx);
+            // pass para because even its child can trigger the event
+            // and that would become the target
+            flipWordCard(para, img_path, card_words_idx);
         }
     )
     return para;

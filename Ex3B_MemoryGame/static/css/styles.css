@@ -43,6 +43,12 @@ body{
 }
 
 .Main__cardWord{
+    border-color: #424242;
+    border-radius: 10px;
+    border-style: solid;
+}
+
+.Main__cardWord{
     text-align: center;
     vertical-align: center;
 }
