@@ -53,6 +53,48 @@ function flipCardsIfOverLimit(img_path, card_words_idx) {
         return;
     }
     else {
+        if (card_node_ids.length == 2) {
+            handleNonMatchingPair(card_node_ids, img_path, card_words_idx);
+        }
+        else {
+            flipAllCards(card_node_ids, img_path, card_words_idx);
+        }
+    }
+}
+
+function handleExposedCards(img_path, card_words_idx) {
+    var exposed_card_node_ids = getExposedUnmatchedCardIds();
+    if (exposed_card_node_ids.length < 2) {
+        return;
+    }
+    else if (exposed_card_node_ids.length == 2) {
+        if (isMatchingPair(exposed_card_node_ids, card_words_idx)) {
+            handleMatchingPair(exposed_card_node_ids, img_path, card_words_idx)
+        }
+        else {
+            handleNonMatchingPair(exposed_card_node_ids, img_path, card_words_idx);
+        }
+    }
+    else {
+        flipCardsIfOverLimit(img_path, card_words_idx);
+    }
+}
+
+function isMatchingPair(card_node_ids, card_words_idx) {
+    var card_1_id = document.getElementById(card_node_ids[0]).getAttribute('card_id');
+    var card_2_id = document.getElementById(card_node_ids[1]).getAttribute('card_id');
+    return (card_words_idx[card_1_id] == card_words_idx[card_2_id]);
+}
+
+function handleMatchingPair(card_node_ids) {
+    for (var nid of card_node_ids) {
+        document.getElementById(nid).classList.add('Main__matchedCard');
+    }
+}
+
+function handleNonMatchingPair(card_node_ids, img_path, card_words_idx) {
+    /* Highlight non-match and flip back */
+    setTimeout(function () {
         var card_nodes = [];
         for (var nid of card_node_ids) {
             var cardNode = document.getElementById(nid);
@@ -65,20 +107,21 @@ function flipCardsIfOverLimit(img_path, card_words_idx) {
                 for (var cardNode of card_nodes) {
                     flipWordCard(cardNode, img_path, card_words_idx);
                 }
-            }, 1500);
+            }, 1400);
         }
-        else {
-            for (var nid of card_node_ids) {
-                var cardNode = document.getElementById(nid);
-                flipWordCard(cardNode, img_path, card_words_idx);
-            }
-        }
+    }, 600);
+}
+
+function flipAllCards(card_node_ids, img_path, card_words_idx) {
+    for (var nid of card_node_ids) {
+        var cardNode = document.getElementById(nid);
+        flipWordCard(cardNode, img_path, card_words_idx);
     }
 }
 
 function getExposedUnmatchedCardIds() {
     var exposedWords = [];
-    document.querySelectorAll('.Main__cardWord:not(.Main__matchedCardWord').forEach(
+    document.querySelectorAll('.Main__cardWord:not(.Main__matchedCard').forEach(
         function (node) {
             exposedWords.push(node.id);
         }
@@ -141,8 +184,7 @@ function flipImageCard(imgCard, card_words_idx) {
         ),
         imgCard
     );
-    checkCardMatch();
-    flipCardsIfOverLimit(card_img_path, card_words_idx);
+    handleExposedCards(card_img_path, card_words_idx);
 }
 
 function flipWordCard(wordCard, img_path, card_words_idx) {
