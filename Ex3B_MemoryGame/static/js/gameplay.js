@@ -49,22 +49,37 @@ function checkCardMatch() {
 function flipCardsIfOverLimit(img_path, card_words_idx) {
     var card_node_ids = getExposedUnmatchedCardIds();
     // Not over limit
-    if (card_node_ids.length < 3) {
+    if (card_node_ids.length < 2) {
         return;
     }
-    // Flip all exposed unmatched cards
-    for (var nid of card_node_ids) {
-        var cardNode = document.getElementById(nid);
-        flipWordCard(cardNode, img_path, card_words_idx);
+    else {
+        var card_nodes = [];
+        for (var nid of card_node_ids) {
+            var cardNode = document.getElementById(nid);
+            card_nodes.push(cardNode);
+            cardNode.classList.add('Main__nonMatchCards');
+        }
+        // Flip all exposed unmatched cards
+        if (card_node_ids.length == 2) {
+            setTimeout(function () {
+                for (var cardNode of card_nodes) {
+                    flipWordCard(cardNode, img_path, card_words_idx);
+                }
+            }, 1500);
+        }
+        else {
+            for (var nid of card_node_ids) {
+                var cardNode = document.getElementById(nid);
+                flipWordCard(cardNode, img_path, card_words_idx);
+            }
+        }
     }
 }
 
 function getExposedUnmatchedCardIds() {
     var exposedWords = [];
-    console.log(document.querySelectorAll('.Main__cardWord:not(.Main__matchedCardWord'));
     document.querySelectorAll('.Main__cardWord:not(.Main__matchedCardWord').forEach(
         function (node) {
-            console.log(node);
             exposedWords.push(node.id);
         }
     );

@@ -7,21 +7,47 @@
 }
 
 .Main__cardWrapper{
-    height: 225x;
-    width: 150px;
+    height: 245x;
+    width: 170px;
+    padding: 10px;
 }
 
 .Main__cardWrapper > *{
     animation-name: card_flip_entry;
-    animation-duration: 0.4s;
+    animation-duration: 0.5s;
 }
 
 @keyframes card_flip_entry{
     from {
-        transform: skewY(40deg);
+        transform: skewY(50deg);
     }
     to{
         transform: skewY(0deg);
+    }
+}
+
+.Main__nonMatchCards{
+    border-color: rgb(179, 87, 87);
+    border-width: 2px;
+    border-style: solid;
+    animation-name: wiggle;
+    animation-delay: 0.2s;
+    animation-duration: 0.15s;
+    animation-iteration-count: 4;
+}
+
+@keyframes wiggle{
+    from {
+        transform: translateX(0px);
+    }
+    75% {
+        transform: translateX(4px);
+    }
+    75% {
+        transform: translateX(-4px);
+    }
+    to {
+        transform: translateX(0px);
     }
 }
 
