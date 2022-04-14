@@ -10,4 +10,28 @@
     By default, 4 pairs (8 cards) are rendered.
 3. Game instructions are displayed on the starting page
 
-NOTE: Reloading the page will lose progress and start from Level 1.
+**NOTE**: Reloading the page will lose progress and start from Level 1.
+
+**NOTE**: Execute to check-out the animations!
+
+
+
+## Screenshots
+
+### Start Game Page
+![](Screenshots/1_Start-Game.jpg)
+
+### Playing Game
+![](Screenshots/2_Playing-Game.jpg)
+
+### Level Progress
+![](Screenshots/3_Level-Progressed.jpg)
+
+### All Levels Completed
+![](Screenshots/4_Full-Game-Complete.jpg)
+
+### Render with different number of cards
+![](Screenshots/5_Change-Number-Of-Cards.jpg)
+
+### Timed Out - Game Over
+![](Screenshots/6_Time-Out.jpg)
