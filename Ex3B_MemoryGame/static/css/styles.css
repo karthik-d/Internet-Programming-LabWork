@@ -96,7 +96,6 @@ body{
     width: 100%;
     margin-top: 0;
     border-width: 0px;
-    border-radius: 10px 10px 0 0;
     background-color: #c04040;
     color: #ffffff;
     font-size: 16px;
@@ -121,6 +120,24 @@ body{
 #Main__timerText, #Main__scoreText{
     font-size: 40px;
     font-weight: bold;
+}
+
+.Main__msgArea{
+    background-color: #d0ccd0;
+    margin: 0px;
+}
+
+.Main__msgText{
+    background-color: #1c6e8c;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+    padding: 10px;
+    width: 50%;
+    margin: 0px auto;
+    border-radius: 10px 10px 0 0;
+    border-color: #c04040;
 }
 
 /* --------------------------------------------------------------------------- */

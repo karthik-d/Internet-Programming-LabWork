@@ -297,7 +297,7 @@ function renderStartPage(to_level) {
     /* Setup start button */
     var startButton = document.getElementById('Main__startButton');
     if (startButton) {
-        startButton.textContent = (to_level == 1 ? "Start Game" : "Next Level");
+        startButton.textContent = (to_level == 1 ? "New Game" : "Next Level");
         startButton.setAttribute('id', "Main__startButton");
         startButton.setAttribute('onclick', `renderGame(${to_level});`);
     }
@@ -308,10 +308,6 @@ function renderStartPage(to_level) {
 function restartGame(intervalObj) {
     clearInterval(intervalObj);
     renderGame(1);
-}
-
-function renderGameOverPage() {
-    ;
 }
 
 /*
