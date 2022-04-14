@@ -249,7 +249,8 @@ function renderGame(to_level) {
         var card = wrapCard(i, createImageCard(i, card_img_path, card_words_idx));
         cardArea.appendChild(card);
     }
-    // Set Game Info
+
+    /* Set Game Info */
     var game_level = (to_level != null ? to_level : 1);
     game_level = (game_level > 3 ? 3 : game_level);
     game_level = (game_level < 1 ? 1 : game_level);
@@ -268,6 +269,9 @@ function renderGame(to_level) {
         startButton.textContent = "Restart Level";
         startButton.setAttribute("onclick", `restartGame(${timerInterval});`);
     }
+
+    /* Displace score-box by adding class */
+    document.getElementById('Main__scoreAreaBox').classList.add('Main__scoreAreaLeft');
 }
 
 function renderStartPage(to_level) {
