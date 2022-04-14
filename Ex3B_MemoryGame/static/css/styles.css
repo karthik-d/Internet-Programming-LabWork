@@ -29,7 +29,7 @@ body{
     animation-fill-mode: forwards;
 }
 
-.Main__scoreArea p.Main__msgText{
+.Main__scoreArea p#Main__msgText{
     animation-name: peekMessage;
     animation-duration: 1.0s;
     animation-fill-mode: forwards;
@@ -75,7 +75,7 @@ body{
     animation-fill-mode: forwards;
 }
 
-.Main__scoreAreaLeft p.Main__msgText{
+.Main__scoreAreaLeft p#Main__msgText{
     animation-name: unpeekMessage;
     animation-duration: 1.0s;
     animation-fill-mode: forwards;
@@ -178,14 +178,14 @@ body{
     height: 0px;
 }
 
-.Main__msgText{
+#Main__msgText{
     color: #c04040;
     background-color: #1c6e8c;
     font-size: 16px;
     font-weight: bold;
     margin: 0;
     padding: 10px;
-    width: 50%;
+    width: 80%;
     margin: 0px auto;
     border-radius: 10px 10px 0 0;
 }

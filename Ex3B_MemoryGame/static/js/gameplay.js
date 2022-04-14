@@ -42,16 +42,13 @@ function randomSampleIdx(array, count) {
 
 // Game Info Handlers
 
-function handleTimeout() {
-    window.alert("Time Up!");
-}
-
 function updateTimer(intervalObj) {
     var timerNode = document.getElementById('Main__timerText');
     timerNode.textContent = parseInt(timerNode.textContent) - 1;
     if (parseInt(timerNode.textContent) == 0) {
         clearInterval(intervalObjects.timer);
-        handleTimeout();
+        document.getElementById('Main__msgText').textContent = "Game Over - Ran out of time!";
+        renderStartPage(1);
     }
 }
 
@@ -93,6 +90,7 @@ function handleExposedCards(img_path, card_words_idx) {
             handleMatchingPair(exposed_card_node_ids, img_path, card_words_idx);
             if (isGameWon(card_words_idx.length)) {
                 clearInterval(intervalObjects.timer);
+                document.getElementById('Main__msgText').textContent = "Level Up!";
                 renderStartPage(parseInt(document.getElementById('Main__levelText').textContent) + 1);
             }
         }
@@ -292,6 +290,7 @@ function renderStartPage(to_level) {
     /* Clear Page */
     document.getElementById("Main__cardArea").innerHTML = "";
     if (to_level > 3) {
+        document.getElementById('Main__msgText').textContent = "You Won! Play Again?";
         to_level = 1;
     }
     /* Setup start button */
@@ -303,13 +302,11 @@ function renderStartPage(to_level) {
     }
     /* Displace score-box by adding class */
     document.getElementById('Main__scoreAreaBox').classList.remove('Main__scoreAreaLeft');
-    document.getElementById("Main__msgBox").display = "none";
-    console.log("done");
 }
 
 function restartGame(intervalObj) {
     clearInterval(intervalObj);
-    renderGame(1);
+    renderStartPage(1);
 }
 
 /*
