@@ -110,7 +110,7 @@ function handleMatchingPair(card_node_ids) {
         newCardNode.classList.add('Main__matchedCard');
         cardNode.parentNode.replaceChild(newCardNode, cardNode);
     }
-    changeScoreByValue(15);
+    changeScoreByValue(30);
 }
 
 function handleNonMatchingPair(card_node_ids, img_path, card_words_idx) {
@@ -232,11 +232,6 @@ function flipWordCard(wordCard, img_path, card_words_idx) {
 
 
 function renderGame(to_level) {
-    // remove start button
-    var startButton = document.getElementById('Main__startButton');
-    if (startButton) {
-        startButton.parentNode.removeChild(startButton);
-    }
     // difficulty => Number of Pairs to Identify
     var url_string = window.location.href;
     var url = new URL(url_string);
@@ -249,6 +244,7 @@ function renderGame(to_level) {
     var card_words_idx = randomSample(game_words_idx.concat(game_words_idx), num_cards);
     // create layout
     var cardArea = document.getElementById("Main__cardArea");
+    cardArea.innerHTML = "";
     for (var i = 0; i < num_cards; i++) {
         var card = wrapCard(i, createImageCard(i, card_img_path, card_words_idx));
         cardArea.appendChild(card);
@@ -265,9 +261,14 @@ function renderGame(to_level) {
         function () {
             updateTimer(timerInterval)
         }, 1000);
+
+    /* Replace Start Button with Restart Button */
+    var startButton = document.getElementById('Main__startButton');
+    if (startButton) {
+        startButton.textContent = "Restart Level";
+        startButton.setAttribute("onclick", `restartGame(${timerInterval});`);
+    }
 }
-
-
 
 function renderStartPage(to_level) {
     var startButton = document.createElement('button');
@@ -277,8 +278,13 @@ function renderStartPage(to_level) {
     var cardArea = document.getElementById("Main__cardArea");
 }
 
-function renderGameOverPage() {
+function restartGame(intervalObj) {
+    clearInterval(intervalObj);
+    renderGame(1);
+}
 
+function renderGameOverPage() {
+    ;
 }
 
 /*
