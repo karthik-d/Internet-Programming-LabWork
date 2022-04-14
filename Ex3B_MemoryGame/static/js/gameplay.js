@@ -13,6 +13,7 @@ const WordBag = [
     "Orange"
 ]
 
+const intervalObjects = {};
 
 function randomSample(array, count) {
     // Perform Fischer-Yates
@@ -49,7 +50,7 @@ function updateTimer(intervalObj) {
     var timerNode = document.getElementById('Main__timerText');
     timerNode.textContent = parseInt(timerNode.textContent) - 1;
     if (parseInt(timerNode.textContent) == 0) {
-        clearInterval(intervalObj);
+        clearInterval(intervalObjects.timer);
         handleTimeout();
     }
 }
@@ -57,6 +58,10 @@ function updateTimer(intervalObj) {
 function changeScoreByValue(delta) {
     var scoreNode = document.getElementById('Main__scoreText');
     scoreNode.textContent = parseInt(scoreNode.textContent) + delta;
+}
+
+function isGameWon(num_cards) {
+    return (document.querySelectorAll('.Main__matchedCard').length == num_cards);
 }
 
 
@@ -85,7 +90,11 @@ function handleExposedCards(img_path, card_words_idx) {
     }
     else if (exposed_card_node_ids.length == 2) {
         if (isMatchingPair(exposed_card_node_ids, card_words_idx)) {
-            handleMatchingPair(exposed_card_node_ids, img_path, card_words_idx)
+            handleMatchingPair(exposed_card_node_ids, img_path, card_words_idx);
+            if (isGameWon(card_words_idx.length)) {
+                clearInterval(intervalObjects.timer);
+                renderStartPage(parseInt(document.getElementById('Main__levelText').textContent) + 1);
+            }
         }
         else {
             handleNonMatchingPair(exposed_card_node_ids, img_path, card_words_idx);
@@ -232,6 +241,9 @@ function flipWordCard(wordCard, img_path, card_words_idx) {
 
 
 function renderGame(to_level) {
+    /* Displace score-box by adding class */
+    document.getElementById('Main__scoreAreaBox').classList.add('Main__scoreAreaLeft');
+
     // difficulty => Number of Pairs to Identify
     var url_string = window.location.href;
     var url = new URL(url_string);
@@ -257,11 +269,16 @@ function renderGame(to_level) {
     var game_duration = num_words * (10 - (game_level * 2));
     document.getElementById('Main__timerText').textContent = game_duration;
     document.getElementById('Main__levelText').textContent = game_level;
-    document.getElementById('Main__scoreText').textContent = 0;
+    if (to_level == 1) {
+        // Reset score if level-1
+        document.getElementById('Main__scoreText').textContent = 0;
+    }
+
     var timerInterval = setInterval(
         function () {
-            updateTimer(timerInterval)
+            updateTimer()
         }, 1000);
+    intervalObjects.timer = timerInterval;
 
     /* Replace Start Button with Restart Button */
     var startButton = document.getElementById('Main__startButton');
@@ -269,17 +286,23 @@ function renderGame(to_level) {
         startButton.textContent = "Restart Level";
         startButton.setAttribute("onclick", `restartGame(${timerInterval});`);
     }
-
-    /* Displace score-box by adding class */
-    document.getElementById('Main__scoreAreaBox').classList.add('Main__scoreAreaLeft');
 }
 
 function renderStartPage(to_level) {
-    var startButton = document.createElement('button');
-    startButton.textContent = (to_level == 1 ? "Start Game" : "Next Level");
-    startButton.setAttribute('id', "Main__startButton");
-    startButton.setAttribute('onclick', `renderGame(${to_level});`);
-    var cardArea = document.getElementById("Main__cardArea");
+    /* Clear Page */
+    document.getElementById("Main__cardArea").innerHTML = "";
+    if (to_level > 3) {
+        to_level = 1;
+    }
+    /* Setup start button */
+    var startButton = document.getElementById('Main__startButton');
+    if (startButton) {
+        startButton.textContent = (to_level == 1 ? "Start Game" : "Next Level");
+        startButton.setAttribute('id', "Main__startButton");
+        startButton.setAttribute('onclick', `renderGame(${to_level});`);
+    }
+    /* Displace score-box by adding class */
+    document.getElementById('Main__scoreAreaBox').classList.remove('Main__scoreAreaLeft');
 }
 
 function restartGame(intervalObj) {

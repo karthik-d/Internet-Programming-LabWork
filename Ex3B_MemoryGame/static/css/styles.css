@@ -18,12 +18,12 @@ body{
     background-color: #605856;
     border-radius: 10px;
     animation-name: displaceBoxCenter;
-    animation-duration: 1.5s;
-    animation-timing-function: ease-out;
+    animation-duration: 0.4s;
+    animation-timing-function: ease-in;
     animation-fill-mode: forwards;
 }
 
-@keyframes displaceBoxLeft{
+@keyframes displaceBoxCenter{
     from {
         top: 15%;
         left: 5%;
@@ -37,7 +37,7 @@ body{
 
 .Main__scoreAreaLeft{
     animation-name: displaceBoxLeft;
-    animation-duration: 1.5s;
+    animation-duration: 0.8s;
     animation-timing-function: ease-out;
     animation-fill-mode: forwards;
 }
@@ -132,6 +132,7 @@ body{
     width: 800px;   /* Fit 4 cards */
     margin: 20px auto;
     margin-left: 40%;
+    margin-top: 5%;
 }
 
 .Main__cardWrapper{
