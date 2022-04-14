@@ -275,7 +275,6 @@ function renderStartPage(to_level) {
     startButton.setAttribute('id', "Main__startButton");
     startButton.setAttribute('onclick', `renderGame(${to_level});`);
     var cardArea = document.getElementById("Main__cardArea");
-    cardArea.appendChild(startButton);
 }
 
 function renderGameOverPage() {

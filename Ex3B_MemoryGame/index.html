@@ -10,12 +10,13 @@
     <div id="Main__gameArea">
         <div id="Main__scoreArea">
             <div class="Main__infoArea">
-                <p class="Main__infoText" id="Main__timerTextDesc">Time Left: <span id="Main__timerText"> -
-                    </span></p>
-                <p class="Main__infoText" id="Main__scoreTextDesc">Score: <span id="Main__scoreText"> - </span>
+                <p id="Main__levelTextDesc">Level <span id="Main__levelText">1</span>
                 </p>
-                <p class="Main__infoText" id="Main__levelTextDesc">Level: <span id="Main__levelText"> - </span>
-                </p>
+                <div id="Main__statsWrapper">
+                    <p class="Main__statsText" id="Main__timerTextDesc"><span id="Main__timerText">0</span> sec</p>
+                    <p class="Main__statsText" id="Main__scoreTextDesc"><span id="Main__scoreText">0</span> pts</p>
+                    </p>
+                </div>
             </div>
             <div class="Main__titleArea">
                 <p class="Main__gameName" id="Main__gameName">Memory Flip</p>
@@ -30,6 +31,7 @@
                     <li>Bonus points for finishing early</li>
                 </ul>
             </div>
+            <button id="Main__startButton" onclick="renderGame(1);">Start Game</button>
         </div>
         <div id="Main__cardArea">
         </div>
