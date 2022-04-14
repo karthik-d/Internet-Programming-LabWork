@@ -41,11 +41,11 @@ function randomSampleIdx(array, count) {
 
 // Game Info Handlers
 
-function handleTimeout(){
+function handleTimeout() {
     window.alert("Time Up!");
 }
 
-function updateTimer(intervalObj){
+function updateTimer(intervalObj) {
     var timerNode = document.getElementById('Main__timerText');
     timerNode.textContent = parseInt(timerNode.textContent) - 1;
     if (parseInt(timerNode.textContent) == 0) {
@@ -54,7 +54,7 @@ function updateTimer(intervalObj){
     }
 }
 
-function changeScoreByValue(delta){
+function changeScoreByValue(delta) {
     var scoreNode = document.getElementById('Main__scoreText');
     scoreNode.textContent = parseInt(scoreNode.textContent) + delta;
 }
@@ -234,7 +234,7 @@ function flipWordCard(wordCard, img_path, card_words_idx) {
 function renderGame(to_level) {
     // remove start button
     var startButton = document.getElementById('Main__startButton');
-    if (startButton){
+    if (startButton) {
         startButton.parentNode.removeChild(startButton);
     }
     // difficulty => Number of Pairs to Identify
@@ -254,26 +254,32 @@ function renderGame(to_level) {
         cardArea.appendChild(card);
     }
     // Set Game Info
-    var game_level = (url.searchParams.get("level") != null ? url.searchParams.get("level") : 1);
+    var game_level = (to_level != null ? to_level : 1);
     game_level = (game_level > 3 ? 3 : game_level);
     game_level = (game_level < 1 ? 1 : game_level);
-    var game_duration = num_words * (10 - (game_level*2));
+    var game_duration = num_words * (10 - (game_level * 2));
     document.getElementById('Main__timerText').textContent = game_duration;
     document.getElementById('Main__levelText').textContent = game_level;
     document.getElementById('Main__scoreText').textContent = 0;
     var timerInterval = setInterval(
-        function(){
+        function () {
             updateTimer(timerInterval)
         }, 1000);
 }
 
-function renderStartPage(to_level){
+
+
+function renderStartPage(to_level) {
     var startButton = document.createElement('button');
     startButton.textContent = (to_level == 1 ? "Start Game" : "Next Level");
     startButton.setAttribute('id', "Main__startButton");
     startButton.setAttribute('onclick', `renderGame(${to_level});`);
     var cardArea = document.getElementById("Main__cardArea");
     cardArea.appendChild(startButton);
+}
+
+function renderGameOverPage() {
+
 }
 
 /*

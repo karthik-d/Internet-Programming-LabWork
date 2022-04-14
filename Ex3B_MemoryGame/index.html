@@ -9,12 +9,27 @@
 <body onload="renderStartPage(1);">
     <div id="Main__gameArea">
         <div id="Main__scoreArea">
-            <div id="Main__infoArea">
-                <p class="Main__infoText" id="Main__gameName">Memory Flip</p>
-                <p class="Main__infoText" id="Main__timerTextDesc">Time Left: <span id="Main__timerText"> - </span></p>
-                <p class="Main__infoText" id="Main__scoreTextDesc">Score: <span id="Main__scoreText"> - </span></p>   
-                <p class="Main__infoText" id="Main__levelTextDesc">Level: <span id="Main__levelText"> - </span></p>
-            </div>            
+            <div class="Main__infoArea">
+                <p class="Main__infoText" id="Main__timerTextDesc">Time Left: <span id="Main__timerText"> -
+                    </span></p>
+                <p class="Main__infoText" id="Main__scoreTextDesc">Score: <span id="Main__scoreText"> - </span>
+                </p>
+                <p class="Main__infoText" id="Main__levelTextDesc">Level: <span id="Main__levelText"> - </span>
+                </p>
+            </div>
+            <div class="Main__titleArea">
+                <p class="Main__gameName" id="Main__gameName">Memory Flip</p>
+            </div>
+            <div class="Main__infoArea" id="Main__instructionsArea">
+                <ul>
+                    <li>Click on a card to flip it back or forth</li>
+                    <li>Each revealing flip costs 1 point </li>
+                    <li>Only 2 unmatched cards can stay flipped at a time</li>
+                    <li>Each matching pair earns 30 points</li>
+                    <li>Match all pairs before time runs out!</li>
+                    <li>Bonus points for finishing early</li>
+                </ul>
+            </div>
         </div>
         <div id="Main__cardArea">
         </div>

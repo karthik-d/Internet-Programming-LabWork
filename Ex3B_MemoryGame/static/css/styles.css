@@ -1,10 +1,6 @@
-html{
-    height: 92%;
-}
-
 body{
     height: 100%;
-    background-color: #ffefd6;
+    background-color: #d0ccd0;
     font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
 }
 
@@ -25,28 +21,46 @@ body{
 }
 
 #Main__scoreArea{
-    width: 20%;
-    height: 100%;
+    position: fixed;
+    top: 20%;
+    left: 40%;
     text-align: center;
-    background-color: rgb(70, 70, 70);
-    padding: 20px;
+    background-color: #605856;
+    border-radius: 10px;
 }
 
-#Main__infoArea{
+.Main__infoArea{
     width: max-content;
     margin: auto;
-    text-align: center;
+    text-align: left;
+}
+
+#Main__instructionsArea{
+    padding: 10px;
+    color: #ffffff;
+    font-size: 15px;
+}
+
+#Main__instructionsArea li{
+    padding: 4px 0px;
 }
 
 .Main__infoText{
-    width: 80%;
     font-size: 18px;
     color: #ffffff;
 }
 
-#Main__gameName{
+.Main__titleArea{
+    width: 110%;
+    margin-left: -5%;
     font-size: 24px;
     font-weight: bold;
+    color: #fbfcff;
+    background-color: #1c6e8c;
+    text-align: center;
+    padding: 10px 0px;
+    border: 0px;
+    border-radius: 10px;
 }
 
 #Main__cardArea{
