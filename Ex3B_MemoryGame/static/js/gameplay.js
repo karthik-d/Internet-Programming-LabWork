@@ -89,6 +89,8 @@ function handleExposedCards(img_path, card_words_idx) {
         if (isMatchingPair(exposed_card_node_ids, card_words_idx)) {
             handleMatchingPair(exposed_card_node_ids, img_path, card_words_idx);
             if (isGameWon(card_words_idx.length)) {
+                // Add time bonus and render new game
+                changeScoreByValue(parseInt(document.getElementById('Main__timerText').textContent));
                 clearInterval(intervalObjects.timer);
                 document.getElementById('Main__msgText').textContent = "Level Up!";
                 renderStartPage(parseInt(document.getElementById('Main__levelText').textContent) + 1);
