@@ -23,6 +23,18 @@ body{
     animation-fill-mode: forwards;
 }
 
+.Main__scoreArea > .Main__msgArea{
+    animation-name: peekMessage;
+    animation-duration: 1.0s;
+    animation-fill-mode: forwards;
+}
+
+.Main__scoreArea p.Main__msgText{
+    animation-name: peekMessage;
+    animation-duration: 1.0s;
+    animation-fill-mode: forwards;
+}
+
 @keyframes displaceBoxCenter{
     from {
         top: 15%;
@@ -35,10 +47,37 @@ body{
     }
 }
 
+@keyframes peekMessage{
+    from {
+        color: #c04040;
+        height: 0px;
+    }
+    80%{
+        color: #c04040;
+        height: 0px;
+    }
+    to{
+        height: 35px;
+        color: #ffffff;
+    }
+}
+
 .Main__scoreAreaLeft{
     animation-name: displaceBoxLeft;
     animation-duration: 0.8s;
     animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+.Main__scoreAreaLeft .Main__msgArea{
+    animation-name: unpeekMessage;
+    animation-duration: 1.0s;
+    animation-fill-mode: forwards;
+}
+
+.Main__scoreAreaLeft p.Main__msgText{
+    animation-name: unpeekMessage;
+    animation-duration: 1.0s;
     animation-fill-mode: forwards;
 }
 
@@ -51,6 +90,17 @@ body{
     to{
         top: 15%;
         left: 5%;
+    }
+}
+
+@keyframes unpeekMessage{
+    from {
+        color: #ffffff;
+        height: 35px;
+    }
+    to{
+        height: 0px;
+        color: #c04040;
     }
 }
 
@@ -125,11 +175,12 @@ body{
 .Main__msgArea{
     background-color: #d0ccd0;
     margin: 0px;
+    height: 0px;
 }
 
 .Main__msgText{
+    color: #c04040;
     background-color: #1c6e8c;
-    color: #ffffff;
     font-size: 16px;
     font-weight: bold;
     margin: 0;
@@ -137,7 +188,6 @@ body{
     width: 50%;
     margin: 0px auto;
     border-radius: 10px 10px 0 0;
-    border-color: #c04040;
 }
 
 /* --------------------------------------------------------------------------- */

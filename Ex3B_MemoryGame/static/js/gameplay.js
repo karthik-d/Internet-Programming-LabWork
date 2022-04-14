@@ -303,6 +303,8 @@ function renderStartPage(to_level) {
     }
     /* Displace score-box by adding class */
     document.getElementById('Main__scoreAreaBox').classList.remove('Main__scoreAreaLeft');
+    document.getElementById("Main__msgBox").display = "none";
+    console.log("done");
 }
 
 function restartGame(intervalObj) {
