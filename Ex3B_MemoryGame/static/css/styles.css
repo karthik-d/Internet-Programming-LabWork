@@ -1,5 +1,52 @@
+html{
+    height: 92%;
+}
+
 body{
+    height: 100%;
+    background-color: #ffefd6;
     font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+}
+
+#Main__startButton{
+    width: 200px;
+    height: 40px;
+    border-width: 0px;
+    border-radius: 10px;
+    background-color: #457c45;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+#Main__gameArea{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+#Main__scoreArea{
+    width: 20%;
+    height: 100%;
+    text-align: center;
+    background-color: rgb(70, 70, 70);
+    padding: 20px;
+}
+
+#Main__infoArea{
+    width: max-content;
+    margin: auto;
+    text-align: center;
+}
+
+.Main__infoText{
+    width: 80%;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+#Main__gameName{
+    font-size: 24px;
+    font-weight: bold;
 }
 
 #Main__cardArea{
@@ -37,20 +84,17 @@ body{
     margin: 8%;
     width: 84%;
     height: 84%;
-    border-radius: 10px;
     font-size: 18px;
     font-weight: bold;
 }
 
 .Main__cardWord{
-    border-color: #424242;
-    border-radius: 10px;
-    border-style: solid;
-}
-
-.Main__cardWord{
     text-align: center;
     vertical-align: center;
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: black;
+    border-style: solid;
 }
 
 .Main__cardWord > span {

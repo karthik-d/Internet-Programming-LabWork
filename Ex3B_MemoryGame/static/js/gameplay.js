@@ -39,12 +39,28 @@ function randomSampleIdx(array, count) {
     return shuffled.slice(0, count);
 }
 
+// Game Info Handlers
+
+function handleTimeout(){
+    window.alert("Time Up!");
+}
+
+function updateTimer(intervalObj){
+    var timerNode = document.getElementById('Main__timerText');
+    timerNode.textContent = parseInt(timerNode.textContent) - 1;
+    if (parseInt(timerNode.textContent) == 0) {
+        clearInterval(intervalObj);
+        handleTimeout();
+    }
+}
+
+function changeScoreByValue(delta){
+    var scoreNode = document.getElementById('Main__scoreText');
+    scoreNode.textContent = parseInt(scoreNode.textContent) + delta;
+}
+
 
 // Layout Functions
-
-function checkCardMatch() {
-    console.log("card match check...");
-}
 
 function flipCardsIfOverLimit(img_path, card_words_idx) {
     var card_node_ids = getExposedUnmatchedCardIds();
@@ -94,6 +110,7 @@ function handleMatchingPair(card_node_ids) {
         newCardNode.classList.add('Main__matchedCard');
         cardNode.parentNode.replaceChild(newCardNode, cardNode);
     }
+    changeScoreByValue(15);
 }
 
 function handleNonMatchingPair(card_node_ids, img_path, card_words_idx) {
@@ -151,9 +168,7 @@ function createImageCard(card_id, img_path, card_words_idx) {
     img.addEventListener(
         "click",
         function (event) {
-            // pass img because even its child can trigger the event
-            // and that would become the target
-            flipImageCard(img, card_words_idx);
+            flipImageCard(event.target, card_words_idx);
         }
     );
     return img;
@@ -171,9 +186,7 @@ function createWordCard(card_id, img_path, card_words_idx) {
     para.addEventListener(
         "click",
         function (event) {
-            // pass para because even its child can trigger the event
-            // and that would become the target
-            flipWordCard(para, img_path, card_words_idx);
+            flipWordCard(event.target, img_path, card_words_idx);
         }
     )
     return para;
@@ -202,6 +215,7 @@ function flipImageCard(imgCard, card_words_idx) {
         ),
         imgCard
     );
+    changeScoreByValue(-1);
     handleExposedCards(card_img_path, card_words_idx);
 }
 
@@ -217,8 +231,13 @@ function flipWordCard(wordCard, img_path, card_words_idx) {
 }
 
 
-function renderGame() {
-    // difficult => Number of Pairs to Identify
+function renderGame(to_level) {
+    // remove start button
+    var startButton = document.getElementById('Main__startButton');
+    if (startButton){
+        startButton.parentNode.removeChild(startButton);
+    }
+    // difficulty => Number of Pairs to Identify
     var url_string = window.location.href;
     var url = new URL(url_string);
     var num_words = (url.searchParams.get("difficulty") != null ? url.searchParams.get("difficulty") : 4);
@@ -234,4 +253,32 @@ function renderGame() {
         var card = wrapCard(i, createImageCard(i, card_img_path, card_words_idx));
         cardArea.appendChild(card);
     }
+    // Set Game Info
+    var game_level = (url.searchParams.get("level") != null ? url.searchParams.get("level") : 1);
+    game_level = (game_level > 3 ? 3 : game_level);
+    game_level = (game_level < 1 ? 1 : game_level);
+    var game_duration = num_words * (10 - (game_level*2));
+    document.getElementById('Main__timerText').textContent = game_duration;
+    document.getElementById('Main__levelText').textContent = game_level;
+    document.getElementById('Main__scoreText').textContent = 0;
+    var timerInterval = setInterval(
+        function(){
+            updateTimer(timerInterval)
+        }, 1000);
 }
+
+function renderStartPage(to_level){
+    var startButton = document.createElement('button');
+    startButton.textContent = (to_level == 1 ? "Start Game" : "Next Level");
+    startButton.setAttribute('id', "Main__startButton");
+    startButton.setAttribute('onclick', `renderGame(${to_level});`);
+    var cardArea = document.getElementById("Main__cardArea");
+    cardArea.appendChild(startButton);
+}
+
+/*
+TODO: 
+- Timer
+- Scorecard
+- 3 Levels
+*/
