@@ -28,18 +28,24 @@ public class Login extends HttpServlet{
         view.forward(request, response);
     }
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response){
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException{
+        response.setContentType("text/html");
+        PrintWriter render = response.getWriter();
+
         String email = request.getParameter("email");
 
         User userMod = new User();
         String user = userMod.getUserByEmail(email);
-        if (user == null){
-            System.out.println("Not found");
-        }
-        else{
-            System.out.println("Found!");
+        if (user == null){            
+            render.println("<html><body>Not found</body></html>");
         }
 
         String passwd_entry = request.getParameter("passwd");
+        if (passwd_entry.equals("password")){
+            render.println("<html><body>Logged in</body></html>");
+        }
+        else{
+            render.println("<html><body>Wrong password</body></html>");
+        }
     }
 }
