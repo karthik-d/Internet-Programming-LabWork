@@ -1,0 +1,46 @@
+<web-app>
+
+<servlet>
+<servlet-name>Example1</servlet-name>
+<servlet-class>DemoServlet.DemoServ</servlet-class>
+</servlet>
+
+<servlet-mapping>
+<servlet-name>Example1</servlet-name>
+<url-pattern>/welcome</url-pattern>
+</servlet-mapping>
+
+
+<servlet>
+<servlet-name>myservlet</servlet-name>
+<servlet-class>FirstServlet.WelcomeServlet.HelloServlet</servlet-class>
+</servlet>
+
+
+<servlet-mapping>
+<servlet-name>myservlet</servlet-name>
+<url-pattern>/mywelcomeservlet</url-pattern>
+</servlet-mapping>
+
+
+<servlet>
+<servlet-name>mycontroller</servlet-name>
+<servlet-class>MVCdemo.Controller.CoffeeSelect</servlet-class>
+</servlet>
+
+<servlet-mapping>
+<servlet-name>mycontroller</servlet-name>
+<url-pattern>/mycontrollerdemo</url-pattern>
+</servlet-mapping>
+
+<servlet>
+      <servlet-name>FormInputServlet</servlet-name>
+      <servlet-class>FormsServlet.EchoServlet</servlet-class>
+ </servlet>
+ 
+<servlet-mapping>
+      <servlet-name>FormInputServlet</servlet-name>
+      <url-pattern>/forminputdemo</url-pattern>
+</servlet-mapping>
+
+</web-app>
