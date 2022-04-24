@@ -24,7 +24,6 @@ public class Login extends HttpServlet{
         render.println("</body>");
         render.println("</html>");
         */
-
         RequestDispatcher view = request.getRequestDispatcher(getViewPath("login.html"));
         view.forward(request, response);
     }
