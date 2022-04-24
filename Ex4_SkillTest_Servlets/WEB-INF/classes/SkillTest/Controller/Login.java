@@ -1,5 +1,5 @@
 package SkillTest.Controller;
-// import SkillTest.Model.*;
+import SkillTest.Model.*;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -26,5 +26,20 @@ public class Login extends HttpServlet{
         */
         RequestDispatcher view = request.getRequestDispatcher(getViewPath("login.html"));
         view.forward(request, response);
+    }
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response){
+        String email = request.getParameter("email");
+
+        User userMod = new User();
+        String user = userMod.getUserByEmail(email);
+        if (user == null){
+            System.out.println("Not found");
+        }
+        else{
+            System.out.println("Found!");
+        }
+
+        String passwd_entry = request.getParameter("passwd");
     }
 }
