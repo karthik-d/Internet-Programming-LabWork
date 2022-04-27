@@ -1,5 +1,5 @@
 package SkillTest.Controller;
-import SkillTest.Model.*;
+import SkillTest.Model.User;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -29,9 +29,10 @@ public class Login extends HttpServlet{
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException{
+
         response.setContentType("text/html");
         PrintWriter render = response.getWriter();
-
+        /*
         String email = request.getParameter("email");
 
         User userMod = new User();
@@ -46,6 +47,22 @@ public class Login extends HttpServlet{
         }
         else{
             render.println("<html><body>Wrong password</body></html>");
+        }
+        */
+        User ce = new User();
+        System.out.println("Before calling model");
+        try{
+            List result = ce.getBrands("hello");
+            System.out.println("Coffee Selection Advice");
+            Iterator it = result.iterator();
+            while(it.hasNext())
+            {
+                render.println("try:"+it.next());
+            }
+        }
+        catch(Exception E)
+        {
+            System.out.println(E);
         }
     }
 }
