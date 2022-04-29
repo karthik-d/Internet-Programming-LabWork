@@ -1,0 +1,8 @@
+<html>
+<title>Linking Servlets with HTTP sessions</title>
+<body>
+<form action="FirstServletwithHTTPSessions">
+<input type="submit" value="ok">
+</form>
+</body>
+</html>

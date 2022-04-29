@@ -1,0 +1,4 @@
+<form action="FirstBookCookie" method="get">  
+Name:<input type="text" name="Bookname"/><br/>  
+<input type="submit" value="go"/>  
+</form>  
