@@ -14,12 +14,12 @@ public class TechConRegistration extends HttpServlet{
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String form_render = request.getParameter("form");
-        if(form_render.equals("render")){
-            RequestDispatcher view = request.getRequestDispatcher(getViewPath("about.html"));
+        if(form_render!=null && form_render.equals("render")){            
+            RequestDispatcher view = request.getRequestDispatcher(getViewPath("registration.html"));
             view.forward(request, response);
         }
         else{            
-            RequestDispatcher view = request.getRequestDispatcher(getViewPath("registration.html"));
+            RequestDispatcher view = request.getRequestDispatcher(getViewPath("about.html"));
             view.forward(request, response);
         }
     }
