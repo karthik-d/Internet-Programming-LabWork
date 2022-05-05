@@ -1,0 +1,518 @@
+html, body{
+    width: 100%;
+    height: 100%; 
+}
+
+body{
+    background-image: url("images/background.jpg");
+    background-position: center;
+    background-size: cover;
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+}
+
+#Main__headerFrame{
+    width: 100%; 
+    height: 16%;
+    display:block; 
+    border-style: none;
+}
+
+#Main__navbar{
+    background-color: #bdc9d7;
+    margin-top: 2px; 
+    padding-top: 0.5px; 
+    padding-bottom: 0.5px; 
+    font-size: 15px;
+}
+
+.Main__navlist{
+    width: 80%; 
+    margin-left: auto; 
+    margin-right: auto; 
+    text-align: center;
+}
+
+.Main__navitem{
+    display: inline; 
+    padding: 5px; 
+    width: 20%; 
+    margin: auto; 
+    text-align: center;
+}
+
+.Main__navactive{
+    background-color: #000;
+    color: #bdc9d7;
+    font-weight: bold;
+}
+
+.Main__navlink{
+    text-decoration: none; 
+    color: inherit;
+}
+
+
+.Header__welcometext{
+    width: max-content;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
+}
+
+.Header__welcometext > p{
+    width: max-content;
+    color: #111111;
+    font-weight: bold;
+    overflow: hidden;
+    border-right: .15em solid #747c89; /* The typwriter cursor */
+    white-space: nowrap; 
+    margin: 0 auto;
+    letter-spacing: .05em; /* Adjust as needed */
+    animation-name: typing, blink-caret;
+    animation-duration: 5s, 1s;
+    animation-timing-function: steps(30, end), steps(1, end);
+    animation-iteration-count: infinite, infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  50% { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #747c89 }
+}
+
+
+
+#Qualif__content{
+    width:80%; 
+    text-align: center; 
+    margin: auto; 
+    margin-top: 60px;
+}
+
+.Qualif__table{
+    background-color: #b6bdcc;
+    border: 4px solid #747c89; 
+    text-align: center; 
+    padding: 1px; 
+    margin:auto;
+    font-size: 16px;
+}
+
+.Qualif__tableHead{
+    width: 60px; 
+    background-color:#747c89; 
+    color: #ffffff;
+}
+
+.Qualif__tableCell{
+    padding-top: 10px; 
+    padding-bottom: 10px;
+}
+
+
+
+.Contact__form{
+    width: 30%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 40px;
+}
+
+.Contact__textIn, .Contact__selectIn{
+    width: 240px;
+    margin-left: 40px;
+    padding: 6px;
+    font-size: 12px;
+    border: 0px;
+    border-bottom: 1px solid;
+}
+
+.Contact__areaIn{
+    height: 240px;
+    width: 400px;
+    padding: 10px;
+}
+
+.Contact__submit{
+    margin-right: 40px; 
+    border-style: none; 
+    background-color: #747c89; 
+    color: #ffffff; 
+    font-size: 16px; 
+    padding:10px; 
+    border-radius: 5px;
+}
+
+
+#Events__content{
+    width:80%; 
+    text-align: center; 
+    margin: auto; 
+    margin-top: 60px;
+}
+
+.Events__wrapper{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Events__unitWrapper{
+    display: flex;
+    justify-content:stretch;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}   
+
+.Events__logo{
+    width: 50%;
+    height: auto;
+}
+
+.Events__descWrapper{
+    width: 50%;
+}
+
+.Events__title{
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.Events__date{
+    font-weight: normal;
+    font-size: 16px;
+}
+
+.Events__location{
+    font-weight: normal;
+    font-size: 14px;
+}
+
+.Events__register{
+    font-weight: normal;
+    font-size: 16px;
+    color: #e0d207;
+    font-weight: bold;
+}
+
+
+#Home__content{
+    width:30%; 
+    text-align: center; 
+    margin: auto; 
+    margin-top: 120px;
+}
+
+#Home__nameWrapper{
+    background-color: #000000;
+    color: #ffffff;
+    padding: 30px;
+    margin-top: 40px;
+    border-style: solid;
+    border-color: #ffffff;
+    border-width: 4px;
+    border-radius: 10px;
+    font-family: sans-serif
+}
+
+#Home__nameWrapper:hover{
+    animation-name: swing;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+
+@keyframes swing
+{
+    15%
+    {
+        -webkit-transform: translateX(5px);
+        transform: translateX(5px);
+    }
+    30%
+    {
+        -webkit-transform: translateX(-5px);
+        transform: translateX(-5px);
+    }
+    50%
+    {
+        -webkit-transform: translateX(3px);
+        transform: translateX(3px);
+    }
+    65%
+    {
+        -webkit-transform: translateX(-3px);
+        transform: translateX(-3px);
+    }
+    80%
+    {
+        -webkit-transform: translateX(2px);
+        transform: translateX(2px);
+    }
+    100%
+    {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+
+#Home__content > a{
+    font-size: inherit;
+    color: inherit;
+    text-decoration: none;
+}
+
+.Home__namecontent{
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.Home__contact{
+    font-size: 12px;
+    font-style: italic;
+}
+
+.Home__affil{
+    font-size: 16px;
+}
+
+
+#Tossn__content{
+    width:50%; 
+    text-align: center; 
+    margin: auto; 
+    margin-top: 100px;
+    line-height: 26px;
+}
+
+#Tossn__contentWrapper{
+    background-color: #00000099;
+    color: #ffffff;
+    padding: 20px;
+    margin-top: 40px;
+    border-style: solid;
+    border-color: #ffffff;
+    border-width: 4px;
+    font-family: sans-serif
+}
+
+.Tossn__namecontent{
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.Tossn__para{
+    font-size: 16px;
+}
+
+
+#Interests__content{
+    width:20%; 
+    text-align: left; 
+    margin: auto; 
+    margin-top: 100px;
+    line-height: 26px;
+}
+
+#Interests__contentWrapper{
+    background-color: #00000099;
+    color: #ffffff;
+    padding: 20px;
+    margin-top: 40px;
+    border-style: solid;
+    border-color: #ffffff;
+    border-width: 4px;
+    font-family: sans-serif
+}
+
+.Interests__namecontent{
+    font-size: 20px;
+    font-weight: bold;
+    padding: 6px;
+}
+
+.Interests__para{
+    font-size: 16px;
+    list-style-type: square;
+}
+
+
+
+.TechConRegister__form{
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 40px;
+}
+
+.TechConRegister__fieldWrapper{
+    width: 60%;
+    display: flex;
+    align-content: space-between;
+    margin: 30px auto 10px;
+}
+
+.TechConRegister__label{
+    width: 400px;
+    height: max-content;
+    margin: auto;
+    text-align: right;
+}
+
+.TechConRegister__inputWrapper{
+    width: max-content;
+    margin-left: 60px;
+    display: block;
+    align-content:space-around;
+}
+
+.TechConRegister__textIn, .TechConRegister__selectIn, .TechConRegister__radioIn, .TechConRegister__checkboxIn, .TechConRegister__fileIn{
+    width: 240px;
+    padding: 6px;
+    font-size: 12px;
+    border: 0px;
+    border-bottom: 1px solid;
+}
+
+#TechConRegister__skillIn{
+    display: none;
+}
+
+.TechConRegister__radioIn{
+    border-bottom: 0px;
+}
+
+.TechConRegister__areaIn{
+    height: 200px;
+    width: 400px;
+    padding: 10px;
+}
+
+.TechConRegister__submit{
+    margin-right: 40px; 
+    border-style: none; 
+    background-color: #747c89; 
+    color: #ffffff; 
+    font-size: 16px; 
+    padding:10px; 
+    border-radius: 5px;
+}
+
+.TechConRegister__fieldError{
+    color: #c02626;
+    font-size: 12px;
+    margin: 0px;
+    margin-top: 1px;
+    font-weight: bold;
+}
+
+.TechConRegister__skillLabel{
+    color: #ffffff;
+    background-color: #696767;
+    font-size: 14px;
+    border-radius: 4px;
+    padding: 6px;
+    margin: 6px;
+    width: max-content;
+}
+
+#TechConRegister__skillWrapper{
+    display: block; 
+}
+
+#TechConRegister__skillSelected, #TechConRegister__skillAvailable{
+    background-color: #bdc9d7;
+    padding: 10px 0px;
+    height: max-content;
+    width: 240px;
+    margin: 10px 0px;   
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+#TechConRegister__skillsInWrapper{
+    width: 240px;
+}
+
+#TechConRegister__hobbiesIn{
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 0px;
+}
+
+#TechConRegister__hobbiesIn div{
+    width: 50%;
+    text-align: left;
+}
+
+.TechConRegister__skillsTitle{
+    flex-basis: 100%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 14px;
+    
+}
+
+.TechConResponse__table{
+    background-color: #b6bdcc;
+    border: 4px solid #747c89; 
+    text-align: center; 
+    padding: 1px; 
+    margin:auto;
+    margin-top: 50px;
+    font-size: 16px;
+    width: 40%;
+}
+
+.TechConResponse__tableHead{
+    width: 60px; 
+    background-color:#747c89; 
+    color: #ffffff;
+    padding: 10px;
+}
+
+.TechConResponse__tableCell{
+    padding-top: 10px; 
+    padding-bottom: 10px;
+    border-right: 2px;
+}
+
+
+#Main__clockWrapper{
+    text-align: right;
+    margin: 0px 80px 0px;
+}
+
+#Main__clock{
+    color: #ffffff;
+    background-color:#464444;
+    font-size: 20px;
+    padding: 6px;
+}
+
+.TechConResponse__tableList{
+    list-style: none;
+}
+
+#TechConRegister__buttonWrapper{
+    display: flex;
+    align-content: space-between;
+    justify-content: center;
+}
+
+#TechConRegister__submit, #TechConRegister__reset{
+    width: 140px;
+    height: 40px;
+    font-size: 16px;
+    background-color:#464444;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    margin: 10px;
+}
