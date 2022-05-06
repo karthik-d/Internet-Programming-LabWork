@@ -2,6 +2,7 @@ package SkillTest.Controller;
 
 import SkillTest.utils.*;
 import SkillTest.Model.TechConRegistration;
+import SkillTest.Interface.*;
 import SkillTest.Exception.*;
 
 import javax.servlet.*;
@@ -18,13 +19,17 @@ public class TechConRegister extends HttpServlet{
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String form_render = request.getParameter("form");
-        if(form_render!=null && form_render.equals("render")){            
+        if(form_render==null){
+            RequestDispatcher view = request.getRequestDispatcher(getViewPath("about.html"));
+            view.forward(request, response);
+        }
+        else if(form_render.equals("render")){            
             RequestDispatcher view = request.getRequestDispatcher(getViewPath("registration.html"));
             view.forward(request, response);
         }
-        else{            
-            RequestDispatcher view = request.getRequestDispatcher(getViewPath("about.html"));
-            view.forward(request, response);
+        else{
+            /* assume value is an email address and render corresponding form data */
+            ;           
         }
     }
 
@@ -57,7 +62,7 @@ public class TechConRegister extends HttpServlet{
 
             // Seed the database
             TechConRegistration registration_handle = new TechConRegistration();
-            registration_handle.addRegistration(
+            RegistrationData registered_data = registration_handle.addRegistration(
                 f_email,
                 f_name,
                 f_clg_name,
@@ -79,23 +84,5 @@ public class TechConRegister extends HttpServlet{
         catch(Exception e){
             System.out.println("ERROR: " + e);
         }
-        
-
-        /*
-        let form_fields = {
-        "fullname": "Full Name",
-        "colgname": "College Name",
-        "colgaddr": "College Address",
-        "colgPin": "PIN Code",
-        "age": "Age",
-        "dob": "Date of Birth",
-        "gender": "Gender",
-        "department": "Department",
-        "contact": "Contact Number",
-        "email": "Email ID",
-        "skills": "Programming Skills",
-        "letter": "Consent Letter"
-        }
-        */
     }
 }

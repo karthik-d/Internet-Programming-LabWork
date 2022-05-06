@@ -19,7 +19,7 @@ public class TechConRegistration
 		Connection con = DriverManager.getConnection(db_url, db_user, db_password);
 		System.out.println("con--->"+con);
 		
-        /* Insert data */
+        /* Insert data into main registration */
 		Statement st = con.createStatement();
 		String query = String.format(
             "INSERT INTO techcon_registrations VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
@@ -35,9 +35,6 @@ public class TechConRegistration
             email,
             letter
         );
-
-        System.out.println(query);
-
         try{
             st.executeUpdate(query);
         }
@@ -48,11 +45,56 @@ public class TechConRegistration
         catch(Exception e){
             System.out.println(e);
         }
+
+        /* Add into `skills` */
+        query = "INSERT INTO techcon_skills VALUES";
+        for(int i=0;i<skills.size();i++){            
+            query += "('%s', '%s'),";
+            query = String.format(query, email, skills.get(i));
+        }
+        query = query.substring(0, query.length()-1) + ";";
+        try{
+            System.out.println(query);
+            st.executeUpdate(query);
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
 		
-        System.out.println("DONE");
+        /* Add into `hobbies` */
+        query = "INSERT INTO techcon_hobbies VALUES";
+        for(int i=0;i<hobbies.size();i++){            
+            query += "('%s', '%s'),";
+            query = String.format(query, email, hobbies.get(i));
+        }
+        query = query.substring(0, query.length()-1) + ";";
+        try{
+            System.out.println(query);
+            st.executeUpdate(query);
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+
+        System.out.println("Registered in DB");
 		st.close();
 		con.close();
-		return (new RegistrationData());
+
+		return (new RegistrationData(
+            email,
+            name,
+            clg_name,
+            clg_addr, 
+            clg_pin,
+            age,
+            dob,
+            gender,
+            department,
+            contact,
+            skills,
+            hobbies,
+            letter
+        ));
 	}
 
     /*
