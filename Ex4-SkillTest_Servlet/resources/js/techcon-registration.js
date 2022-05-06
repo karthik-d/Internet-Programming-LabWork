@@ -261,7 +261,7 @@ function renderRegisterIfRegistering(deadline) {
     if (deadline_date >= today) {
         document.
             getElementById('TechConMain__navlist').
-            innerHTML += '<li class="Main__navitem"><a href="registration.html" class="Main__navlink">Register</a></li>|';
+            innerHTML += '<li class="Main__navitem"><a href="register?form=render" class="Main__navlink">Register</a></li>|';
 
         document.
             getElementById('TechConEvents__registerMsg').

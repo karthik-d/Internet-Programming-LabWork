@@ -28,8 +28,19 @@ public class TechConRegister extends HttpServlet{
             view.forward(request, response);
         }
         else{
-            /* assume value is an email address and render corresponding form data */
-            ;           
+            try{
+                TechConRegistration registration_handle = new TechConRegistration();
+                RegistrationData form_view = registration_handle.getRegistration(form_render);
+                request.setAttribute("regdata", form_view);
+                RequestDispatcher view = request.getRequestDispatcher(getViewPath("registration-response.jsp"));
+                view.forward(request, response);
+            }
+            catch(RegistrationNotFoundException e){
+                System.out.println("Could not find registration");
+            }
+            catch(Exception e){
+                System.out.println(e);
+            }
         }
     }
 

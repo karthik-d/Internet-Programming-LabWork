@@ -97,6 +97,71 @@ public class TechConRegistration
         ));
 	}
 
+    public RegistrationData getRegistration(String email) throws Exception{
+
+        Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+        Connection con = DriverManager.getConnection(db_url, db_user, db_password);
+        Statement st = con.createStatement();
+
+        /* Get registration data */
+        String query = String.format(
+            "SELECT fullname, college, college_addr, college_pin, age, dob, gender, department, contact, letter FROM techcon_registrations WHERE email='%s';", 
+            email
+        );
+        ResultSet rs = st.executeQuery(query);
+        String name, clg_name, clg_addr, clg_pin, age, dob, gender, department, contact, letter;
+        if(rs.next()){
+            name = rs.getString(1);
+            clg_name = rs.getString(2);
+            clg_addr = rs.getString(3);
+            clg_pin = rs.getString(4);
+            age = rs.getString(5);
+            dob = rs.getString(6);
+            gender = rs.getString(7);
+            department = rs.getString(8);
+            contact = rs.getString(9);
+            letter = rs.getString(10);
+        }
+        else{
+            throw new RegistrationNotFoundException("No registrations under this email");
+        }
+
+        /* Retreive skills */
+        ArrayList<String> skills = new ArrayList<String>();
+        query = String.format("SELECT skill FROM techcon_skills WHERE email='%s'", email);
+        rs = st.executeQuery(query);
+        while(rs.next()){
+            skills.add(rs.getString(1));
+        } 
+
+        /* Retreive hobbies */
+        ArrayList<String> hobbies = new ArrayList<String>();
+        query = String.format("SELECT hobby FROM techcon_hobbies WHERE email='%s'", email);
+        rs = st.executeQuery(query);
+        while(rs.next()){
+            hobbies.add(rs.getString(1));
+        } 
+
+        System.out.println("Retreived registration data");
+
+        return (new RegistrationData(
+            email,
+            name,
+            clg_name,
+            clg_addr, 
+            clg_pin,
+            age,
+            dob,
+            gender,
+            department,
+            contact,
+            skills,
+            hobbies,
+            letter
+        ));
+        
+    }
+
     /*
     CREATE TABLE techcon_registrations( fullname VARCHAR(30), college VARCHAR(20), college_addr VARCHAR(40), college_pin VARCHAR(10), age VARCHAR(4), dob DATE, gender  VARCHAR(10), department VARCHAR(10), contact VARCHAR(10), email VARCHAR(20) PRIMARY KEY, letter VARCHAR(20) );
 
