@@ -2,6 +2,7 @@ package SkillTest.Controller;
 
 import SkillTest.utils.*;
 import SkillTest.Model.TechConRegistration;
+import SkillTest.Exception.*;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -71,6 +72,9 @@ public class TechConRegister extends HttpServlet{
                 StringManip.splitStringByChar(f_skills, '|'),
                 f_letter
             );
+        }
+        catch(AlreadyRegisteredException e){
+            System.out.println("Already Registered!");
         }
         catch(Exception e){
             System.out.println("ERROR: " + e);

@@ -1,5 +1,8 @@
 package SkillTest.Model;
+
 import SkillTest.Interface.*;
+import SkillTest.Exception.*;
+
 import java.util.*;
 import java.sql.*;
 
@@ -37,6 +40,10 @@ public class TechConRegistration
 
         try{
             st.executeUpdate(query);
+        }
+        catch(SQLIntegrityConstraintViolationException e){
+            /* Email already registered */
+            throw new AlreadyRegisteredException("Email already registered");
         }
         catch(Exception e){
             System.out.println(e);
