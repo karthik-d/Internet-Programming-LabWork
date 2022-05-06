@@ -12,7 +12,7 @@
 
 <servlet>
 <servlet-name>TechConRegistration</servlet-name>
-<servlet-class>SkillTest.Controller.TechConRegistration</servlet-class>
+<servlet-class>SkillTest.Controller.TechConRegister</servlet-class>
 </servlet>
 
 <servlet-mapping>
