@@ -1,4 +1,7 @@
 package SkillTest.Interface;
+
+import SkillTest.utils.StringManip;
+
 import java.util.*;
 
 public class RegistrationData{
@@ -24,6 +27,7 @@ public class RegistrationData{
         this.email = email;
         this.name = name;
         this.clg_name = clg_name;
+        this.clg_addr = clg_addr;
         this.clg_pin = clg_pin;
         this.age = age;
         this.dob = dob;
@@ -41,6 +45,50 @@ public class RegistrationData{
 
     public String getEmail(){
         return this.email;
+    }
+
+    public String getCollegeName(){
+        return this.clg_name;
+    }
+
+    public String getCollegeAddr(){
+        return this.clg_addr;
+    }
+
+    public String getCollegePin(){
+        return this.clg_pin;
+    }
+
+    public String getAge(){
+        return this.age;
+    }
+
+    public String getDob(){
+        return this.dob;
+    }
+
+    public String getGender(){
+        return this.gender;
+    }
+
+    public String getDepartment(){
+        return this.department;
+    }
+
+    public String getContact(){
+        return this.contact;
+    }
+
+    public String getSkills(){
+        return StringManip.stringReprOfArrayList(this.skills);
+    }
+
+    public String getHobbies(){
+        return StringManip.stringReprOfArrayList(this.hobbies);
+    }
+
+    public String getLetter(){
+        return this.letter;
     }
 
 }

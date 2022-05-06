@@ -21,4 +21,16 @@ public class StringManip{
         }
         return parts;
     }
+
+    public static String stringReprOfArrayList(ArrayList arr){
+        String result = "";
+        for(int i=0;i<arr.size();i++){
+            result += arr.get(i);
+            result += ", ";
+        }
+        if(result!=""){
+            result = result.substring(0, result.length()-2);
+        }
+        return result;
+    }
 }

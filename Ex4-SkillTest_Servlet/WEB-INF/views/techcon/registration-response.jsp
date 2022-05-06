@@ -19,62 +19,62 @@
 
             <tr>
                 <td class="TechConResponse__tableCell">College Name</td>
-                <td>${regdata.getEmail()}</td>
+                <td>${regdata.getCollegeName()}</td>
             </tr>
 
             <tr>
                 <td class="TechConResponse__tableCell">College Address</td>
-                <td>Kalavakkam</td>
+                <td>${regdata.getCollegeAddr()}</td>
             </tr>
 
             <tr>
                 <td class="TechConResponse__tableCell">PIN Code</td>
-                <td>603110</td>
+                <td>${regdata.getCollegePin()}</td>
             </tr>
 
             <tr>
                 <td class="TechConResponse__tableCell">Age</td>
-                <td>10</td>
+                <td>${regdata.getAge()}</td>
             </tr>
 
             <tr>
                 <td class="TechConResponse__tableCell">Date of Birth</td>
-                <td>2000-11-18</td>
+                <td>${regdata.getDob()}</td>
             </tr>
 
             <tr>
                 <td class="TechConResponse__tableCell">Gender</td>
-                <td>Male</td>
+                <td>${regdata.getGender()}</td>
             </tr>
 
             <tr>
                 <td class="TechConResponse__tableCell">Department</td>
-                <td>CSE</td>
+                <td>${regdata.getDepartment()}</td>
             </tr>
 
             <tr>
                 <td class="TechConResponse__tableCell">Contact Number</td>
-                <td>9481226526</td>
+                <td>${regdata.getContact()}</td>
             </tr>
 
             <tr>
                 <td class="TechConResponse__tableCell">Email ID</td>
-                <td>karthik@gmail.com</td>
+                <td>${regdata.getEmail()}</td>
             </tr>
 
             <tr>
                 <td class="TechConResponse__tableCell">Programming Skills</td>
-                <td>Java</td>
+                <td>${regdata.getSkills()}</td>
             </tr>
 
             <tr>
                 <td class="TechConResponse__tableCell">Consent Letter</td>
-                <td></td>
+                <td>${regdata.getLetter()}</td>
             </tr>
 
             <tr>
                 <td class="TechConResponse__tableCell">Hobbies</td>
-                <td>Cycling, Reading, Singing</td>
+                <td>${regdata.getHobbies()}</td>
             </tr>
         </tbody>
     </table>
