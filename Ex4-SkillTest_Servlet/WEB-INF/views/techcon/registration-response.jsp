@@ -14,12 +14,12 @@
 
             <tr>
                 <td class=" TechConResponse__tableCell">Full Name</td>
-                <td>${regdata.name}</td>
+                <td>${regdata.getName()}</td>
             </tr>
 
             <tr>
                 <td class="TechConResponse__tableCell">College Name</td>
-                <td>${regdata.colg_name}</td>
+                <td>${regdata.getEmail()}</td>
             </tr>
 
             <tr>
