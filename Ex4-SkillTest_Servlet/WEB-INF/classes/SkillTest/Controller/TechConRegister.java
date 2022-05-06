@@ -48,7 +48,7 @@ public class TechConRegister extends HttpServlet{
             String f_contact = request.getParameter("contact");
             String f_email = request.getParameter("email");
             String f_skills = request.getParameter("skills");
-            // String f_hobbies = request.getParameter("hobbies-1");
+            String f_hobbies = request.getParameter("hobbies");
             String f_letter = request.getParameter("letter");
 
             // Process form fields
@@ -69,7 +69,7 @@ public class TechConRegister extends HttpServlet{
                 f_department,
                 f_contact,
                 StringManip.splitStringByChar(f_skills, '|'),
-                StringManip.splitStringByChar(f_skills, '|'),
+                StringManip.splitStringByChar(f_hobbies, '|'),
                 f_letter
             );
         }

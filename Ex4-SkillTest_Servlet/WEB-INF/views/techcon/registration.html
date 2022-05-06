@@ -189,6 +189,7 @@
                     <p class="TechConRegister__fieldError" id="TechConRegister__dobError">
                     </p>
                 </div>
+                <input type="hidden" id="TechConRegister__hobbiesInHidden" name="hobbies" value="" />
             </div>
 
             <div class="TechConRegister__fieldWrapper">
@@ -203,7 +204,8 @@
         </form>
 
         <div class="TechConRegister__fieldWrapper" id="TechConRegister__buttonWrapper">
-            <button form="TechConRegister__form" id="TechConRegister__submit" onclick="appendSkillIn();">Submit</button>
+            <button form="TechConRegister__form" id="TechConRegister__submit"
+                onclick="appendSkillIn();appendHobbyIn();">Submit</button>
             <button id="TechConRegister__reset" onclick="resetForm('TechConRegister__form');">Reset</button>
         </div>
 

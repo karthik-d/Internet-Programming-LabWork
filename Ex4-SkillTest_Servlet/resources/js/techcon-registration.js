@@ -261,7 +261,7 @@ function renderRegisterIfRegistering(deadline) {
     if (deadline_date >= today) {
         document.
             getElementById('TechConMain__navlist').
-            innerHTML += '<li class="Main__navitem"><a href="register?form=render" class="Main__navlink">Register</a></li>|';
+            innerHTML += '<li class="Main__navitem"><a href="registration.html" class="Main__navlink">Register</a></li>|';
 
         document.
             getElementById('TechConEvents__registerMsg').
@@ -295,6 +295,19 @@ function appendSkillIn() {
         }
     );
     element.value = skill_values.join("|");
+}
+
+function appendHobbyIn() {
+    var hobbies_l = [];
+    var hobby_ips = document.querySelectorAll("input[type='checkbox'][name^='hobby-']");
+    hobby_ips.forEach(
+        function (ip_node, idx, _) {
+            if (ip_node.checked) {
+                hobbies_l.push(ip_node.value)
+            }
+        }
+    );
+    document.getElementById("TechConRegister__hobbiesInHidden").setAttribute("value", hobbies_l.join("|"));
 }
 
 
