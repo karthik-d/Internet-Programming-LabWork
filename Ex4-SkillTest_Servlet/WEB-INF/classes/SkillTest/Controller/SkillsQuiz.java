@@ -23,9 +23,35 @@ public class SkillsQuiz extends HttpServlet{
             
             QuizBank quiz_handle = new QuizBank();
             Quizlet quiz_questions = quiz_handle.getRandomQuestionsForUser(email);
+            System.out.println("HERE:");
+            System.out.println(quiz_questions.getQuestionIds());
 
-            request.setAttribute("quizdata", quiz_questions);
+            /* Construct HTML for Questions */
+            String quiz_html = "";
+            for(int i=0;i<quiz_questions.getQuestions().size();i++){
+                quiz_html += "<div class='TechConRegister__fieldWrapper'><label class='TechConRegister__label'>";
+                quiz_html += quiz_questions.getQuestions().get(i);
+                quiz_html += "<br /></label><div class='TechConRegister__inputWrapper'><div class='TechConRegister__radioIn'>"; 
+                    
+                quiz_html += String.format(
+                    "<input type='radio' name='%s' value='a' required> <label>%s</label><br />",
+                    quiz_questions.getQuestionIds().get(i),
+                    quiz_questions.getOptionAs().get(i)
+                );
+                quiz_html += String.format(
+                    "<input type='radio' name='%s' value='b' required> <label>%s</label><br />",
+                    quiz_questions.getQuestionIds().get(i),
+                    quiz_questions.getOptionBs().get(i)
+                );
+                quiz_html += String.format(
+                    "<input type='radio' name='%s' value='c' required> <label>%s</label><br />",
+                    quiz_questions.getQuestionIds().get(i),
+                    quiz_questions.getOptionCs().get(i)
+                );
+                quiz_html += "</div>";
+            }
 
+            request.setAttribute("quizpalette", quiz_html);
             RequestDispatcher view = request.getRequestDispatcher(getViewPath("quiz.jsp"));
             view.forward(request, response);
         }

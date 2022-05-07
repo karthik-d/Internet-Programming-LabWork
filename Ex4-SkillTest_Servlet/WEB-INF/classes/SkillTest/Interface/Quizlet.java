@@ -24,4 +24,28 @@ public class Quizlet{
         this.correct_options = correct_options;
     }
 
+    public ArrayList getQuestionIds(){
+        return this.question_ids;
+    }
+
+    public ArrayList getQuestions(){
+        return this.questions;
+    }
+
+    public ArrayList getOptionAs(){
+        return this.option_As;
+    }
+
+    public ArrayList getOptionBs(){
+        return this.option_Bs;
+    }
+
+    public ArrayList getOptionCs(){
+        return this.option_Cs;
+    }
+
+    public ArrayList getCorrectOptions(){
+        return this.correct_options;
+    }
+
 }
