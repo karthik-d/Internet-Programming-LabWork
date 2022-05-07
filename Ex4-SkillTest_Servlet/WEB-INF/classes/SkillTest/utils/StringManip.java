@@ -33,4 +33,16 @@ public class StringManip{
         }
         return result;
     }
+
+    public static String makeSqlChoiceList(ArrayList arr){
+        String result = "('";
+        for(int i=0;i<arr.size();i++){
+            result += arr.get(i);
+            result += "', '";
+        }
+        if(result!="('"){
+            result = result.substring(0, result.length()-4);
+        }
+        return result;
+    }
 }
