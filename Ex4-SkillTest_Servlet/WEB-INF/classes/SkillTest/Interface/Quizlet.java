@@ -1,5 +1,7 @@
 package SkillTest.Interface;
 
+import java.util.*;
+
 public class Quizlet{
 
     ArrayList<String> questions = null;

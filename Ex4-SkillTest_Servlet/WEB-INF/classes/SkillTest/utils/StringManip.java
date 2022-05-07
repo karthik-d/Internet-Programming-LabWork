@@ -41,7 +41,8 @@ public class StringManip{
             result += "', '";
         }
         if(result!="('"){
-            result = result.substring(0, result.length()-4);
+            result = result.substring(0, result.length()-3);
+            result += ")";
         }
         return result;
     }

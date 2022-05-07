@@ -20,4 +20,14 @@
 <url-pattern>/register</url-pattern>
 </servlet-mapping>
 
+<servlet>
+<servlet-name>TechConQuiz</servlet-name>
+<servlet-class>SkillTest.Controller.SkillsQuiz</servlet-class>
+</servlet>
+
+<servlet-mapping>
+<servlet-name>TechConQuiz</servlet-name>
+<url-pattern>/quiz</url-pattern>
+</servlet-mapping>
+
 </web-app>
