@@ -357,11 +357,23 @@ body{
     margin: 30px auto 10px;
 }
 
+.TechConRegister__QfieldWrapper{
+    width: 100%;
+    margin: 20px 80px;
+}
+
 .TechConRegister__label{
     width: 400px;
     height: max-content;
     margin: auto;
     text-align: right;
+}
+
+.TechConRegister__Qlabel{
+    width: 400px;
+    height: max-content;
+    margin: auto;
+    text-align: left;
 }
 
 .TechConRegister__inputWrapper{

@@ -2,6 +2,9 @@
 
 <head>
     <title>Skills Quiz</title>
+    <link rel="stylesheet" href="resources/css/techcon-styles.css">
+    <script src="resources/js/techcon-registration.js"></script>
+    <!-- <script src="/home/karthikd/Workspace/Academics/Semester_6/IP_Lab/Ex3_Form+JS/scripts/registration.js"></script> -->
 </head>
 
 <body onload="startClock();">

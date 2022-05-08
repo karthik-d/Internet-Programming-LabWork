@@ -29,8 +29,12 @@ public class SkillsQuiz extends HttpServlet{
             /* Construct HTML for Questions */
             String quiz_html = "";
             for(int i=0;i<quiz_questions.getQuestions().size();i++){
-                quiz_html += "<div class='TechConRegister__fieldWrapper'><label class='TechConRegister__label'>";
-                quiz_html += quiz_questions.getQuestions().get(i);
+                quiz_html += "<div class='TechConRegister__QfieldWrapper'><label class='TechConRegister__Qlabel'>";
+                quiz_html += String.format(
+                    "Q%d: %s",
+                    i+1,
+                    quiz_questions.getQuestions().get(i)
+                );
                 quiz_html += "<br /></label><div class='TechConRegister__inputWrapper'><div class='TechConRegister__radioIn'>"; 
                     
                 quiz_html += String.format(
@@ -48,7 +52,7 @@ public class SkillsQuiz extends HttpServlet{
                     quiz_questions.getQuestionIds().get(i),
                     quiz_questions.getOptionCs().get(i)
                 );
-                quiz_html += "</div>";
+                quiz_html += "</div></div></div>";
             }
 
             request.setAttribute("quizpalette", quiz_html);
