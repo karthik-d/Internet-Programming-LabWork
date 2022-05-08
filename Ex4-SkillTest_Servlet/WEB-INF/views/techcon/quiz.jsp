@@ -25,8 +25,13 @@
     </div>
 
     <div id="TechConRegister__content" style="font-size: 16px; margin: 10px">
-        <form class="TechConRegister__form" id="TechConRegister__form" method="POST" action="/Ex4-SkillTest/quiz">
+        <form class="TechConRegister__form" id="TechConQuiz__form" method="POST" action="/Ex4-SkillTest/quiz">
             ${quizpalette}
+            <div class="TechConRegister__fieldWrapper" id="TechConRegister__buttonWrapper">
+                <button form="TechConQuiz__form" id="TechConRegister__submit">
+                    Submit
+                </button>
+            </div>
         </form>
     </div>
 

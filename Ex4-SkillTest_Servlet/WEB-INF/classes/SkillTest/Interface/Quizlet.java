@@ -10,6 +10,7 @@ public class Quizlet{
     ArrayList<String> option_Bs = null;
     ArrayList<String> option_Cs = null;
     ArrayList<String> correct_options = null;
+    ArrayList<String> skills = null;
 
     public Quizlet(ArrayList question_ids, ArrayList questions, ArrayList option_As, ArrayList option_Bs, ArrayList option_Cs){
         this.question_ids = question_ids;
@@ -19,9 +20,10 @@ public class Quizlet{
         this.option_Cs = option_Cs;
     }
 
-    public Quizlet(ArrayList question_ids, ArrayList correct_options){
+    public Quizlet(ArrayList question_ids, ArrayList correct_options, ArrayList skills){
         this.question_ids = question_ids;
         this.correct_options = correct_options;
+        this.skills = skills;
     }
 
     public ArrayList getQuestionIds(){
@@ -46,6 +48,10 @@ public class Quizlet{
 
     public ArrayList getCorrectOptions(){
         return this.correct_options;
+    }
+
+    public ArrayList getSkills(){
+        return this.skills;
     }
 
 }

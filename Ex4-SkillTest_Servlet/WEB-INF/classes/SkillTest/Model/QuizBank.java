@@ -14,9 +14,11 @@ public class QuizBank{
 	String db_password = "ssnce";
 
     public Quizlet getRandomQuestionsForUser(String email) throws Exception{
+        
         Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
         Connection con = DriverManager.getConnection(db_url, db_user, db_password);
         Statement st = con.createStatement();
+        
         /* Get the user's skills */
         ArrayList<String> skills = new ArrayList<String>();
         String query = String.format("SELECT skill FROM techcon_skills WHERE email='%s'", email);
@@ -30,6 +32,7 @@ public class QuizBank{
             }while(rs.next());
         }
         System.out.println(StringManip.makeSqlChoiceList(skills));
+        
         /* Collect questions for each skill */
         ArrayList<String> question_ids = new ArrayList<String>();
         ArrayList<String> questions = new ArrayList<String>();
@@ -54,6 +57,31 @@ public class QuizBank{
         System.out.println(questions);
 
         return new Quizlet(question_ids, questions, option_As, option_Bs, option_Cs);
+    }
+
+    public Quizlet getVerificationPaletteForQuestions(ArrayList question_ids) throws Exception{
+        
+        Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+        Connection con = DriverManager.getConnection(db_url, db_user, db_password);
+        Statement st = con.createStatement();
+
+        /* Collect responses */
+        String query = String.format(
+            "SELECT id, correct_option,skill FROM techcon_questions WHERE id IN %s ORDER BY skill",
+            StringManip.makeSqlChoiceList(question_ids)
+        );
+        ResultSet rs = st.executeQuery(query);
+
+        /*Make and return palette */
+        ArrayList<String> q_ids = new ArrayList<String>();
+        ArrayList<String> correct_options = new ArrayList<String>();
+        ArrayList<String> skills = new ArrayList<String>();
+        while(rs.next()){
+            q_ids.add(rs.getString(1));
+            correct_options.add(rs.getString(2));
+            skills.add(rs.getString(3));
+        } 
+        return new Quizlet(q_ids, correct_options, skills);
     }
 
     /*
