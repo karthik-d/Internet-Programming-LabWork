@@ -91,6 +91,8 @@ public class SkillsQuiz extends HttpServlet{
             String curr_skill;
             String prev_skill = "";
             int score_set_idx = -1;
+            int scored_total = 0;
+            int possible_total = 0;
             for(int i=0;i<verify_palette.getSkills().size();i++){
                 curr_skill = verify_palette.getSkills().get(i).toString();
                 if(!curr_skill.equals(prev_skill)){
@@ -105,9 +107,30 @@ public class SkillsQuiz extends HttpServlet{
                 )){
                     // Correct response
                     scores.set(score_set_idx, scores.get(score_set_idx)+10);
+                    scored_total += 10;
                 }
+                possible_total += 10;
                 totals.set(score_set_idx, totals.get(score_set_idx)+1);
             }
+
+            /* Make HTML for result table */
+            String result_html = "";
+            for(int i=0;i<skills.size();i++){
+                result_html += "<tr><td class='Qualif__tableCell'>";
+                result_html += skills.get(i);
+                result_html += "</td><td>";
+                result_html += scores.get(i);
+                result_html += "</td><td>";
+                result_html += String.format("%d", totals.get(i)*10);
+                result_html += "</td></tr>";
+            }
+
+            /* Render results */
+            request.setAttribute("resultrows", result_html);
+            request.setAttribute("resulttotal", scored_total);
+            request.setAttribute("possibletotal", possible_total);
+            RequestDispatcher view = request.getRequestDispatcher(getViewPath("quiz-scores.jsp"));
+            view.forward(request, response);
         }
         catch(Exception e){
             System.out.println(e);
