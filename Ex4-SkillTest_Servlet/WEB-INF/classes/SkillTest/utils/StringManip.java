@@ -44,6 +44,9 @@ public class StringManip{
             result = result.substring(0, result.length()-3);
             result += ")";
         }
+        else{
+            result = "";
+        }
         return result;
     }
 }

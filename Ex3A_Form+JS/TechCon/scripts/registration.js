@@ -297,6 +297,12 @@ function appendSkillIn() {
     element.value = skill_values.join("|");
 }
 
+function appendHobbyIn() {
+    var hobbies_l = [];
+    var hobbies_entered = document.querySelectorAll("input[type='checkbox'][name^='hobby-']");
+    console.log(Array.from(hobbies_entered));
+}
+
 
 function resetForm(form_id) {
     document.getElementById(form_id).reset();
