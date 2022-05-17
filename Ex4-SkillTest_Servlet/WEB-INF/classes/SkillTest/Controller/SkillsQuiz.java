@@ -19,7 +19,7 @@ public class SkillsQuiz extends HttpServlet{
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         /* Read email-id from Cookie */
         try{
-            String email = "karthik@gmail.com";
+            String email = "karthi@g.c";
             
             QuizBank quiz_handle = new QuizBank();
             Quizlet quiz_questions = quiz_handle.getRandomQuestionsForUser(email);

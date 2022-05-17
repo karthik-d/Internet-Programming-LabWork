@@ -1,99 +1,174 @@
-package SkillTest.Controller;
+package SkillTest.Model;
 
-import SkillTest.utils.*;
-import SkillTest.Model.TechConRegistration;
 import SkillTest.Interface.*;
 import SkillTest.Exception.*;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import java.io.*;
 import java.util.*;
+import java.sql.*;
 
-public class TechConRegister extends HttpServlet{
-    private String BaseViewsPath = "/WEB-INF/views/techcon";
+public class TechConRegistration
+{
 
-    private String getViewPath(String relPath){
-        return BaseViewsPath + "/" + relPath;
-    }
+	String db_url = "jdbc:mysql://localhost:3306/iplab_db?autoReconnect=true&useSSL=false";
+	String db_user = "iplab_root";
+	String db_password = "ssnce";
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        String form_render = request.getParameter("form");
-        if(form_render==null){
-            RequestDispatcher view = request.getRequestDispatcher(getViewPath("about.html"));
-            view.forward(request, response);
-        }
-        else if(form_render.equals("render")){            
-            RequestDispatcher view = request.getRequestDispatcher(getViewPath("registration.html"));
-            view.forward(request, response);
-        }
-        else{
-            try{
-                TechConRegistration registration_handle = new TechConRegistration();
-                RegistrationData form_view = registration_handle.getRegistration(form_render);
-                request.setAttribute("regdata", form_view);
-                RequestDispatcher view = request.getRequestDispatcher(getViewPath("registration-response.jsp"));
-                view.forward(request, response);
-            }
-            catch(RegistrationNotFoundException e){
-                System.out.println("Could not find registration");
-            }
-            catch(Exception e){
-                System.out.println(e);
-            }
-        }
-    }
-
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-
+	public RegistrationData addRegistration(String email, String name, String clg_name, String clg_addr, String clg_pin, String age, String dob, String gender, String department, String contact, ArrayList skills, ArrayList hobbies, String letter) throws Exception{
+		/* Insert form fields */
+		Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+		Connection con = DriverManager.getConnection(db_url, db_user, db_password);
+		System.out.println("con--->"+con);
+		
+        /* Insert data into main registration */
+		Statement st = con.createStatement();
+		String query = String.format(
+            "INSERT INTO techcon_registrations VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+            name,
+            clg_name,
+            clg_addr,
+            clg_pin,
+            age,
+            dob,
+            gender,
+            department,
+            contact,
+            email,
+            letter
+        );
         try{
-            Enumeration paramNames = request.getParameterNames();
-            while(paramNames.hasMoreElements()){
-                System.out.println(paramNames.nextElement());
-            }
-
-            // Read form fields
-            String f_name = request.getParameter("fullname");
-            String f_clg_name = request.getParameter("colgname");
-            String f_clg_addr = request.getParameter("colgaddr");
-            String f_clg_pin = request.getParameter("colgPin");
-            String f_age = request.getParameter("age");
-            String f_dob = request.getParameter("dob");
-            String f_gender = request.getParameter("gender");
-            String f_department = request.getParameter("department");
-            String f_contact = request.getParameter("contact");
-            String f_email = request.getParameter("email");
-            String f_skills = request.getParameter("skills");
-            String f_hobbies = request.getParameter("hobbies");
-            String f_letter = request.getParameter("letter");
-
-            // Process form fields
-            ArrayList<String> skills_l = StringManip.splitStringByChar(f_skills, '|');
-            System.out.println(StringManip.splitStringByChar(f_skills, '|'));
-
-            // Seed the database
-            TechConRegistration registration_handle = new TechConRegistration();
-            RegistrationData registered_data = registration_handle.addRegistration(
-                f_email,
-                f_name,
-                f_clg_name,
-                f_clg_addr,
-                f_clg_pin,
-                f_age,
-                f_dob,
-                f_gender,
-                f_department,
-                f_contact,
-                StringManip.splitStringByChar(f_skills, '|'),
-                StringManip.splitStringByChar(f_hobbies, '|'),
-                f_letter
-            );
+            st.executeUpdate(query);
         }
-        catch(AlreadyRegisteredException e){
-            System.out.println("Already Registered!");
+        catch(SQLIntegrityConstraintViolationException e){
+            /* Email already registered */
+            throw new AlreadyRegisteredException("Email already registered");
         }
         catch(Exception e){
-            System.out.println("ERROR: " + e);
+            System.out.println(e);
         }
+
+        /* Add into `skills` */
+        query = "INSERT INTO techcon_skills VALUES";
+        for(int i=0;i<skills.size();i++){            
+            query += "('%s', '%s'),";
+            query = String.format(query, email, skills.get(i));
+        }
+        query = query.substring(0, query.length()-1) + ";";
+        try{
+            System.out.println(query);
+            st.executeUpdate(query);
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+		
+        /* Add into `hobbies` */
+        query = "INSERT INTO techcon_hobbies VALUES";
+        for(int i=0;i<hobbies.size();i++){            
+            query += "('%s', '%s'),";
+            query = String.format(query, email, hobbies.get(i));
+        }
+        query = query.substring(0, query.length()-1) + ";";
+        try{
+            System.out.println(query);
+            st.executeUpdate(query);
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+
+        System.out.println("Registered in DB");
+		st.close();
+		con.close();
+
+		return (new RegistrationData(
+            email,
+            name,
+            clg_name,
+            clg_addr, 
+            clg_pin,
+            age,
+            dob,
+            gender,
+            department,
+            contact,
+            skills,
+            hobbies,
+            letter
+        ));
+	}
+
+    public RegistrationData getRegistration(String email) throws Exception{
+
+        Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+        Connection con = DriverManager.getConnection(db_url, db_user, db_password);
+        Statement st = con.createStatement();
+
+        /* Get registration data */
+        String query = String.format(
+            "SELECT fullname, college, college_addr, college_pin, age, dob, gender, department, contact, letter FROM techcon_registrations WHERE email='%s';", 
+            email
+        );
+        ResultSet rs = st.executeQuery(query);
+        String name, clg_name, clg_addr, clg_pin, age, dob, gender, department, contact, letter;
+        if(rs.next()){
+            name = rs.getString(1);
+            clg_name = rs.getString(2);
+            clg_addr = rs.getString(3);
+            clg_pin = rs.getString(4);
+            age = rs.getString(5);
+            dob = rs.getString(6);
+            gender = rs.getString(7);
+            department = rs.getString(8);
+            contact = rs.getString(9);
+            letter = rs.getString(10);
+        }
+        else{
+            throw new RegistrationNotFoundException("No registrations under this email");
+        }
+
+        /* Retreive skills */
+        ArrayList<String> skills = new ArrayList<String>();
+        query = String.format("SELECT skill FROM techcon_skills WHERE email='%s'", email);
+        rs = st.executeQuery(query);
+        while(rs.next()){
+            skills.add(rs.getString(1));
+        } 
+
+        /* Retreive hobbies */
+        ArrayList<String> hobbies = new ArrayList<String>();
+        query = String.format("SELECT hobby FROM techcon_hobbies WHERE email='%s'", email);
+        rs = st.executeQuery(query);
+        while(rs.next()){
+            hobbies.add(rs.getString(1));
+        } 
+
+        System.out.println("Retreived registration data");
+
+        return (new RegistrationData(
+            email,
+            name,
+            clg_name,
+            clg_addr, 
+            clg_pin,
+            age,
+            dob,
+            gender,
+            department,
+            contact,
+            skills,
+            hobbies,
+            letter
+        ));
+        
     }
+
+    /*
+    CREATE TABLE techcon_registrations( fullname VARCHAR(30), college VARCHAR(20), college_addr VARCHAR(40), college_pin VARCHAR(10), age VARCHAR(4), dob DATE, gender  VARCHAR(10), department VARCHAR(10), contact VARCHAR(10), email VARCHAR(20) PRIMARY KEY, letter VARCHAR(20) );
+
+    CREATE TABLE techcon_skills( email VARCHAR(20), skill VARCHAR(20), FOREIGN KEY (email) REFERENCES techcon_registrations(email) );
+
+    CREATE TABLE techcon_hobbies( email VARCHAR(20), hobby VARCHAR(20), FOREIGN KEY (email) REFERENCES techcon_registration(email) );
+
+    */
+
 }
