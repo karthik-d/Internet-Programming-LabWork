@@ -117,6 +117,9 @@ public class TechConRegister extends HttpServlet{
             String f_hobbies = request.getParameter("hobbies");
             String f_letter = request.getParameter("letter");
 
+            // Hidden form field
+            String user_email_hidden = request.getParameter("user_email");
+
             // Process form fields
             ArrayList<String> skills_l = StringManip.splitStringByChar(f_skills, '|');
             System.out.println(StringManip.splitStringByChar(f_skills, '|'));
@@ -139,7 +142,7 @@ public class TechConRegister extends HttpServlet{
                 f_letter
             );
             response.sendRedirect(
-                String.format("http://localhost:8080/E5-Sessions/register?form=%s", user_email)
+                String.format("http://localhost:8080/E5-Sessions/register?form=%s", user_email_hidden)
             );
         }
         catch(AlreadyRegisteredException e){

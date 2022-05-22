@@ -210,6 +210,9 @@
             <button id="TechConRegister__reset" onclick="resetForm('TechConRegister__form');">Reset</button>
         </div>
 
+        <input type="hidden" name="user_email" value="${useremail}" />
+
+        `
     </div>
 </body>
 
