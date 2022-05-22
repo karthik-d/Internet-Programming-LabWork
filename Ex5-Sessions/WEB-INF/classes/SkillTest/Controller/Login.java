@@ -16,6 +16,15 @@ public class Login extends HttpServlet{
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        String action = request.getParameter("action");
+        if(action!=null && action.equals("logout")){
+            // destroy the current session --- unset cookie
+            HttpSession session = request.getSession(false);
+            if(session!=null){
+                session.invalidate();
+            }
+        }
+        // always render the login page!
         RequestDispatcher view = request.getRequestDispatcher(getViewPath("login.html"));
         view.forward(request, response);
     }
