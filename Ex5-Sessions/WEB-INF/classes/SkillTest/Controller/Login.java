@@ -102,6 +102,7 @@ public class Login extends HttpServlet{
         {
             System.out.println("HERE:" + E);
         }
+        render.println("<br /><a href='http://localhost:8080/E5-Sessions/register'>TechCon Event Registration</a>");
         render.println("</p>");
     }
 }

@@ -18,13 +18,37 @@ public class TechConRegister extends HttpServlet{
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+
+        Cookie cks[] = request.getCookies();
+        String user_email = null;
+        for(int i=0;i<cks.length;i++){
+            System.out.println("Checking cookie: " + cks[i].getName());
+            if(cks[i].getName().equals("login_email")){
+                user_email = cks[i].getValue();
+                break;
+            }
+        }
+
+        // Enforce Login
+        if(user_email==null){
+            response.setContentType("text/html");
+            PrintWriter render = response.getWriter();
+            System.out.println("Registration --> user NOT logged in");
+            render.println("<p>");
+            render.println("You must be logged in to view this page");
+            render.println("<br /><a href='http://localhost:8080/E5-Sessions/login'>Login Page</a>");
+            render.println("</p>");
+            return;
+        }
+
         String form_render = request.getParameter("form");
         if(form_render==null){
             RequestDispatcher view = request.getRequestDispatcher(getViewPath("about.html"));
             view.forward(request, response);
         }
         else if(form_render.equals("render")){            
-            RequestDispatcher view = request.getRequestDispatcher(getViewPath("registration.html"));
+            RequestDispatcher view = request.getRequestDispatcher(getViewPath("registration.jsp"));
+            request.setAttribute("useremail", user_email);
             view.forward(request, response);
         }
         else{

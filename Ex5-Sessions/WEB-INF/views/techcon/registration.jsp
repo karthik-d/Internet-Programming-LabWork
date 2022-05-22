@@ -134,7 +134,7 @@
                 <div class="TechConRegister__inputWrapper">
                     <input type="email" id="email_in" name="email" placeholder="Email ID is..."
                         class="TechConRegister__textIn" onblur="validateEmail(event);" oninvalid="alertFormError();"
-                        required>
+                        required readonly value="${useremail}">
                     <p class="TechConRegister__fieldError" id="TechConRegister__emailError"></p>
                 </div>
             </div>
