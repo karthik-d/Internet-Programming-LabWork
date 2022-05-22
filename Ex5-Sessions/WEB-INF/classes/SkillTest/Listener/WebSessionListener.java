@@ -15,6 +15,7 @@ public class WebSessionListener implements HttpSessionListener {
 		// Update context
 		ctx = event.getSession().getServletContext();
 		ctx.setAttribute("usercount", count);
+		System.out.println("usercount Set");
     }
  
     public void sessionDestroyed( HttpSessionEvent event) {
@@ -23,5 +24,6 @@ public class WebSessionListener implements HttpSessionListener {
 		// Update context
 		ctx = event.getSession().getServletContext();
 		ctx.setAttribute("usercount", count);
+		System.out.println("usercount Set");
     }
   }
