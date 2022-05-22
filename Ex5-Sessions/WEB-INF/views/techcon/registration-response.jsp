@@ -15,6 +15,7 @@
         <ul class="Main__navlist">
             | <li class="Main__navitem"><a class="Main__navlink" href="register">About</a></li>
             | <li class="Main__navitem"><a href="register?form=render" class="Main__navlink">Register</a></li>
+            |<li class="Main__navitem"><a href="/E5-Sessions/login?action=logout" class="Main__navlink">Logout</a></li>
             |
         </ul>
     </div>
