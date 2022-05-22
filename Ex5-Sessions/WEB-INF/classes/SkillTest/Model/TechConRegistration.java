@@ -49,11 +49,12 @@ public class TechConRegistration
         /* Add into `skills` */
         query = "INSERT INTO techcon_skills VALUES";
         for(int i=0;i<skills.size();i++){            
-            query += "('%s', '%s'),";
+            query += "('%s', '%s', NULL),";
             query = String.format(query, email, skills.get(i));
         }
         query = query.substring(0, query.length()-1) + ";";
         try{
+            System.out.println("modified: " + query);
             System.out.println(query);
             st.executeUpdate(query);
         }
@@ -69,7 +70,7 @@ public class TechConRegistration
         }
         query = query.substring(0, query.length()-1) + ";";
         try{
-            System.out.println(query);
+            System.out.println("modified: " + query);
             st.executeUpdate(query);
         }
         catch(Exception e){

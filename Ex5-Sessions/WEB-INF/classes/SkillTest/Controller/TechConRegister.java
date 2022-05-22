@@ -19,16 +19,18 @@ public class TechConRegister extends HttpServlet{
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 
+        System.out.println("Checking cookies");
         Cookie cks[] = request.getCookies();
         String user_email = null;
-        for(int i=0;i<cks.length;i++){
-            System.out.println("Checking cookie: " + cks[i].getName());
-            if(cks[i].getName().equals("login_email")){
-                user_email = cks[i].getValue();
-                break;
+        if(cks!=null){            
+            for(int i=0;i<cks.length;i++){
+                System.out.println("Checking cookie: " + cks[i].getName());
+                if(cks[i].getName().equals("login_email")){
+                    user_email = cks[i].getValue();
+                    break;
+                }
             }
         }
-
         // Enforce Login
         if(user_email==null){
             response.setContentType("text/html");
@@ -71,6 +73,30 @@ public class TechConRegister extends HttpServlet{
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 
         try{
+            System.out.println("Checking cookies");
+            Cookie cks[] = request.getCookies();
+            String user_email = null;
+            if(cks!=null){            
+                for(int i=0;i<cks.length;i++){
+                    System.out.println("Checking cookie: " + cks[i].getName());
+                    if(cks[i].getName().equals("login_email")){
+                        user_email = cks[i].getValue();
+                        break;
+                    }
+                }
+            }
+            // Enforce Login
+            if(user_email==null){
+                response.setContentType("text/html");
+                PrintWriter render = response.getWriter();
+                System.out.println("Registration --> user NOT logged in");
+                render.println("<p>");
+                render.println("You must be logged in to view this page");
+                render.println("<br /><a href='http://localhost:8080/E5-Sessions/login'>Login Page</a>");
+                render.println("</p>");
+                return;
+            }
+
             Enumeration paramNames = request.getParameterNames();
             while(paramNames.hasMoreElements()){
                 System.out.println(paramNames.nextElement());
@@ -111,6 +137,9 @@ public class TechConRegister extends HttpServlet{
                 StringManip.splitStringByChar(f_skills, '|'),
                 StringManip.splitStringByChar(f_hobbies, '|'),
                 f_letter
+            );
+            response.sendRedirect(
+                String.format("http://localhost:8080/E5-Sessions/register?form=%s", user_email)
             );
         }
         catch(AlreadyRegisteredException e){

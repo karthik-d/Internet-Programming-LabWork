@@ -26,25 +26,31 @@ public class Login extends HttpServlet{
                 session.invalidate();
                 System.out.println("Session invalidated");
             }
+            System.out.println("logout flag set");  
             logout = true;
         }
         Cookie ck;
         Cookie cks[] = request.getCookies();
         String user_email = null;
-        for(int i=0;i<cks.length;i++){
-            System.out.println("Checking cookie: " + cks[i].getName());
-            if(cks[i].getName().equals("login_email")){
-                user_email = cks[i].getValue();
-                if(logout){
-                    // Delete the cookie
-                    ck = new Cookie(cks[i].getName(), "");
-                    ck.setMaxAge(0);
-                    response.addCookie(ck);
-                    System.out.println("Cookie deleted");
+        if(cks!=null){
+            for(int i=0;i<cks.length;i++){
+                System.out.println("Checking cookie: " + cks[i].getName());
+                if(cks[i].getName().equals("login_email")){
+                    user_email = cks[i].getValue();
+                    if(logout){
+                        // Delete the cookie
+                        ck = new Cookie(cks[i].getName(), "");
+                        ck.setValue("");
+                        ck.setPath("/");
+                        ck.setMaxAge(0);
+                        response.addCookie(ck);
+                        System.out.println("Cookie deleted");
+                    }
+                    break;
                 }
-                break;
             }
         }
+        
         if(!logout && user_email!=null){
             // render the registration page
             System.out.println("User is logged in:  " + user_email);

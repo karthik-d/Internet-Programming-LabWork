@@ -25,7 +25,7 @@
     </div>
 
     <div id="TechConRegister__content" style="font-size: 16px; margin: 10px">
-        <form class="TechConRegister__form" id="TechConRegister__form" method="POST" action="/Ex4-SkillTest/register">
+        <form class="TechConRegister__form" id="TechConRegister__form" method="POST" action="/E5-Sessions/register">
 
             <div class="TechConRegister__fieldWrapper">
                 <label class="TechConRegister__label" for="fname_in">Full Name</label>

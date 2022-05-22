@@ -17,12 +17,36 @@ public class SkillsQuiz extends HttpServlet{
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        /* Read email-id from Cookie */
+        /* Read user_email from Cookie */
         try{
-            String email = "karthi@g.c";
+
+            Cookie cks[] = request.getCookies();
+            String user_email = null;
+            for(int i=0;i<cks.length;i++){
+                System.out.println("Checking cookie: " + cks[i].getName());
+                if(cks[i].getName().equals("login_email")){
+                    user_email = cks[i].getValue();
+                    break;
+                }
+            }
+
+            // Enforce Login
+            if(user_email==null){
+                response.setContentType("text/html");
+                PrintWriter render = response.getWriter();
+                System.out.println("Quiz --> user NOT logged in");
+                render.println("<p>");
+                render.println("You must be logged in to view this page");
+                render.println("<br /><a href='http://localhost:8080/E5-Sessions/login'>Login Page</a>");
+                render.println("</p>");
+                return;
+            }
+            else{
+                System.out.println("Quiz: Logged in as: " + user_email);
+            }
             
             QuizBank quiz_handle = new QuizBank();
-            Quizlet quiz_questions = quiz_handle.getRandomQuestionsForUser(email);
+            Quizlet quiz_questions = quiz_handle.getRandomQuestionsForUser(user_email);
 
             /* Construct HTML for Questions */
             String quiz_html = "";
@@ -59,6 +83,14 @@ public class SkillsQuiz extends HttpServlet{
         }
         catch(NoSkillsFoundException e){
             System.out.println(e);
+            response.setContentType("text/html");
+            PrintWriter render = response.getWriter();
+            System.out.println("No skills found");
+            render.println("<p>");
+            render.println("You have not registered any skills for quiz. Re-fill the registration form");
+            render.println("<br /><a href='http://localhost:8080/E5-Sessions/register?form=render'>Registration Form</a>");
+            render.println("</p>");
+            return;
         }
         catch(Exception e){
             System.out.println(e);
