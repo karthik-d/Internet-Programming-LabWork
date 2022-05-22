@@ -22,11 +22,13 @@ public class SkillsQuiz extends HttpServlet{
 
             Cookie cks[] = request.getCookies();
             String user_email = null;
-            for(int i=0;i<cks.length;i++){
-                System.out.println("Checking cookie: " + cks[i].getName());
-                if(cks[i].getName().equals("login_email")){
-                    user_email = cks[i].getValue();
-                    break;
+            if(cks!=null){
+                for(int i=0;i<cks.length;i++){
+                    System.out.println("Checking cookie: " + cks[i].getName());
+                    if(cks[i].getName().equals("login_email")){
+                        user_email = cks[i].getValue();
+                        break;
+                    }
                 }
             }
 
@@ -100,6 +102,34 @@ public class SkillsQuiz extends HttpServlet{
     public void doPost(HttpServletRequest request, HttpServletResponse response){
         
         try{
+
+            Cookie cks[] = request.getCookies();
+            String user_email = null;
+            if(cks!=null){
+                for(int i=0;i<cks.length;i++){
+                    System.out.println("Checking cookie: " + cks[i].getName());
+                    if(cks[i].getName().equals("login_email")){
+                        user_email = cks[i].getValue();
+                        break;
+                    }
+                }
+            }
+
+            // Enforce Login
+            if(user_email==null){
+                response.setContentType("text/html");
+                PrintWriter render = response.getWriter();
+                System.out.println("Quiz --> user NOT logged in");
+                render.println("<p>");
+                render.println("You must be logged in to view this page");
+                render.println("<br /><a href='http://localhost:8080/E5-Sessions/login'>Login Page</a>");
+                render.println("</p>");
+                return;
+            }
+            else{
+                System.out.println("Quiz: Logged in as: " + user_email);
+            }
+
             Enumeration quiz_fields = request.getParameterNames();
             ArrayList<String> q_ids = new ArrayList<String>();
             HashMap<String,String> q_responses = new HashMap<String,String>();
@@ -120,6 +150,7 @@ public class SkillsQuiz extends HttpServlet{
             ArrayList<String> skills = new ArrayList<String>();
             ArrayList<Integer> scores = new ArrayList<Integer>();
             ArrayList<Integer> totals = new ArrayList<Integer>();
+            ArrayList<Float> float_scores = new ArrayList<Float>();
             String curr_skill;
             String prev_skill = "";
             int score_set_idx = -1;
@@ -155,7 +186,12 @@ public class SkillsQuiz extends HttpServlet{
                 result_html += "</td><td>";
                 result_html += String.format("%d", totals.get(i)*10);
                 result_html += "</td></tr>";
+                float_scores.add(((float)scores.get(i)/totals.get(i)));
             }
+
+            // Store the scores
+            quiz_handle.storeScores(user_email, float_scores, verify_palette.getSkils());
+            System.out.println("Scores stored");
 
             /* Render results */
             request.setAttribute("resultrows", result_html);

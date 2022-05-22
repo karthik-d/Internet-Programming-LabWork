@@ -84,6 +84,26 @@ public class QuizBank{
         return new Quizlet(q_ids, correct_options, skills);
     }
 
+    public void storeScores(String user_email, ArrayList scores, ArrayList skills){
+        Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+        Connection con = DriverManager.getConnection(db_url, db_user, db_password);
+        Statement st = con.createStatement();
+
+        /* Add into `hobbies` */
+        String query = "UPDATE techcon_skills SET score='%s' WHERE email='%s';";
+        try{
+            for(int i=0;i<skills.size();i++){      
+                curr_query = String.format(query, scores.get(i), skills.get(i));
+                st.executeUpdate(curr_query);
+                System.out.println(curr_query);
+            }      
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+
+    }
+
     /*
     INSERT INTO techcon_questions VALUES (1, "What paradigm does java follow?", "Pure OOP", "Hybrid OOP", "POP", 'a', "java"), (2, "When is object created when using the `new` keyword?", "Compile Time", "Run Time", "Access Time" , 'b', 'java'), (3, "Which web-framework is frequently correlated with Ruby?", "Gems", "Laravel", "Rails", 'c', 'Ruby'), (4, "What is the extension used to save ruby files?", ".rb", ".rby", '.ruby', 'a', 'Ruby'), (5, "Which data-type is instantiated using values enclosed within curly-braces in Python?", 'tuple', 'list', 'dictionary', 'c', 'Python'), (6, "What is Python's floor division operator?", "/", "//", "%", 'b', 'Python'), (7, "What are #-preceded statements in C++?", "Compiler Directives", "Comments", "Preproc Directives", 'c', 'C++'), (8, "What is the extension recommended for C++ header files?", '.h', '.hpp', '.head', 'b', 'C++');
 
