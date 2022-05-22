@@ -103,12 +103,14 @@ public class Login extends HttpServlet{
                     render.println("\nActive Sessions: " + count);
                 }
             }
-        }
+            if(user!=null){
+                render.println("<br /><a href='http://localhost:8080/E5-Sessions/register'>TechCon Event Registration</a>");
+            }
+            render.println("</p>");
+            }
         catch(Exception E)
         {
             System.out.println("HERE:" + E);
         }
-        render.println("<br /><a href='http://localhost:8080/E5-Sessions/register'>TechCon Event Registration</a>");
-        render.println("</p>");
     }
 }

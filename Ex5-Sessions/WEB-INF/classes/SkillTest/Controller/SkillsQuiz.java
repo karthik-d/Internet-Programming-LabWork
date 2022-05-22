@@ -186,11 +186,13 @@ public class SkillsQuiz extends HttpServlet{
                 result_html += "</td><td>";
                 result_html += String.format("%d", totals.get(i)*10);
                 result_html += "</td></tr>";
-                float_scores.add(((float)scores.get(i)/totals.get(i)));
+                float_scores.add(((float)scores.get(i)/totals.get(i)/10));
             }
 
             // Store the scores
-            quiz_handle.storeScores(user_email, float_scores, verify_palette.getSkils());
+            System.out.println(float_scores);
+            System.out.println(skills);
+            quiz_handle.storeScores(user_email, float_scores, skills);
             System.out.println("Scores stored");
 
             /* Render results */

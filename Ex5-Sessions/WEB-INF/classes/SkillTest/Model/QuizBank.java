@@ -84,16 +84,17 @@ public class QuizBank{
         return new Quizlet(q_ids, correct_options, skills);
     }
 
-    public void storeScores(String user_email, ArrayList scores, ArrayList skills){
+    public void storeScores(String user_email, ArrayList scores, ArrayList skills) throws Exception{
         Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
         Connection con = DriverManager.getConnection(db_url, db_user, db_password);
         Statement st = con.createStatement();
 
         /* Add into `hobbies` */
-        String query = "UPDATE techcon_skills SET score='%s' WHERE email='%s';";
+        String query = "UPDATE techcon_skills SET skill_score='%s' WHERE (email='%s' AND skill='%s');";
+        String curr_query;
         try{
             for(int i=0;i<skills.size();i++){      
-                curr_query = String.format(query, scores.get(i), skills.get(i));
+                curr_query = String.format(query, scores.get(i), user_email, skills.get(i));
                 st.executeUpdate(curr_query);
                 System.out.println(curr_query);
             }      
