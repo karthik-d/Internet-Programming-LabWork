@@ -4,5 +4,27 @@
         <email>adam@gmail.com</email>
         <fullname>Adam Burns</fullname>
         <college_name>SSN</college_name>
+        <college_address>Kalavakkam</college_address>
+    </user>
+    <user>
+        <username>ben_g</username>
+        <email>ben@gmail.com</email>
+        <fullname>Ben Garner</fullname>
+        <college_name>SVCE</college_name>
+        <college_address>Kalavakkam</college_address>
+    </user>
+    <user>
+        <username>claire_d</username>
+        <email>claire@gmail.com</email>
+        <fullname>Claire Dunham</fullname>
+        <college_name>IIT</college_name>
+        <college_address>Hyderabad</college_address>
+    </user>
+    <user>
+        <username>derek_n</username>
+        <email>derek@gmail.com</email>
+        <fullname>Derek Newmann</fullname>
+        <college_name>IIITDM</college_name>
+        <college_address>Kalavakkam</college_address>
     </user>
 </registrations>
