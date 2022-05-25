@@ -27,6 +27,41 @@ function isAlphaNumericSpace(string) {
     return (/^[0-9a-zA-Z ]+$/m).test(string);
 }
 
+function validateUsername(event) {
+
+    function isDuplicateUsername(xml, uname_entry) {
+        var xmlDocument = xml.responseXML;
+        var unameElements = xmlDocument.getElementsByTagName("username");
+        var error = false;
+        for (var uname_db of unameElements) {
+            console.log(uname_db.firstChild.nodeValue);
+            if (uname_db.firstChild.nodeValue == uname_entry) {
+                errorBox.
+                    innerHTML = 'Username already taken!';
+                event.target.setCustomValidity("Username must be unique");
+                error = true;
+                break;
+            }
+        }
+        if (!error) {
+            errorBox.
+                innerHTML = '';
+            event.target.setCustomValidity("");
+        }
+    }
+
+    var entry = event.target.value;
+    var errorBox = event.target.parentElement.children[event.target.parentElement.children.length - 1];
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            isDuplicateUsername(this, entry);
+        }
+    }
+    xhr.open("GET", "db_registrations.xml", true);
+    xhr.send();
+}
+
 function validateFullName(event) {
     var entry = event.target.value;
     var errorBox = event.target.parentElement.children[event.target.parentElement.children.length - 1];
