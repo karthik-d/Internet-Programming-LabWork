@@ -2,19 +2,20 @@
 
 <head>
     <title>TechCon - Register</title>
-    <link rel="stylesheet" href="../styles.css">
-    <script src="scripts/registration.js"></script>
+    <link rel="stylesheet" href="resources/css/techcon-styles.css">
+    <script src="resources/js/techcon-registration.js"></script>
     <!-- <script src="/home/karthikd/Workspace/Academics/Semester_6/IP_Lab/Ex3_Form+JS/scripts/registration.js"></script> -->
 </head>
 
-<body onload="renderCorrectPage();startClock();">
+<body onload="startClock();">
 
-    <iframe src="../header.html" id="Main__headerFrame" scrolling="no"></iframe>
+    <iframe src="resources/templates/techcon-header.html" id="Main__headerFrame" scrolling="no"></iframe>
 
     <div id="Main__navbar">
         <ul class="Main__navlist">
-            | <li class="Main__navitem"><a class="Main__navlink" href="about.html">About</a></li>
-            | <li class="Main__navitem"><a href="registration.html" class="Main__navlink">Register</a></li>
+            | <li class="Main__navitem"><a class="Main__navlink" href="register">About</a></li>
+            | <li class="Main__navitem"><a href="register?form=render" class="Main__navlink">Register</a></li>
+            |<li class="Main__navitem"><a href="/E6-Ajax/login?action=logout" class="Main__navlink">Logout</a></li>
             |
         </ul>
     </div>
@@ -24,7 +25,17 @@
     </div>
 
     <div id="TechConRegister__content" style="font-size: 16px; margin: 10px">
-        <form class="TechConRegister__form" id="TechConRegister__form" method="GET">
+        <form class="TechConRegister__form" id="TechConRegister__form" method="POST" action="/E6-Sessions/register">
+
+            <div class="TechConRegister__fieldWrapper">
+                <label class="TechConRegister__label" for="uname_in">Username</label>
+                <div class="TechConRegister__inputWrapper">
+                    <input type="text" id="uname_in" name="username" placeholder="Choose a username..."
+                        class="TechConRegister__textIn" onblur="validateUsername(event);" oninvalid="alertFormError();"
+                        required>
+                    <p class="TechConRegister__fieldError" id="TechConRegister__nameError"></p>
+                </div>
+            </div>
 
             <div class="TechConRegister__fieldWrapper">
                 <label class="TechConRegister__label" for="fname_in">Full Name</label>
@@ -133,7 +144,7 @@
                 <div class="TechConRegister__inputWrapper">
                     <input type="email" id="email_in" name="email" placeholder="Email ID is..."
                         class="TechConRegister__textIn" onblur="validateEmail(event);" oninvalid="alertFormError();"
-                        required>
+                        required readonly value="${useremail}">
                     <p class="TechConRegister__fieldError" id="TechConRegister__emailError"></p>
                 </div>
             </div>
@@ -148,13 +159,13 @@
                             <p class="TechConRegister__skillsTitle">Your Skills</p>
                             <option id="TechConRegister__javaLabel" class="TechConRegister__skillLabel" value="Java"
                                 draggable="true" ondragstart="storeDragElement(event);">Java</option>
+                            <option id="TechConRegister__rubyLabel" class="TechConRegister__skillLabel" value="Ruby"
+                                draggable="true" ondragstart="storeDragElement(event);">Ruby</option>
                         </div>
                         <div id="TechConRegister__skillAvailable" ondragover="allowDrop(event);"
                             ondragenter="allowDrop(event);" ondrop="addDraggedElement(event);">
                             <p class="TechConRegister__skillsTitle">Choose from here</p>
 
-                            <option id="TechConRegister__rubyLabel" class="TechConRegister__skillLabel" value="Ruby"
-                                draggable="true" ondragstart="storeDragElement(event);">Ruby</option>
                             <option id="TechConRegister__cppLabel" class="TechConRegister__skillLabel" value="C++"
                                 draggable="true" ondragstart="storeDragElement(event);">C++</option>
                             <option id="TechConRegister__pythonLabel" class="TechConRegister__skillLabel" value="Python"
@@ -189,6 +200,7 @@
                     <p class="TechConRegister__fieldError" id="TechConRegister__dobError">
                     </p>
                 </div>
+                <input type="hidden" id="TechConRegister__hobbiesInHidden" name="hobbies" value="" />
             </div>
 
             <div class="TechConRegister__fieldWrapper">
@@ -203,11 +215,14 @@
         </form>
 
         <div class="TechConRegister__fieldWrapper" id="TechConRegister__buttonWrapper">
-            <button form="TechConRegister__form" id="TechConRegister__submit" onclick="appendSkillIn();">Submit</button>
+            <button form="TechConRegister__form" id="TechConRegister__submit"
+                onclick="appendSkillIn();appendHobbyIn();">Submit</button>
             <button id="TechConRegister__reset" onclick="resetForm('TechConRegister__form');">Reset</button>
         </div>
 
-    </div>
+        <input type="hidden" name="user_email" value="${useremail}" />
+
+        `
     </div>
 </body>
 

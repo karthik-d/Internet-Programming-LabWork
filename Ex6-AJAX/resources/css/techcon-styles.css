@@ -51,7 +51,6 @@ body{
     color: inherit;
 }
 
-
 .Header__welcometext{
     width: max-content;
     margin-right: auto;
@@ -528,3 +527,11 @@ body{
     border-radius: 10px;
     margin: 10px;
 }
+
+
+.Header__contents{
+    justify-content: space-between;
+    display: flex;
+    width: 100%;
+}
+
