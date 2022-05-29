@@ -372,3 +372,20 @@ body{
     font-size: 16px;
     list-style-type: square;
 }
+
+.Footer__container{
+    display: flex;
+    justify-content: right;
+    width: 100%;
+    background-color: #3c3935;
+    color: #ffffff;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+.Footer__text{
+    font-size: 12px;
+    font-style: italic;
+    margin-right: 40px;
+}

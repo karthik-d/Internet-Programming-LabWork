@@ -5,6 +5,7 @@ import ReactDOM from "react-dom/client";
 
 import Home from './Components/Home';
 import Header from './Components/Header';
+import Footer from './Components/Footer';
 import ToSSN from './Components/ToSSN';
 import Qualifications from './Components/Qualifications';
 import Interests from './Components/Interests';
@@ -24,6 +25,7 @@ function App() {
           <Route path="/events" element={<Events />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
+        <Footer />
       </Router>
     </div>
   );
