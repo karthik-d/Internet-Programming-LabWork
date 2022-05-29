@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Link, Routes, Route } from 'react-router-dom';
 
 const Header = () => {
     return (
@@ -10,7 +11,7 @@ const Header = () => {
                     </p>
                 </div>
 
-                <div id="content" >
+                <div id="Header__content" >
                     <div class="Header__welcometext">
                         <p>Hey there! Welcome to my page.</p>
                     </div>
@@ -18,17 +19,17 @@ const Header = () => {
                 </div>
             </header>
             <div id="Main__navbar">
-                <ul class="Main__navlist">
-                    | <li class="Main__navitem Main__navactive">Home</li>
-                    | <li class="Main__navitem">Journey to SSN</li>
-                    | <li class="Main__navitem">Qualifications</li>
-                    | <li class="Main__navitem">Interests</li>
-                    | <li class="Main__navitem">Events Organized</li>
-                    | <li class="Main__navitem">Contact</li>
+                <ul class="Main__navLink">
+                    | <Link to="/" class="Main__navitem Main__navactive">Home</Link>
+                    | <Link to="/" class="Main__navitem">Journey to SSN</Link>
+                    | <Link to="/" class="Main__navitem">Quafications</Link>
+                    | <Link to="/" class="Main__navitem">Interests</Link>
+                    | <Link to="/" class="Main__navitem">Events Organized</Link>
+                    | <Link to="/" class="Main__navitem">Contact</Link>
                     |
                 </ul>
             </div>
-        </div>
+        </div >
     );
 }
 
