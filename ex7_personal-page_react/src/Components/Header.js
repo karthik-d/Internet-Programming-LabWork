@@ -10,12 +10,18 @@ class Navtab extends React.Component {
     }
 
     handleClick(event) {
-        this.props.onSelection(event.target.value);
+        this.props.onSelection(this.props.identifier);
     }
 
     render() {
         return (
-            <Link to="/" class="Main__navitem" onClick={this.handleClick}>{this.props.tabname}</Link>
+            <Link
+                to="/"
+                className={this.props.className}
+                onClick={this.handleClick}
+            >
+                {this.props.tabname}
+            </Link>
         );
     }
 }
@@ -24,13 +30,14 @@ class Navbar extends React.Component {
 
     constructor(props) {
         super(props);
-        this.handleTabSelection = this.handleTabSelection.bind(this);
         this.state = {
             active_tab: 'home'
         };
+        this.handleTabSelection = this.handleTabSelection.bind(this);
     }
 
     handleTabSelection(active_tab) {
+        console.log(this.state);
         this.setState({
             active_tab: active_tab
         });
@@ -40,8 +47,23 @@ class Navbar extends React.Component {
         return (
             <div id="Main__navbar">
                 <ul class="Main__navLink">
-                    | <Navtab to="/" class="Main__navitem Main__navactive" tabname="HomeTest" />
-                    | <Link to="/" class="Main__navitem Main__navactive">Home</Link>
+                    |
+                    <Navtab
+                        to="/"
+                        className={`Main__navitem ${this.state.active_tab == 'home' ? "Main__navactive" : ""}`}
+                        tabname="HomeTest"
+                        identifier="home"
+                        onSelection={this.handleTabSelection}
+                    />
+                    |
+                    <Navtab
+                        to="/"
+                        className={`Main__navitem ${this.state.active_tab == 'tossn' ? "Main__navactive" : ""}`}
+                        tabname="Journey to SSN --"
+                        identifier="tossn"
+                        onSelection={this.handleTabSelection}
+                    />
+                    |<Link to="/" class="Main__navitem Main__navactive">Home</Link>
                     | <Link to="/tossn" class="Main__navitem">Journey to SSN</Link>
                     | <Link to="/qualifications" class="Main__navitem">Qualifications</Link>
                     | <Link to="/interests" class="Main__navitem">Interests</Link>
