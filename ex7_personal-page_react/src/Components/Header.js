@@ -16,7 +16,7 @@ class Navtab extends React.Component {
     render() {
         return (
             <Link
-                to="/"
+                to={this.props.to}
                 className={this.props.className}
                 onClick={this.handleClick}
             >
@@ -51,24 +51,50 @@ class Navbar extends React.Component {
                     <Navtab
                         to="/"
                         className={`Main__navitem ${this.state.active_tab == 'home' ? "Main__navactive" : ""}`}
-                        tabname="HomeTest"
+                        tabname="Home"
                         identifier="home"
                         onSelection={this.handleTabSelection}
                     />
                     |
                     <Navtab
-                        to="/"
+                        to="/tossn"
                         className={`Main__navitem ${this.state.active_tab == 'tossn' ? "Main__navactive" : ""}`}
-                        tabname="Journey to SSN --"
+                        tabname="Journey to SSN"
                         identifier="tossn"
                         onSelection={this.handleTabSelection}
                     />
-                    |<Link to="/" class="Main__navitem Main__navactive">Home</Link>
-                    | <Link to="/tossn" class="Main__navitem">Journey to SSN</Link>
-                    | <Link to="/qualifications" class="Main__navitem">Qualifications</Link>
-                    | <Link to="/interests" class="Main__navitem">Interests</Link>
-                    | <Link to="/events" class="Main__navitem">Events Organized</Link>
-                    | <Link to="/contact" class="Main__navitem">Contact</Link>
+                    |
+                    <Navtab
+                        to="/qualifications"
+                        className={`Main__navitem ${this.state.active_tab == 'qualifications' ? "Main__navactive" : ""}`}
+                        tabname="Qualifications"
+                        identifier="qualifications"
+                        onSelection={this.handleTabSelection}
+                    />
+                    |
+                    <Navtab
+                        to="/interests"
+                        className={`Main__navitem ${this.state.active_tab == 'interests' ? "Main__navactive" : ""}`}
+                        tabname="Interests"
+                        identifier="interests"
+                        onSelection={this.handleTabSelection}
+                    />
+                    |
+                    <Navtab
+                        to="/events"
+                        className={`Main__navitem ${this.state.active_tab == 'events' ? "Main__navactive" : ""}`}
+                        tabname="Events Organized"
+                        identifier="events"
+                        onSelection={this.handleTabSelection}
+                    />
+                    |
+                    <Navtab
+                        to="/contact"
+                        className={`Main__navitem ${this.state.active_tab == 'contact' ? "Main__navactive" : ""}`}
+                        tabname="Contact"
+                        identifier="contact"
+                        onSelection={this.handleTabSelection}
+                    />
                     |
                 </ul>
             </div>
