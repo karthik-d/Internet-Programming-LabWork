@@ -7,6 +7,10 @@ import Courses from './Pages/Courses';
 
 import Header from './Components/Header';
 import ToSSN from './Components/ToSSN';
+import Qualifications from './Components/Qualifications';
+import Interests from './Components/Interests';
+// import Events from './Components/Events';
+import Contact from './Components/Contact';
 import Search from './Components/Search';
 import List from './Components/List';
 
@@ -17,10 +21,10 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/tossn" element={<ToSSN />}>
-            <Route path="search" element={<Search />} />
-            <Route path="list" element={<List />} />
-          </Route>
+          <Route path="/tossn" element={<ToSSN />} />
+          <Route path="/qualifications" element={<Qualifications />} />
+          <Route path="/interests" element={<Interests />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </Router>
     </div>

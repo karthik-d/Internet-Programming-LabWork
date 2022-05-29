@@ -143,12 +143,22 @@ body{
 }
 
 
+#Contact__content{
+    font-family: sans-serif; 
+    font-size: 16px; 
+    margin: 10px;
+}
 
 .Contact__form{
     width: 30%;
     margin-right: auto;
     margin-left: auto;
     margin-top: 40px;
+}
+
+.Contact__submit{
+    width: 90%; 
+    text-align: center;
 }
 
 .Contact__textIn, .Contact__selectIn{

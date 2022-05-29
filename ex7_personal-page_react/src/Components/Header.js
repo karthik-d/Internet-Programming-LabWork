@@ -22,7 +22,7 @@ const Header = () => {
                 <ul class="Main__navLink">
                     | <Link to="/" class="Main__navitem Main__navactive">Home</Link>
                     | <Link to="/tossn" class="Main__navitem">Journey to SSN</Link>
-                    | <Link to="/qualifications" class="Main__navitem">Quafications</Link>
+                    | <Link to="/qualifications" class="Main__navitem">Qualifications</Link>
                     | <Link to="/interests" class="Main__navitem">Interests</Link>
                     | <Link to="/events" class="Main__navitem">Events Organized</Link>
                     | <Link to="/contact" class="Main__navitem">Contact</Link>
