@@ -6,6 +6,7 @@ import Home from './Pages/Home';
 import Courses from './Pages/Courses';
 
 import Header from './Components/Header';
+import ToSSN from './Components/ToSSN';
 import Search from './Components/Search';
 import List from './Components/List';
 
@@ -14,13 +15,9 @@ function App() {
     <div className="App">
       <Router>
         <Header />
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="courses">Courses</Link>
-        </nav>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/courses" element={<Courses />}>
+          <Route path="/tossn" element={<ToSSN />}>
             <Route path="search" element={<Search />} />
             <Route path="list" element={<List />} />
           </Route>
