@@ -9,7 +9,7 @@ import Header from './Components/Header';
 import ToSSN from './Components/ToSSN';
 import Qualifications from './Components/Qualifications';
 import Interests from './Components/Interests';
-// import Events from './Components/Events';
+import Events from './Components/Events';
 import Contact from './Components/Contact';
 import Search from './Components/Search';
 import List from './Components/List';
@@ -24,6 +24,7 @@ function App() {
           <Route path="/tossn" element={<ToSSN />} />
           <Route path="/qualifications" element={<Qualifications />} />
           <Route path="/interests" element={<Interests />} />
+          <Route path="/events" element={<Events />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </Router>
