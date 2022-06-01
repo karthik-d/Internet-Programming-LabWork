@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  
+<script>
+class Car {
+  constructor(name) {
+    this.brand = name;
+  }
+}
+
+mycar = new Car("Ford");
+
+document.write(mycar.brand);
+</script>
+
+</body>
+</html>

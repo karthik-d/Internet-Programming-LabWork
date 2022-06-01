@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+function AjaxDemoWithForms()
+{
+var xmlhttp;
+if (window.XMLHttpRequest)
+  {
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {
+   xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("id").innerHTML=xmlhttp.responseText;
+    }
+  }
+   
+    var a=document.getElementById("name").value;
+   
+xmlhttp.open("GET","s?q="+a,true);
+xmlhttp.send();
+}
+</script>
+</head>
+
+<body>
+    <div id="id"></div>
+   
+        UserName: <input type="text" name="name" id="name" onkeyup="AjaxDemoWithForms()">
+     
+</body>
+</html>
