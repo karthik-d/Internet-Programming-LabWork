@@ -3,6 +3,17 @@ use practice;
 db.users.insert({ name: 'Adam', username: 'adam', password: 'adam123' });
 db.users.updateOne({ username: 'adam' }, { $set: { roles: ['student', 'faculty'] } })
 
+db.users.updateOne(
+    { username: 'claire' },
+    {
+        $set: { roles: ['student'] },
+        $setOnInsert: {
+            name: 'Claire',
+            password: 'claire123'
+        }
+    },
+    { upsert: true });
+
 db.users.insertOne({
     name: 'ben',
     username: 'ben',
