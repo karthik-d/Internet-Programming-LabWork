@@ -9,6 +9,7 @@ class FileContent extends React.Component {
         };
         // register callbacks!
         this.makeApiCall = this.makeApiCall.bind(this);
+        this.makeUser = this.makeUser.bind(this);
     }
 
     makeApiCall() {
@@ -34,6 +35,26 @@ class FileContent extends React.Component {
             });
     }
 
+    makeUser(e) {
+        fetch('http://localhost:9000/api/files',
+            {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: e.target.value
+                })
+            })
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
     // componentDidMount() {
     //     this.makeApiCall();
     // }
@@ -43,6 +64,10 @@ class FileContent extends React.Component {
             <div>
                 <button onClick={this.makeApiCall}> Call API </button>
                 <p>{this.state.content}</p>
+                <form>
+                    <input type="text" placeholder="Name" />
+                </form>
+                <button onClick={this.makeUser} value="Ben">Create User</button>
             </div>
         );
     }
