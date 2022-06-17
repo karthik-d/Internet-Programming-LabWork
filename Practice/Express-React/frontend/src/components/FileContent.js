@@ -1,5 +1,7 @@
 import React from 'react';
 
+import UserForm from './UserForm';
+
 class FileContent extends React.Component {
 
     constructor(props) {
@@ -35,7 +37,9 @@ class FileContent extends React.Component {
             });
     }
 
-    makeUser(e) {
+    makeUser(data) {
+        console.log("Sending data")
+        console.log(data);
         fetch('http://localhost:9000/api/files',
             {
                 method: 'POST',
@@ -43,16 +47,15 @@ class FileContent extends React.Component {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({
-                    name: e.target.value
-                })
+                body: JSON.stringify(data)
             })
             .then((response) => {
                 console.log(response);
             })
             .catch((error) => {
                 console.log(error);
-            });
+            }
+            );
     }
 
     // componentDidMount() {
@@ -64,10 +67,11 @@ class FileContent extends React.Component {
             <div>
                 <button onClick={this.makeApiCall}> Call API </button>
                 <p>{this.state.content}</p>
-                <form>
+                <UserForm submitPropagator={this.makeUser} />
+                {/* <form>
                     <input type="text" placeholder="Name" />
                 </form>
-                <button onClick={this.makeUser} value="Ben">Create User</button>
+                <button onClick={this.makeUser} value="Ben">Create User</button> */}
             </div>
         );
     }
