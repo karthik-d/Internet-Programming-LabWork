@@ -71,6 +71,11 @@ public class Login extends HttpServlet{
 
         HttpSession session = null;
 
+        Enumeration param_names = request.getParameterNames();
+        while(param_names.hasMoreElements()){
+            System.out.println(param_names.nextElement().toString());
+        }
+
         render.println("<p>");
         User ce = new User();
         try{

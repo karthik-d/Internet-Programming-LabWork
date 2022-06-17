@@ -23,8 +23,9 @@ db.users.updateOne({ name: 'ben' }, { $set: { roles: ['faculty'] } });
 
 db.users.aggregate([{ $unwind: '$roles' }])
 db.users.aggregate([{ $unwind: '$roles' }, { $group: { _id: '$roles', total: { $count: {} } } }])
+db.users.aggregate([{ $unwind: '$roles' }, { $group: { _id: '$roles', total: { $sum: 1 } } }])
 
 db.users.find();
-db.users.count;
+db.users.count();
 
 db.users.drop();

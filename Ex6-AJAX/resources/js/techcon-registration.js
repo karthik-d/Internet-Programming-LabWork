@@ -1,3 +1,5 @@
+const { charset } = require("mime-types");
+
 const monthNames = [
     "January",
     "February",
@@ -25,6 +27,19 @@ function isNumeric(string) {
 
 function isAlphaNumericSpace(string) {
     return (/^[0-9a-zA-Z ]+$/m).test(string);
+}
+
+function checkXMLPost() {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4 && this.state == 200) {
+            console.log("Posted!");
+            console.log(this.responseText);
+        }
+    }
+    xhr.open('POST', 'http://localhost:8080/E6-AJAX/login');
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.send("field=value&name=post");
 }
 
 function validateUsername(event) {
