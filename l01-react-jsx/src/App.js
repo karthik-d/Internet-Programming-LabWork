@@ -3,10 +3,12 @@ import "./App.css";
 
 function App() {
 
-  const initialValues = { username: "", email: "", password: "" };
+  const initialValues = { username: "", email: "", password: "", x_val: 0, y_val: 0 };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
+  const [isSum, setIsSum] = useState(false);
+  const [additionResult, setAdditionResult] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,12 +21,20 @@ function App() {
     setIsSubmit(true);
   };
 
+  const handleSum = (e) => {
+    e.preventDefault();
+    setAdditionResult(parseInt(formValues.x_val) + parseInt(formValues.y_val));
+    setIsSum(true);
+  }
+
   useEffect(() => {
     console.log(formErrors);
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       console.log(formValues);
     }
   }, [formErrors]);
+
+
 
   const validate = (values) => {
     const errors = {};
@@ -54,6 +64,39 @@ function App() {
       ) : (
         <pre>{JSON.stringify(formValues, undefined, 2)}</pre>
       )}
+
+      <form onSubmit={handleSum}>
+        <h1>Addition Display</h1>
+        <div>
+          <label>X</label>
+          <input
+            type="number"
+            name="x_val"
+            placeholder="Enter X"
+            value={formValues.x_val}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label>Y</label>
+          <input
+            type="number"
+            name="y_val"
+            placeholder="Enter Y"
+            value={formValues.y_val}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <input
+            type="submit"
+            name="add_submit"
+            value="Add X and Y"
+          />
+        </div>
+      </form>
+
+      <div>X + Y is: <p>{(isSum && !isNaN(additionResult)) ? additionResult : ""}</p></div>
 
       <form onSubmit={handleSubmit}>
         <h1>Login Form</h1>
