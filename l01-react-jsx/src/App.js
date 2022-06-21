@@ -138,6 +138,9 @@ function App() {
           <button>Submit</button>
         </div>
       </form>
+      <footer style={{ textAlign: 'center' }}>
+        Credits: <h4>Karthik D, 195001047</h4>
+      </footer>
     </div>
   );
 }
