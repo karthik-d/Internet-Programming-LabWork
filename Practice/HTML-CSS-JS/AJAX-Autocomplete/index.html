@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <script src="autocomplete.js">
+        function populateResults(slug, xhr) {
+            var xml_doc = xhr.responseXML;
+            var countryNodes = xml_doc.getElementsByTagName('country');
+            var resultNode = document.getElementById('selectResults');
+            resultNode.innerHTML = "";
+            for (var country of countryNodes) {
+                var regex = new RegExp('^' + slug + '*');
+                if (regex.test(country.children[0].nodeValue)) {
+                    resultNode.innerHTML += country;
+                }
+            }
+        }
+
+        function autocomp(event) {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    populateResults(document.getElementById('selectBox').innerHTML, this);
+                }
+            }
+            xhr.open('GET', 'countries.xml', true);
+            xhr.setRequestHeader("Access-Control-Allow-Origin:", "*");
+            xhr.send();
+        }
+    </script>
+</head>
+
+<body>
+    <form>
+        <input type="text" id="selectBox" onkeypress="autocomp(event);">
+        <p id="selectResults">
+        </p>
+    </form>
+</body>
+
+</html>

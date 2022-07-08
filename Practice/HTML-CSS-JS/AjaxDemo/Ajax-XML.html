@@ -1,49 +1,84 @@
 <!DOCTYPE html>
 <html>
+
 <body>
-<div id='showCD'></div><br>
-<input type="button" onclick="previous()" value="<<">
-<input type="button" onclick="next()" value=">>">
+  <div id='showCD'></div><br>
+  <input type="button" onclick="previous()" value="<<">
+  <input type="button" onclick="next()" value=">>">
 
-<script>
-var i = 0;
-var x;
-displayCD(i);
+  <script>
+    var i = 0;
+    var x;
+    displayCD(i);
 
-function displayCD(i) {
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
+    function displayCD(i) {
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            myFunction(this, i);
+          myFunction(this, i);
         }
-    };
-    xmlhttp.open("GET", "cd_catalog.xml", true);
-    xmlhttp.send();
-}
+      };
+      xmlhttp.open("GET", "cd_catalog.xml", true);
+      xmlhttp.send();
+    }
 
-function myFunction(xml, i) {
-    var xmlDoc = xml.responseXML; 
-    x = xmlDoc.getElementsByTagName("CD");
-    document.getElementById("showCD").innerHTML = 
-    "Artist: " +
-    x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
-    "<br>Title: " +
-    x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
-    "<br>Year: " + 
-    x[i].getElementsByTagName("YEAR")[0].childNodes[0].nodeValue;
-}
+    function myFunction(xml, i) {
+      var xmlDoc = xml.responseXML;
+      x = xmlDoc.getElementsByTagName("CD");
+      document.getElementById("showCD").innerHTML =
+        "Artist: " +
+        x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
+        "<br>Title: " +
+        x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+        "<br>Year: " +
+        x[i].getElementsByTagName("YEAR")[0].childNodes[0].nodeValue;
+    }
 
-function next() {
-if (i < x.length-1) {
-  i++;
-  displayCD(i);
-  }  }
+    function next() {
+      if (i < x.length - 1) {
+        i++;
+        displayCD(i);
+      }
+    }
 
-function previous() {
-if (i > 0) {
-  i--;
-  displayCD(i);
-  }    }
-</script> 
+    function previous() {
+      if (i > 0) {
+        i--;
+        displayCD(i);
+      }
+    }
+
+    function populateResults(slug, xhr) {
+      var xml_doc = xhr.responseXML;
+      var countryNodes = xml_doc.getElementsByTagName('country');
+      var resultNode = document.getElementById('selectResults');
+      resultNode.innerHTML = "";
+      for (var country of countryNodes) {
+        var regex = new RegExp('^' + slug + '*');
+        if (regex.test(country.children[0].nodeValue)) {
+          resultNode.innerHTML += country;
+        }
+      }
+    }
+
+    function autocomp(event) {
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          populateResults(document.getElementById('selectBox').innerHTML, this);
+        }
+      }
+      xhr.open('GET', 'countries.xml', true);
+      xhr.send();
+    }
+
+  </script>
+
+  <form>
+    <input type="text" id="selectBox" onkeypress="autocomp(event);">
+    <p id="selectResults">
+    </p>
+  </form>
 </body>
- </html>
+
+</html>
