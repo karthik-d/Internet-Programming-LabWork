@@ -3,6 +3,14 @@
 Programs, reports, documentation and screenshots as part of the Internet Programming course.  
 **[Compiled report](./Labwork-Documentation.pdf)** of all lab exercises.
 
+
+## Card-Flip: A memory game using Vanilla HTML/CSS/JS
+
+- [**Try out the game, NOW!!**](http://karthik-d.github.io/UCS1611-InternetProgramming-LabWork/Ex3B-MemoryGame) at http://karthik-d.github.io/UCS1611-InternetProgramming-LabWork/Ex3B-MemoryGame 
+- [Source Code](https://github.com/karthik-d/UCS1611-InternetProgramming-LabWork/Ex3B-MemoryGame)
+
+![memory-game-screenshot-1](./Ex3B-MemoryGame/Documentation/Screenshots/2_Playing-Game.jpg)
+
 # Funded Project Tracker: A Capstone Project
 
 Implemented with the **MERN Stack: MongoDB, ExpressJS, ReactJS (NextJS) and NodeJS**.
@@ -15,14 +23,6 @@ A centralized online system, with a web-application interface, to manage interna
 - Resource management and repurposing for funded research project.
 - Project status, updates and outcomes repository for all projects
 - Filterable and customized summary stats of faculty and student projects.
-
-
-## Card-Flip: A memory game using Vanilla HTML/CSS/JS
-
-- [Source Code](./Ex3B-MemoryGame)
-
-![memory-game-screenshot-1](./Ex3B-MemoryGame/Documentation/Screenshots/2_Playing-Game.jpg)
-
 
 ## Other Exercises
 
