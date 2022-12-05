@@ -7,8 +7,8 @@ Programs, reports, documentation and screenshots as part of the Internet Program
 
 ## Card-Flip: A memory game using Vanilla HTML/CSS/JS
 
-- [**Try out the game, NOW!!**](http://karthik-d.github.io/UCS1611-InternetProgramming-LabWork/Ex3B-MemoryGame) at http://karthik-d.github.io/UCS1611-InternetProgramming-LabWork/Ex3B-MemoryGame 
-- [Source Code](https://github.com/karthik-d/UCS1611-InternetProgramming-LabWork/Ex3B-MemoryGame)
+- [**Try out the game, NOW!!**](http://karthik-d.github.io/Internet-Programming-LabWork/Ex3B-MemoryGame) at http://karthik-d.github.io/Internet-Programming-LabWork/Ex3B-MemoryGame 
+- [Source Code](https://github.com/karthik-d/Internet-Programming-LabWork/Ex3B-MemoryGame)
 
 ![memory-game-screenshot-1](./Ex3B-MemoryGame/Documentation/Screenshots/2_Playing-Game.jpg)
 
@@ -29,8 +29,8 @@ A centralized online system, with a web-application interface, to manage interna
 
 In addition, the following webpages/webapps are implemented.
 
-1. [Personal Webpage with HTML/CSS](https://github.com/karthik-d/UCS1611-InternetProgramming-LabWork/Ex1-PersonalWebpage-HTML).
-   - [Preview it here](http://karthik-d.github.io/UCS1611-InternetProgramming-LabWork/Ex1-PersonalWebpage-HTML)
+1. [Personal Webpage with HTML/CSS](https://github.com/karthik-d/Internet-Programming-LabWork/Ex1-PersonalWebpage-HTML).
+   - [Preview it here](http://karthik-d.github.io/Internet-Programming-LabWork/Ex1-PersonalWebpage-HTML)
 2. [#1 extended with HTML Registration Form with JS for Data Validation, Form Expiry](/Ex3A-Form%2BJS).
 3. [#2 extended with Java Servlets](./Ex4-SkillTest_Servlet).
 4. [#3 extended with Servlet Sessions, Cookies and Hidden Form Forwarding](./Ex5-Sessions).
