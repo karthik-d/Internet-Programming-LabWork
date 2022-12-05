@@ -28,8 +28,9 @@ A centralized online system, with a web-application interface, to manage interna
 
 In addition, the following webpages/webapps are implemented.
 
-1. [Personal Webpage with HTML/CSS](./Ex1-PersonalWebpage-HTML).
-2. [#1 extended with HTML Registration Form with JS for Data Validation, Form Expiry](./Ex3A-Form%2BJS).
+1. [Personal Webpage with HTML/CSS](https://github.com/karthik-d/UCS1611-InternetProgramming-LabWork/Ex1-PersonalWebpage-HTML).
+   - [Preview it here](http://karthik-d.github.io/UCS1611-InternetProgramming-LabWork/Ex1-PersonalWebpage-HTML)
+2. [#1 extended with HTML Registration Form with JS for Data Validation, Form Expiry](/Ex3A-Form%2BJS).
 3. [#2 extended with Java Servlets](./Ex4-SkillTest_Servlet).
 4. [#3 extended with Servlet Sessions, Cookies and Hidden Form Forwarding](./Ex5-Sessions).
 5. [#4 extended with AJAX for Asynchronous Form Validation](./Ex6-AJAX).
