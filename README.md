@@ -1,6 +1,7 @@
 # UCS1611: Internet Programming and Web Development
 
 Programs, reports, documentation and screenshots as part of the Internet Programming course.  
+
 **[Compiled report](./Labwork-Documentation.pdf)** of all lab exercises.
 
 
@@ -15,7 +16,7 @@ Programs, reports, documentation and screenshots as part of the Internet Program
 
 Implemented with the **MERN Stack: MongoDB, ExpressJS, ReactJS (NextJS) and NodeJS**.
 
-- [Source Code](https://github.com/karthik-d/Funded-Project-Tracker) (separte repository)
+- [Source Code](https://github.com/karthik-d/Funded-Project-Tracker) (separate repository)
 - [Project Report](./MiniProject-Report.pdf)
 
 A centralized online system, with a web-application interface, to manage internally and externally funded projects affiliated to the college. It handles the following key aspects:
