@@ -12,7 +12,7 @@ Programs, reports, documentation and screenshots as part of the Internet Program
 
 ![memory-game-screenshot-1](./Ex3B-MemoryGame/Documentation/Screenshots/2_Playing-Game.jpg)
 
-# Funded Project Tracker: A Capstone Project
+# Funded Project Tracker: Capstone Project
 
 Implemented with the **MERN Stack: MongoDB, ExpressJS, ReactJS (NextJS) and NodeJS**.
 
