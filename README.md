@@ -1,8 +1,8 @@
 # UCS1611: Internet Programming and Web Development
 
-Programs, reports, documentation and screenshots as part of the Internet Programming course.  
+Programs, reports, documentation, and screenshots of web exercises implemented as part of the Internet Programming course.  
 
-**[Compiled report](./Labwork-Documentation.pdf)** of all lab exercises.
+**[Compiled implementation report](./Labwork-Documentation.pdf)** of all lab exercises.
 
 
 ## Card-Flip: A memory game using Vanilla HTML/CSS/JS
