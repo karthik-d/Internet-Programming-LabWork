@@ -1,6 +1,10 @@
 # UCS1611: Internet Programming and Web Development
 
-Programs, reports, documentation, and screenshots of web exercises implemented as part of the Internet Programming course.  
+
+Programs, reports, documentation, and screenshots of web exercises implemened as part of the Internet Programming course.  
+
+
+
 
 **[Compiled implementation report](./Labwork-Documentation.pdf)** of all lab exercises.
 
@@ -12,7 +16,7 @@ Programs, reports, documentation, and screenshots of web exercises implemented a
 
 ![memory-game-screenshot-1](./Ex3B-MemoryGame/Documentation/Screenshots/2_Playing-Game.jpg)
 
-# Funded Project Tracker: Capstone Project
+## Funded Project Tracker: Capstone Project
 
 Implemented with the **MERN Stack: MongoDB, ExpressJS, ReactJS (NextJS) and NodeJS**.
 
